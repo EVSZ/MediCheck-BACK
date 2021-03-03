@@ -4,7 +4,7 @@ import medicheck.backend.Recept.ReceptContainer;
 
 import java.time.LocalDate;
 
-public class Patiënt {
+public class PatiëntDTO {
     private Integer id;
     private String naam;
     private Double gewicht;
@@ -78,10 +78,11 @@ public class Patiënt {
         this.recepten = recepten;
     }
 
-    public Patiënt(Integer id, String naam,
-                   Double gewicht, Double lengte,
-                   Boolean zwanger, LocalDate birthDate,
-                   Gender gender, ReceptContainer recepten) {
+    public PatiëntDTO(Integer id, String naam,
+                      Double gewicht, Double lengte,
+                      Boolean zwanger,
+                      LocalDate birthDate, Gender gender,
+                      ReceptContainer recepten) {
         this.id = id;
         this.naam = naam;
         this.gewicht = gewicht;
@@ -92,10 +93,11 @@ public class Patiënt {
         this.recepten = recepten;
     }
 
-    public Patiënt(String naam, Double gewicht,
-                   Double lengte, Boolean zwanger,
-                   LocalDate birthDate, Gender gender,
-                   ReceptContainer recepten) {
+    public PatiëntDTO(String naam, Double gewicht,
+                      Double lengte, Boolean zwanger,
+                      LocalDate birthDate,
+                      Gender gender,
+                      ReceptContainer recepten) {
         this.naam = naam;
         this.gewicht = gewicht;
         this.lengte = lengte;
@@ -105,7 +107,7 @@ public class Patiënt {
         this.recepten = recepten;
     }
 
-    public Patiënt(PatiëntDTO patiënt) {
+    public PatiëntDTO(Patiënt patiënt) {
         this.naam = patiënt.getNaam();
         this.gewicht = patiënt.getGewicht();
         this.lengte = patiënt.getLengte();
@@ -113,10 +115,5 @@ public class Patiënt {
         this.birthDate = patiënt.getBirthDate();
         this.gender = patiënt.getGender();
         this.recepten = patiënt.getRecepten();
-    }
-
-    // !!!for testing!!!
-    public Patiënt(Integer id) {
-        this.id = id;
     }
 }

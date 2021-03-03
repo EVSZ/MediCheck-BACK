@@ -19,7 +19,7 @@ public class PatiëntContainer {
         throw new ArithmeticException("De patiënt is niet gevonden!");
     }
 
-    public Patiënt GetPatiëntBtID(Integer id){
+    public Patiënt GetPatiëntByID(Integer id){
         for (Patiënt patiënt:
              patiënten) {
             if(patiënt.getId() == id) return patiënt;
@@ -29,5 +29,20 @@ public class PatiëntContainer {
 
     public void SavePatiënt(Patiënt patiënt){
         patiënten.add(patiënt);
+    }
+
+    public void AddPatiënt(PatiëntDTO patiëntDTO){
+        Patiënt patiënt = new Patiënt(patiëntDTO);
+        patiënten.add(patiënt);
+    }
+
+    public List<PatiëntDTO> GetPatiënten(){
+        List<PatiëntDTO> uitvoer = new ArrayList<>();
+        for (Patiënt patiënt:
+             patiënten) {
+            PatiëntDTO temp = new PatiëntDTO(patiënt);
+            uitvoer.add(temp);
+        }
+        return uitvoer;
     }
 }

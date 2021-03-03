@@ -32,4 +32,8 @@ public class MedicineContainer {
         }
         return output;
     }
+
+    public void AddMedicine(MedicineDTO mediceneDTO){
+
+    }
 }

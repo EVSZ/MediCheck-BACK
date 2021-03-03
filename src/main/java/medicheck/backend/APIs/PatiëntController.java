@@ -23,7 +23,7 @@ public class PatiëntController {
 
     /*@GetMapping("/get/{id}")
     public Patiënt GetPatiënt(Integer id){
-        return patiënten.GetPatiëntBtID(id);
+        return patiënten.GetPatiëntByID(id);
     }*/
     @GetMapping("/get")
     public Patiënt GetPatiënt(){
