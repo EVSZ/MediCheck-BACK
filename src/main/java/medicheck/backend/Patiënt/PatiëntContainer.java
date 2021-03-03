@@ -1,4 +1,4 @@
-package medicheck.backend.patiënt;
+package medicheck.backend.Patiënt;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

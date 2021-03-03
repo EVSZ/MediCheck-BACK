@@ -1,7 +1,7 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.patiënt.Patiënt;
-import medicheck.backend.patiënt.PatiëntContainer;
+import medicheck.backend.Patiënt.Patiënt;
+import medicheck.backend.Patiënt.PatiëntContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
