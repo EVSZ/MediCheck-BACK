@@ -36,13 +36,7 @@ public class PatiëntContainer {
         patiënten.add(patiënt);
     }
 
-    public List<PatiëntDTO> GetPatiënten(){
-        List<PatiëntDTO> uitvoer = new ArrayList<>();
-        for (Patiënt patiënt:
-             patiënten) {
-            PatiëntDTO temp = new PatiëntDTO(patiënt);
-            uitvoer.add(temp);
-        }
-        return uitvoer;
+    public List<Patiënt> GetPatiënten(){
+        return patiënten;
     }
 }

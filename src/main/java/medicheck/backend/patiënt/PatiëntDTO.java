@@ -12,7 +12,6 @@ public class PatiëntDTO {
     private Boolean zwanger;
     private LocalDate birthDate;
     private Gender gender;
-    private ReceptContainer recepten;
 
     public Integer getId() {
         return id;
@@ -70,19 +69,11 @@ public class PatiëntDTO {
         this.gender = gender;
     }
 
-    public ReceptContainer getRecepten() {
-        return recepten;
-    }
-
-    public void setRecepten(ReceptContainer recepten) {
-        this.recepten = recepten;
-    }
 
     public PatiëntDTO(Integer id, String naam,
                       Double gewicht, Double lengte,
                       Boolean zwanger,
-                      LocalDate birthDate, Gender gender,
-                      ReceptContainer recepten) {
+                      LocalDate birthDate, Gender gender) {
         this.id = id;
         this.naam = naam;
         this.gewicht = gewicht;
@@ -90,21 +81,18 @@ public class PatiëntDTO {
         this.zwanger = zwanger;
         this.birthDate = birthDate;
         this.gender = gender;
-        this.recepten = recepten;
     }
 
     public PatiëntDTO(String naam, Double gewicht,
                       Double lengte, Boolean zwanger,
                       LocalDate birthDate,
-                      Gender gender,
-                      ReceptContainer recepten) {
+                      Gender gender) {
         this.naam = naam;
         this.gewicht = gewicht;
         this.lengte = lengte;
         this.zwanger = zwanger;
         this.birthDate = birthDate;
         this.gender = gender;
-        this.recepten = recepten;
     }
 
     public PatiëntDTO(Patiënt patiënt) {
@@ -114,6 +102,5 @@ public class PatiëntDTO {
         this.zwanger = patiënt.getZwanger();
         this.birthDate = patiënt.getBirthDate();
         this.gender = patiënt.getGender();
-        this.recepten = patiënt.getRecepten();
     }
 }
