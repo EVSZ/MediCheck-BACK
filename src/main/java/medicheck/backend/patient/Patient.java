@@ -1,6 +1,6 @@
 package medicheck.backend.patient;
 
-import medicheck.backend.Recept.ReceptContainer;
+import medicheck.backend.Prescription.PrescriptionContainer;
 import medicheck.backend.medicine.Medicine;
 import medicheck.backend.patient.Gender;
 
