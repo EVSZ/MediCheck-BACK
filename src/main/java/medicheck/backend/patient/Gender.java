@@ -1,4 +1,4 @@
-package medicheck.backend.patiënt;
+package medicheck.backend.patient;
 
 public enum Gender {
     Male,

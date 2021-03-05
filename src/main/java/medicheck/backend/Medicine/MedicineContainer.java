@@ -1,19 +1,19 @@
-package medicheck.backend.Medicine;
+package medicheck.backend.medicine;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MedicineContainer {
 
-    private List<Medicine> medicines = new ArrayList<>();
+    private List<Medicine> medication = new ArrayList<>();
 
     public MedicineContainer() {
     }
 
     public Medicine GetByName(String naam){
         for (Medicine medicine:
-             medicines) {
-            if(medicine.getNaam() == naam){
+             medication) {
+            if(medicine.getName() == naam){
                 return medicine;
             }
         }
@@ -21,13 +21,13 @@ public class MedicineContainer {
     }
 
     public List<Medicine> GetAllMedicines(){
-        return medicines;
+        return medication;
     }
 
     public List<Medicine> GetAllMedicineByType(MedicineType type){
         List<Medicine> output  = new ArrayList<>();
         for (Medicine medicine:
-             medicines) {
+             medication) {
             if(medicine.getMedicineType() == type) output.add(medicine);
         }
         return output;

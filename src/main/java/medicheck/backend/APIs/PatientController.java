@@ -1,37 +1,36 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.Patiënt.Patiënt;
-import medicheck.backend.Patiënt.PatiëntContainer;
+import medicheck.backend.patient.Patient;
+import medicheck.backend.patient.PatientContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import medicheck.backend.patiënt.PatiëntModel;
-import medicheck.backend.patiënt.PatiëntDTO;
+import medicheck.backend.patient.PatientModel;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("api/patiënten")
-public class PatiëntController {
+@RequestMapping("api/patienten")
+public class PatientController {
 
-    private PatiëntContainer patiënten;
+    private PatientContainer patienten;
 
     @Autowired
-    public PatiëntController(PatiëntContainer container){
-        this.patiënten = container;
+    public PatientController(PatientContainer container){
+        this.patienten = container;
     }
 
     @PostMapping(value= "/post", consumes = "application/json")
-    public void AddPatiënt(@RequestBody PatiëntModel patiënt){
-        patiënten.SavePatiënt(new Patiënt(patiënt));
+    public void AddPatient(@RequestBody PatientModel patient){
+        patienten.SavePatient(new Patient(patient));
     }
     /*public void AddPatiënt(Integer id){
         patiënten.SavePatiënt(new Patiënt(id));
     }*/
 
     @GetMapping("/get")
-    public List<Patiënt> GetPatiënt(){
-        return patiënten.GetPatiënten();
+    public List<Patient> GetPatient(){
+        return patienten.GetPatienten();
     }
     /*@GetMapping("/get")
     public Patiënt GetPatiënt(){

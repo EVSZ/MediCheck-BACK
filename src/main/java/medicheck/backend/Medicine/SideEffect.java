@@ -1,4 +1,4 @@
-package medicheck.backend.Medicine;
+package medicheck.backend.medicine;
 
 public enum SideEffect {
 }

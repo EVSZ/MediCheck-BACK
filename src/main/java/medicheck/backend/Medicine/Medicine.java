@@ -1,6 +1,7 @@
-package medicheck.backend.Medicine;
+package medicheck.backend.medicine;
 
 import java.time.LocalDate;
+import medicheck.backend.medicine.MedicineType;
 import java.util.List;
 
 public class Medicine {
