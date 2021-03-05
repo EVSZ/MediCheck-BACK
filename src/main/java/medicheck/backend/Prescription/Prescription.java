@@ -1,6 +1,6 @@
 package medicheck.backend.Prescription;
 
-import medicheck.backend.Medicine.Medicine;
+import medicheck.backend.medicine.Medicine;
 
 public class Prescription {
     private Medicine medcine;
