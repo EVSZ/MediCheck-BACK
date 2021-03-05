@@ -1,8 +1,8 @@
-package medicheck.backend.Recept;
+package medicheck.backend.Prescription;
 
-import medicheck.backend.medicine.Medicine;
+import medicheck.backend.Medicine.Medicine;
 
-public class Recept {
+public class Prescription {
     private Medicine medcine;
     private int doses;
     private int receptId;
@@ -31,7 +31,7 @@ public class Recept {
         this.receptId = receptId;
     }
 
-    public Recept(Medicine medcine, int doses) {
+    public Prescription(Medicine medcine, int doses) {
         this.medcine = medcine;
         this.doses = doses;
     }

@@ -1,4 +1,4 @@
-package medicheck.backend.medicine;
+package medicheck.backend.Medicine;
 
 import java.util.ArrayList;
 import java.util.List;

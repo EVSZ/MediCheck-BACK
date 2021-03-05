@@ -1,4 +1,4 @@
-package medicheck.backend.medicine;
+package medicheck.backend.Medicine;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 public class Medicine {
     private Integer id;
     private Integer amount;
-    private String naam;
+    private String name;
     private MedicineType medicineType;
-    private List<Bijwerkingen> bijwerkingenList;
+    private List<SideEffect> sideEffectList;
     private Integer doses;
     private LocalDate timePeriod;
 
@@ -28,12 +28,12 @@ public class Medicine {
         this.amount = amount;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getName() {
+        return name;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public MedicineType getMedicineType() {
@@ -44,12 +44,12 @@ public class Medicine {
         this.medicineType = medicineType;
     }
 
-    public List<Bijwerkingen> getBijwerkingenList() {
-        return bijwerkingenList;
+    public List<SideEffect> getBijwerkingenList() {
+        return sideEffectList;
     }
 
-    public void setBijwerkingenList(List<Bijwerkingen> bijwerkingenList) {
-        this.bijwerkingenList = bijwerkingenList;
+    public void setBijwerkingenList(List<SideEffect> sideEffectList) {
+        this.sideEffectList = sideEffectList;
     }
 
     public Integer getDoses() {
@@ -68,23 +68,23 @@ public class Medicine {
         this.timePeriod = timePeriod;
     }
 
-    public Medicine(Integer id, Integer amount, String naam, MedicineType medicineType, List<Bijwerkingen> bijwerkingenList,
+    public Medicine(Integer id, Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList,
                     Integer doses, LocalDate timePeriod) {
         this.id = id;
         this.amount = amount;
-        this.naam = naam;
+        this.name = name;
         this.medicineType = medicineType;
-        this.bijwerkingenList = bijwerkingenList;
+        this.sideEffectList = sideEffectList;
         this.doses = doses;
         this.timePeriod = timePeriod;
     }
 
-    public Medicine(Integer amount, String naam, MedicineType medicineType, List<Bijwerkingen> bijwerkingenList, Integer doses,
+    public Medicine(Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList, Integer doses,
                     LocalDate timePeriod) {
         this.amount = amount;
-        this.naam = naam;
+        this.name = name;
         this.medicineType = medicineType;
-        this.bijwerkingenList = bijwerkingenList;
+        this.sideEffectList = sideEffectList;
         this.doses = doses;
         this.timePeriod = timePeriod;
     }
