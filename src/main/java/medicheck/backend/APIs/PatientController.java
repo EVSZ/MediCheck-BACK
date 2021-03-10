@@ -40,4 +40,9 @@ public class PatientController {
         LocalDate date = LocalDate.of(2001,6,11);
         return new Patient(1, "Daan", 10.00, 10.00, false, date, Gender.Male);
     }
+    
+    @GetMapping("/getAll")
+    public PatientContainer GetPatients(){
+        return patienten;
+    }
 }
