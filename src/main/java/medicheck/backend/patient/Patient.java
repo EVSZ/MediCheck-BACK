@@ -119,9 +119,6 @@ public class Patient {
         this.name = Patient.getName();
         this.weight = Patient.getWeight();
         this.length = Patient.getLength();
-        this.pregnant = Patient.getPregnant();
-        this.birthDate = Patient.getBirthDate();
-        this.gender = Patient.getGender();
     }
     // !!!for testing!!!
     public Patient(Integer id) {

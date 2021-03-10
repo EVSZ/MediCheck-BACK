@@ -22,9 +22,10 @@ public class PatientController {
         this.patienten = container;
     }
 
-    @PostMapping(value= "/post", consumes = "application/json")
-    public void AddPatient(@RequestBody PatientModel patient){
+    @PostMapping(value= "/post", consumes = "application/json", produces = "application/json")
+    public String AddPatient(@RequestBody PatientModel patient){
         patienten.SavePatient(new Patient(patient));
+        return "YOlo";
     }
     /*public void AddPatiënt(Integer id){
         patiënten.SavePatiënt(new Patiënt(id));
