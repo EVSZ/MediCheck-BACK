@@ -13,12 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/patienten")
-public class PatientController {
+@CrossOrigin
+public class PatientAPI {
 
     private PatientContainer patienten;
 
     @Autowired
-    public PatientController(PatientContainer container){
+    public PatientAPI(PatientContainer container){
         this.patienten = container;
     }
 
