@@ -1,123 +1,40 @@
 package medicheck.backend.patient;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import medicheck.backend.DTO.PatientDTO;
 import medicheck.backend.medicine.Medicine;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
-
+@Builder
+@Getter
+@Setter
 public class Patient {
     private Integer id;
     private String name;
-    private Double weight;
-    private Double length;
+    private Integer weight;
+    private Integer length;
     private Boolean pregnant;
     private LocalDate birthDate;
     private Gender gender;
 
-    public HealthInformation getHealthInfo() {
-        return healthInfo;
+    public Patient(PatientDTO patient) {
+        this.name = patient.getName();
+        this.weight = patient.getWeight();
+        this.length = patient.getLength();
+        this.pregnant = patient.getPregnant();
+        this.birthDate = patient.getBirthDate();
+        this.gender = patient.getGender();
     }
 
-    public void setHealthInfo(HealthInformation healthInfo) {
-        this.healthInfo = healthInfo;
-    }
+    public Patient(PatientModel patient) {
+        this.name = patient.getName();
+        this.weight = patient.getWeight();
+        this.length = patient.getLength();
 
-    private HealthInformation healthInfo;
-
-    public List<Medicine> getMedication() {
-        return medication;
-    }
-
-    public void setMedication(List<Medicine> medication) {
-        this.medication = medication;
-    }
-
-    private List<Medicine> medication;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public Double getLength() {
-        return length;
-    }
-
-    public void setLength(Double length) {
-        this.length = length;
-    }
-
-    public Boolean getPregnant() {
-        return pregnant;
-    }
-
-    public void setPregnant(Boolean pregnant) {
-        this.pregnant = pregnant;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public Patient(Integer id, String naam,
-                   Double weight, Double length,
-                   Boolean pregnant, LocalDate birthDate,
-                   Gender gender) {
-        this.id = id;
-        this.name = naam;
-        this.weight = weight;
-        this.length = length;
-        this.pregnant = pregnant;
-        this.birthDate = birthDate;
-        this.gender = gender;
-    }
-
-    public Patient(PatientDTO Patient) {
-        this.name = Patient.getName();
-        this.weight = Patient.getWeight();
-        this.length = Patient.getLength();
-        this.pregnant = Patient.getPregnant();
-        this.birthDate = Patient.getBirthDate();
-        this.gender = Patient.getGender();
-    }
-
-    public Patient(PatientModel Patient) {
-        this.name = Patient.getName();
-        this.weight = Patient.getWeight();
-        this.length = Patient.getLength();
     }
 
 

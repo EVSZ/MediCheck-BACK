@@ -6,26 +6,21 @@ import lombok.Getter;
 import java.time.LocalDate;
 
 @Builder
+@Getter
 public class PatientModel {
-    @Getter
+
     private Integer id;
 
-    @Getter
     private String name;
 
-    @Getter
-    private Double weight;
+    private Integer weight;
 
-    @Getter
-    private Double length;
+    private Integer length;
 
-    @Getter
     private Boolean pregnant;
 
-    @Getter
     private LocalDate birthDate;
 
-    @Getter
     private Gender gender;
 
     /*public PatientModel(String naam, Double weight, Double length) {

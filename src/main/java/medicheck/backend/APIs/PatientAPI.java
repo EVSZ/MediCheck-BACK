@@ -39,7 +39,9 @@ public class PatientAPI {
     @GetMapping("/get")
     public Patient GetPatiënt(){
         LocalDate date = LocalDate.of(2001,6,11);
-        return new Patient(1, "Daan", 10.00, 10.00, false, date, Gender.Male);
+        return  Patient.builder().id(1).name("Daan").weight(10).length(10).build();
+
+        };
     }
     
     @GetMapping("/getAll")
