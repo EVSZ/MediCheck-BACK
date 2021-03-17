@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import medicheck.backend.patient.PatientModel;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class PatientAPI {
         LocalDate date = LocalDate.of(2001,6,11);
         return  Patient.builder().id(1).name("Daan").weight(10).length(10).build();
 
-        };
+
     }
     
     @GetMapping("/getAll")

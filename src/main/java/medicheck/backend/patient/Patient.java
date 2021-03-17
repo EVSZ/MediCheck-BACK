@@ -20,6 +20,7 @@ public class Patient {
     private Boolean pregnant;
     private LocalDate birthDate;
     private Gender gender;
+    private HealthInformation healthInfo;
 
     public Patient(PatientDTO patient) {
         this.name = patient.getName();
