@@ -119,10 +119,7 @@ public class Patient {
         this.weight = Patient.getWeight();
         this.length = Patient.getLength();
     }
-    // !!!for testing!!!
-    public Patient(Integer id) {
-        this.id = id;
-    }
+
 
     public Integer CalculateAge() {
         LocalDate currentDate = LocalDate.now();
