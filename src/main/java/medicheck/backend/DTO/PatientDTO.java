@@ -1,6 +1,8 @@
-package medicheck.backend.patient;
+package medicheck.backend.DTO;
 
 import java.time.LocalDate;
+
+import medicheck.backend.patient.Gender;
 import medicheck.backend.patient.Patient;
 
 public class PatientDTO {

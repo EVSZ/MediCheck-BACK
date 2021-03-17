@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("medication")
 public class MedicationAPI {
 
-    @PostMapping(value = "/save", consumes )
+    //@PostMapping(value = "/save", consumes )
     public void saveMedication(){
 
     }
 
-    public MedicineContainer GetMedicine(){
+    //public MedicineContainer GetMedicine(){
 
-    }
+    //}
 
     public void RemoveMedicine(){
 

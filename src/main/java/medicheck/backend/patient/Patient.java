@@ -1,8 +1,7 @@
 package medicheck.backend.patient;
 
-import medicheck.backend.Prescription.PrescriptionContainer;
+import medicheck.backend.DTO.PatientDTO;
 import medicheck.backend.medicine.Medicine;
-import medicheck.backend.patient.Gender;
 
 import java.time.LocalDate;
 import java.time.Period;

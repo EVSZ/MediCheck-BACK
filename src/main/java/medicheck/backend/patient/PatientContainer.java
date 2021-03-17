@@ -1,4 +1,5 @@
 package medicheck.backend.patient;
+import medicheck.backend.DTO.PatientDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
