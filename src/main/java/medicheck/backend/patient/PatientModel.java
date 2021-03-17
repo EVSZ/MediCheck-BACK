@@ -11,14 +11,10 @@ public class PatientModel {
     private LocalDate birthDate;
     private Gender gender;
 
-    public PatientModel(Integer id, String naam, Double weight, Double length, Boolean pregnant, LocalDate birthDate, Gender gender) {
-        this.id = id;
+    public PatientModel(String naam, Double weight, Double length) {
         this.name = naam;
         this.weight = weight;
         this.length = length;
-        this.pregnant = pregnant;
-        this.birthDate = birthDate;
-        this.gender = gender;
     }
 
     public Integer getId() {
