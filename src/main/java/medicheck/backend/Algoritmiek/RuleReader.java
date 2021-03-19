@@ -16,18 +16,18 @@ public class RuleReader
                 ExecuteAlgorithmCommand(rule.algorithmCommand);
             }
 
-            if (ding > rule.algorithmCommand.amount)
+            /*if (ding > rule.algorithmCommand.amount)
             {
 
                 i = rule.ifTrue;
-            }
+            }*/
             else
             {
                 i = rule.ifFalse;
             }
         }
     }
-    public void ExecuteAlgorithmCommand(AlgorithmCommand command, var ding){
+    public void ExecuteAlgorithmCommand(AlgorithmCommand command ){
 
     }
 

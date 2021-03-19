@@ -33,7 +33,19 @@ public class Medicine {
 
     @Getter @Setter
     private LocalDate timePeriod;
+    public Medicine(){
 
+    }
+
+    public Medicine(Integer id, Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList, Integer doses, LocalDate timePeriod) {
+        this.id = id;
+        this.amount = amount;
+        this.name = name;
+        this.medicineType = medicineType;
+        this.sideEffectList = sideEffectList;
+        this.doses = doses;
+        this.timePeriod = timePeriod;
+    }
 
     public Medicine(Integer id, Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList,
                     LocalDate timePeriod) {

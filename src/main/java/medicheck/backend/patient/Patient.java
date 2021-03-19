@@ -26,6 +26,18 @@ public class Patient
     private List<Prescription> Prescriptions;
     private int age;
 
+    public Patient(Integer id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, List<Prescription> prescriptions, int age) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        this.length = length;
+        this.pregnant = pregnant;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.healthInfo = healthInfo;
+        Prescriptions = prescriptions;
+        this.age = age;
+    }
 
     public Patient(PatientDTO patient)
     {
