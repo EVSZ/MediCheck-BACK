@@ -34,7 +34,7 @@ public class AdviceGenerator
 
     }
 
-    List<Integer> CheckIfMedicationContainsRisks(List<Medicine> medication)
+    List<Integer> CheckIfMedicationContainsRules(List<Medicine> medication)
     {
         List<Integer>RulesToCheck = new ArrayList<>();
         for (Medicine medicine: medication)
@@ -47,6 +47,7 @@ public class AdviceGenerator
         return RulesToCheck;
     }
 
+
     public Patient getPatient() {
         return patient;
     }
@@ -57,3 +58,4 @@ public class AdviceGenerator
 
 
 }
+
