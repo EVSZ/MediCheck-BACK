@@ -18,7 +18,7 @@ public class AdviceGenerator
     private Patient patient;
     public boolean GenerateAdvice(Patient patientInput)
     {
-        setPatient(patientInput);
+        /*setPatient(patientInput);
         List<Integer> rulesToCheck = CheckIfMedicationContainsRisks(patient.getMedication());
         RuleSelector selector = new RuleSelector();
         for (Integer integer : rulesToCheck)
@@ -29,7 +29,7 @@ public class AdviceGenerator
             }
 
 
-        }
+        }*/
         return false;
 
     }

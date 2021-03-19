@@ -1,11 +1,8 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.patient.Gender;
-import medicheck.backend.patient.Patient;
-import medicheck.backend.patient.PatientContainer;
+import medicheck.backend.patient.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import medicheck.backend.patient.PatientModel;
 
 
 import java.time.LocalDate;
@@ -26,8 +23,26 @@ public class PatientAPI {
 
     @PostMapping(value= "/post", consumes = "application/json", produces = "application/json")
     public String AddPatient(@RequestBody PatientModel patient){
-        patienten.SavePatient(new Patient(patient));
-        return "YOlo";
+        try
+        {
+            patienten.SavePatient(new Patient(patient));
+            return "Patient is toegevoegd!";
+        }
+        catch(Exception e){
+            return "Oops! Er is iets foutgegaan!";
+        }
+
+    }
+
+    @PutMapping(value="/update", consumes="application/json")
+    public String UpdatePatient(@RequestBody PatientModel patient){
+        try{
+            patienten.updatePatient(new Patient(patient));
+            return "Patient is toegevoegd!";
+        }
+        catch(Exception e){
+            return "Oops! Er is iets foutgegaan!";
+        }
     }
     /*public void AddPatiënt(Integer id){
         patiënten.SavePatiënt(new Patiënt(id));
@@ -49,4 +64,5 @@ public class PatientAPI {
     public PatientContainer GetPatients(){
         return patienten;
     }
+
 }

@@ -2,11 +2,13 @@ package medicheck.backend.patient;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Builder
 @Getter
+
 public class PatientModel {
 
     private Integer id;

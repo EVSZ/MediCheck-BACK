@@ -21,6 +21,19 @@ public class Patient {
     private LocalDate birthDate;
     private Gender gender;
     private HealthInformation healthInfo;
+    private int age;
+
+    public Patient(Integer id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, int age) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        this.length = length;
+        this.pregnant = pregnant;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.healthInfo = healthInfo;
+        this.age = age;
+    }
 
     public Patient(PatientDTO patient) {
         this.name = patient.getName();
@@ -35,10 +48,17 @@ public class Patient {
         this.name = patient.getName();
         this.weight = patient.getWeight();
         this.length = patient.getLength();
-
     }
 
+    public void Update(Patient patient) {
+        this.name = patient.getName();
+        this.weight = patient.getWeight();
+        this.length = patient.getLength();
+    }
 
+    public void Delete(){
+
+    }
     public Integer CalculateAge() {
         LocalDate currentDate = LocalDate.now();
         if (birthDate != null) {
@@ -47,4 +67,5 @@ public class Patient {
             return 0;
         }
     }
+
 }
