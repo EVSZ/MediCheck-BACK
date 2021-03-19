@@ -10,7 +10,8 @@ import medicheck.backend.patient.Patient;
 @Builder
 @Getter
 @Setter
-public class PatientDTO {
+public class PatientDTO
+{
     private Integer id;
     private String name;
     private Integer weight;

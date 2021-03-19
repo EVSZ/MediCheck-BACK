@@ -2,32 +2,29 @@ package medicheck.backend.patient;
 
 import lombok.Builder;
 import lombok.Getter;
+import medicheck.backend.Prescription.Prescription;
 
 import java.time.LocalDate;
+import java.util.List;
 
-@Builder
-@Getter
-public class PatientModel {
+@Builder @Getter
+public class PatientModel
+{
 
-    private Integer id;
+    private final Integer id;
 
-    private String name;
+    private final String name;
 
-    private Integer weight;
+    private final Integer weight;
 
-    private Integer length;
+    private final Integer length;
 
-    private Boolean pregnant;
+    private final Boolean pregnant;
 
-    private LocalDate birthDate;
+    private final LocalDate birthDate;
 
-    private Gender gender;
+    private final Gender gender;
 
-    /*public PatientModel(String naam, Double weight, Double length) {
-        this.name = naam;
-        this.weight = weight;
-        this.length = length;
-    }*/
-
+    private final List<Prescription> UserPrescriptions;
 
 }

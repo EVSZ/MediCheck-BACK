@@ -1,6 +1,5 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.patient.Gender;
 import medicheck.backend.patient.Patient;
 import medicheck.backend.patient.PatientContainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +28,12 @@ public class PatientAPI {
         patienten.SavePatient(new Patient(patient));
         return "YOlo";
     }
-    /*public void AddPatiënt(Integer id){
-        patiënten.SavePatiënt(new Patiënt(id));
-    }*/
 
-    /*@GetMapping("/get")
-    public List<Patient> GetPatient(){
-        return patienten.GetPatienten();
-    }*/
     @GetMapping("/get")
-    public Patient GetPatiënt(){
+    public Patient GetPatiënt()
+    {
         LocalDate date = LocalDate.of(2001,6,11);
         return  Patient.builder().id(1).name("Daan").weight(10).length(10).build();
-
-
     }
     
     @GetMapping("/getAll")

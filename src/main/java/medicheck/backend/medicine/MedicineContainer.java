@@ -1,8 +1,11 @@
 package medicheck.backend.medicine;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MedicineContainer {
 
     private List<Medicine> medication = new ArrayList<>();
@@ -13,7 +16,16 @@ public class MedicineContainer {
     public Medicine GetByName(String naam){
         for (Medicine medicine:
              medication) {
-            if(medicine.getName() == naam){
+            if(medicine.getName().equals(naam)){
+                return medicine;
+            }
+        }
+        throw new ArithmeticException("Dit medicijn staat niet in de lijst!");
+    }
+    public Medicine GetByID(int id){
+        for (Medicine medicine:
+                medication) {
+            if(medicine.getId().equals(id)){
                 return medicine;
             }
         }

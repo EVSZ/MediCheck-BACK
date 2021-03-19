@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.Prescription.Prescription;
 import medicheck.backend.medicine.Medicine;
 
 import java.time.LocalDate;
@@ -12,7 +13,8 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
-public class Patient {
+public class Patient
+{
     private Integer id;
     private String name;
     private Integer weight;
@@ -21,8 +23,11 @@ public class Patient {
     private LocalDate birthDate;
     private Gender gender;
     private HealthInformation healthInfo;
+    private List<Prescription> Prescriptions;
 
-    public Patient(PatientDTO patient) {
+    public Patient(PatientDTO patient)
+    {
+        this.id = patient.getId();
         this.name = patient.getName();
         this.weight = patient.getWeight();
         this.length = patient.getLength();
@@ -31,11 +36,15 @@ public class Patient {
         this.gender = patient.getGender();
     }
 
-    public Patient(PatientModel patient) {
+    public Patient(PatientModel patient)
+    {
+        this.id = patient.getId();
         this.name = patient.getName();
         this.weight = patient.getWeight();
         this.length = patient.getLength();
-
+        this.pregnant = patient.getPregnant();
+        this.birthDate = patient.getBirthDate();
+        this.gender = patient.getGender();
     }
 
 
