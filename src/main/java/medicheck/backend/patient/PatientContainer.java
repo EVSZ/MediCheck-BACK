@@ -32,9 +32,27 @@ public class PatientContainer {
         patienten.add(patient);
     }
 
-    public void AddPatient(PatientDTO patientDTO){
-        Patient patient = new Patient(patientDTO);
+    public void AddPatient(Patient patient){
         patienten.add(patient);
+    }
+
+    public void updatePatient(Patient patient){
+        for (Patient element:
+             patienten) {
+            if(patient.getId() == element.getId()){
+                element.Update(patient);
+
+            }
+        }
+    }
+
+    public void deletePatient(Patient patient){
+        for (Patient element:
+             patienten) {
+            if(patient.getId() == element.getId()){
+                element.Delete();
+            }
+        }
     }
 
     public List<Patient> GetPatienten(){
