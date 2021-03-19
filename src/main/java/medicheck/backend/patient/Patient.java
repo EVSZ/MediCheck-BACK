@@ -24,6 +24,8 @@ public class Patient
     private Gender gender;
     private HealthInformation healthInfo;
     private List<Prescription> Prescriptions;
+    private int age;
+
 
     public Patient(PatientDTO patient)
     {
@@ -47,6 +49,16 @@ public class Patient
         this.gender = patient.getGender();
     }
 
+
+    public void Update(Patient patient) {
+        this.name = patient.getName();
+        this.weight = patient.getWeight();
+        this.length = patient.getLength();
+    }
+
+    public void Delete(){
+
+    }
 
     public Integer CalculateAge() {
         LocalDate currentDate = LocalDate.now();
