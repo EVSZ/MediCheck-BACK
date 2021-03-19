@@ -18,7 +18,7 @@ public class AdviceGenerator
     private Patient patient;
     public boolean GenerateAdvice(Patient patientInput)
     {
-        setPatient(patientInput);
+        /*setPatient(patientInput);
         List<Integer> rulesToCheck = CheckIfMedicationContainsRisks(patient.getMedication());
         RuleSelector selector = new RuleSelector();
         for (Integer integer : rulesToCheck)
@@ -29,12 +29,12 @@ public class AdviceGenerator
             }
 
 
-        }
+        }*/
         return false;
 
     }
 
-    List<Integer> CheckIfMedicationContainsRisks(List<Medicine> medication)
+    List<Integer> CheckIfMedicationContainsRules(List<Medicine> medication)
     {
         List<Integer>RulesToCheck = new ArrayList<>();
         for (Medicine medicine: medication)
@@ -47,6 +47,7 @@ public class AdviceGenerator
         return RulesToCheck;
     }
 
+
     public Patient getPatient() {
         return patient;
     }
@@ -57,3 +58,4 @@ public class AdviceGenerator
 
 
 }
+

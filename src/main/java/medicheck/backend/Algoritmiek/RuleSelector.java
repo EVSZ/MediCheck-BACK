@@ -1,14 +1,12 @@
 package medicheck.backend.Algoritmiek;
 
-import medicheck.backend.patient.HealthInformation;
-import medicheck.backend.Algoritmiek.MedicationRules;
 import medicheck.backend.patient.Patient;
 
 public class RuleSelector {
 
     boolean SelectRule(int rulenumber, Patient patient)
     {
-        MedicationRules medicationRules = new MedicationRules();
+        MedicationRule medicationRules = new MedicationRule();
         switch (rulenumber)
         {
             case 0:

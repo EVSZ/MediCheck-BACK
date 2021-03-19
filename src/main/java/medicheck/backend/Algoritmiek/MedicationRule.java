@@ -1,32 +1,28 @@
 package medicheck.backend.Algoritmiek;
+import java.util.ArrayList;
+import java.util.List;
 
 import medicheck.backend.patient.HealthInformation;
 
-public class MedicationRules {
+public class MedicationRule {
+
+    List<Rule> rules = new ArrayList<Rule>();
+
+
+    //Hardcoded kennisregels
     public boolean Rule1(HealthInformation healthInfo, Integer age) {
         if (healthInfo.clcr != 0)
         {
             if (healthInfo.monthsSinceLastclcr > 13)
             {
                 return true;
-            } else if (healthInfo.clcr > 30)
-            {
-                return false;
-            } else return true;
-        } else if (age >= 70)
-        {
-            return true;
-        }
-        return false;
+            }
+            else return healthInfo.clcr <= 30;
+        } else return age >= 70;
     }
 
     public boolean Rule2(HealthInformation healthInfo) {
-        if (LaxansCheck())
-        {
-            return false;
-        }
-        return true;
-
+        return !LaxansCheck();
     }
     boolean LaxansCheck(){
 //        if (patient.getMedication().contains("Laxans")){
