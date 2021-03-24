@@ -1,5 +1,8 @@
 package medicheck.backend.patient;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class HealthInformation {
 
     public int clcr = 0;

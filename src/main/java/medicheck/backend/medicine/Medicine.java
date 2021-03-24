@@ -8,9 +8,10 @@ import lombok.Setter;
 import medicheck.backend.medicine.MedicineType;
 import medicheck.backend.patient.Patient;
 
+import javax.persistence.Embeddable;
 import java.util.List;
 
-@Getter @Setter @Builder
+@Getter @Setter @Builder @Embeddable
 public class Medicine {
 
     @Getter @Setter
