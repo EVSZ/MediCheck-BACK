@@ -4,31 +4,44 @@ import medicheck.backend.patient.Patient;
 
 public class RuleReader
 {
+    TestPatient patient;
     public void Read(MedicationRule medicationRule)
     {
-        TestPatient patient = new TestPatient();
+        patient = new TestPatient();
         for (int i = 0; i < medicationRule.rules.size();)
         {
             Rule rule = medicationRule.rules.get(i);
 
-            if (rule.algorithmCommand.variable.equals("age")){
-                var ding = patient.age;
-                ExecuteAlgorithmCommand(rule.algorithmCommand);
-            }
-
-            /*if (ding > rule.algorithmCommand.amount)
+            boolean result = ExecuteAlgorithmCommand(rule.algorithmCommand);
+            if(rule.hasEndPoint)
             {
+                if (result)
+                {
+                    i = rule.ifTrue;
+                }
+                else
+                {
+                    i = rule.ifFalse;
 
-                i = rule.ifTrue;
-            }*/
+                }
+            }
             else
             {
-                i = rule.ifFalse;
+
             }
         }
     }
-    public void ExecuteAlgorithmCommand(AlgorithmCommand command ){
+    public boolean ExecuteAlgorithmCommand(AlgorithmCommand command){
+        CommandTranslator translator = new CommandTranslator(patient);
+        translator.TranslateCommand(command);
 
+        if (translator.TranslateConstraint(command.constraint) == 1){
+            if(translator.TranslateVariableInteger(command.variable) > command.amount){
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
 }
