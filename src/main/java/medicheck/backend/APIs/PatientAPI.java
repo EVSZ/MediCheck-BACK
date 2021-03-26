@@ -26,7 +26,7 @@ public class PatientAPI {
     @PostMapping(value= "/post", consumes = "application/json", produces = "application/json")
     public String AddPatient(@RequestBody PatientModel patient) {
         try {
-            patienten.SavePatient(new Patient(patient));
+            patienten.SavePatient(patient);
             return "Patient is toegevoegd!";
         } catch (Exception e) {
             return "Oops! Er is iets foutgegaan!";
@@ -44,13 +44,16 @@ public class PatientAPI {
         }
     }
     
-    @GetMapping("/get")
-    public Patient GetPatiënt()
+    @GetMapping("/get/{id}")
+    public Patient GetPatiëntById(@PathVariable long id)
     {
-        LocalDate date = LocalDate.of(2001,6,11);
-        return  Patient.builder().id(1).name("Daan").weight(10).length(10).build();
+        return patienten.GetPatientByID(id);
     }
-    
+
+    @GetMapping("/get/{name}")
+    public Patient GetPatientByName(@PathVariable String name){
+        return patienten.GetPatientByNaam(name);
+    }
     @GetMapping("/getAll")
     public PatientContainer GetPatients(){
         return patienten;

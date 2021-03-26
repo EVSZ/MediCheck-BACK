@@ -1,15 +1,19 @@
 package medicheck.backend.DataModels;
 
+import lombok.Getter;
+import lombok.Setter;
 import medicheck.backend.Prescription.Prescription;
 import medicheck.backend.patient.Gender;
 import medicheck.backend.patient.HealthInformation;
+import medicheck.backend.patient.Patient;
+import medicheck.backend.patient.PatientModel;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
+@Entity @Getter @Setter
 public class PatientDataModel {
     @Id
     @GeneratedValue
@@ -33,5 +37,9 @@ public class PatientDataModel {
     private List<PrescriptionDataModel> prescriptions;
 
     public PatientDataModel() {
+    }
+
+    public PatientDataModel(Patient patient){
+
     }
 }

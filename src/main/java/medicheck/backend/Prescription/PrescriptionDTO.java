@@ -10,7 +10,7 @@ public class PrescriptionDTO
 {
     private Medicine medcine;
     private int doses;
-    private int receptId;
+    private long receptId;
 
     public PrescriptionDTO(Prescription prescription)
     {
@@ -19,7 +19,7 @@ public class PrescriptionDTO
         this.receptId = prescription.getReceptId();
     }
 
-    public PrescriptionDTO(Medicine medcine, int doses, int receptId)
+    public PrescriptionDTO(Medicine medcine, int doses, long receptId)
     {
         this.medcine = medcine;
         this.receptId = receptId;

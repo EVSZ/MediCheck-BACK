@@ -3,19 +3,23 @@ package medicheck.backend.patient;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.DataModels.PatientDataModel;
 import medicheck.backend.Prescription.Prescription;
+import medicheck.backend.Prescription.PrescriptionContainer;
+import medicheck.backend.Repos.PatientRepo;
 import medicheck.backend.medicine.Medicine;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
-@Builder
+
 @Getter
 @Setter
 public class Patient
 {
-    private Integer id;
+    private long id;
     private String name;
     private Integer weight;
     private Integer length;
@@ -23,10 +27,15 @@ public class Patient
     private LocalDate birthDate;
     private Gender gender;
     private HealthInformation healthInfo;
-    private List<Prescription> Prescriptions;
+    private PrescriptionContainer Prescriptions;
     private int age;
 
-    public Patient(Integer id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, List<Prescription> prescriptions, int age) {
+    private PatientConverter converter = new PatientConverter();
+
+    public Patient() {
+    }
+
+    public Patient(Integer id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, PrescriptionContainer prescriptions, int age) {
         this.id = id;
         this.name = name;
         this.weight = weight;
@@ -61,7 +70,15 @@ public class Patient
         this.gender = patient.getGender();
     }
 
-
+    public Patient(PatientDataModel patient){
+        this.id = patient.getId();
+        this.name = patient.getName();
+        this.weight = patient.getWeight();
+        this.length = patient.getLength();
+        this.pregnant = patient.getPregnant();
+        this.birthDate = patient.getBirthDate();
+        this.gender = patient.getGender();
+    }
     public void Update(Patient patient) {
         this.name = patient.getName();
         this.weight = patient.getWeight();
@@ -70,6 +87,10 @@ public class Patient
 
     public void Delete(){
 
+    }
+
+    public void Save(PatientRepo repo){
+        repo.save(converter.convertToDataModel(this));
     }
 
     public Integer CalculateAge() {

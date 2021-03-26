@@ -21,4 +21,7 @@ public class PrescriptionContainer
     {
         return Recepten;
     }
+    public List<Prescription> GetPrescriptions(){
+        return Recepten;
+    }
 }

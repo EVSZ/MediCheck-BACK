@@ -9,7 +9,7 @@ public class PrescriptionDataModel {
 
     @Id
     @GeneratedValue
-    private int prescriptionId;
+    private long prescriptionId;
 
 
     //private Medicine medcine;

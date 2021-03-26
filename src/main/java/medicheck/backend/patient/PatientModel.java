@@ -11,7 +11,7 @@ import java.util.List;
 public class PatientModel
 {
 
-    private final Integer id;
+    private final long id;
 
     private final String name;
 

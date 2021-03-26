@@ -10,9 +10,9 @@ public class Prescription
 {
     private Medicine medcine;
     private int doses;
-    private int receptId;
+    private long receptId;
 
-    public Prescription(Medicine medcine, int doses, int receptId) {
+    public Prescription(Medicine medcine, int doses, long receptId) {
         this.medcine = medcine;
         this.doses = doses;
         this.receptId = receptId;
