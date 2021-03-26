@@ -67,7 +67,7 @@ public class Patient
         this.length = patient.getLength();
         this.pregnant = patient.getPregnant();
         this.birthDate = patient.getBirthDate();
-        this.gender = patient.getGender();
+        this.gender = Gender.valueOf(patient.getGender());
     }
 
     public Patient(PatientDataModel patient){
