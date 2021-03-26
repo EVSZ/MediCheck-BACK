@@ -17,7 +17,7 @@ public class PatientModel
 
     private final Integer weight;
 
-    private final Integer length;
+    private final Integer height;
 
     private final Boolean pregnant;
 

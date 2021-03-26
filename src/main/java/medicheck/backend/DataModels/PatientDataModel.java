@@ -25,11 +25,11 @@ public class PatientDataModel {
     private Boolean pregnant;
     private LocalDate birthDate;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Gender gender;
 
-    @Embedded
-    private HealthInformation healthInfo;
+//    @Embedded
+//    private HealthInformation healthInfo;
 
     private int age;
 

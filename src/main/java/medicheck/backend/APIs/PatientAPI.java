@@ -25,12 +25,8 @@ public class PatientAPI {
 
     @PostMapping(value= "/post", consumes = "application/json", produces = "application/json")
     public String AddPatient(@RequestBody PatientModel patient) {
-        try {
             patienten.SavePatient(patient);
             return "Patient is toegevoegd!";
-        } catch (Exception e) {
-            return "Oops! Er is iets foutgegaan!";
-        }
     }
 
     @PutMapping(value="/update", consumes="application/json")

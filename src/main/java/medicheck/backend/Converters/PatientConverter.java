@@ -18,7 +18,7 @@ public class PatientConverter {
         patientDataModel.setPregnant(patient.getPregnant());
         patientDataModel.setBirthDate(patient.getBirthDate());
         patientDataModel.setGender(patient.getGender());
-        patientDataModel.setHealthInfo(patient.getHealthInfo());
+//        patientDataModel.setHealthInfo(patient.getHealthInfo());
         patientDataModel.setAge(patient.getAge());
 
         return patientDataModel;

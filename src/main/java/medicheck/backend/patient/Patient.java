@@ -64,7 +64,7 @@ public class Patient
         this.id = patient.getId();
         this.name = patient.getName();
         this.weight = patient.getWeight();
-        this.length = patient.getLength();
+        this.length = patient.getHeight();
         this.pregnant = patient.getPregnant();
         this.birthDate = patient.getBirthDate();
         this.gender = Gender.valueOf(patient.getGender());
