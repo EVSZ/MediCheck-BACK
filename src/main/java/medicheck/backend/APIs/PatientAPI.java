@@ -32,7 +32,7 @@ public class PatientAPI {
     @PutMapping(value="/update", consumes="application/json")
     public String UpdatePatient(@RequestBody PatientModel patient){
         try{
-            patienten.updatePatient(new Patient(patient));
+            patienten.updatePatient(patient);
             return "Patient is toegevoegd!";
         }
         catch(Exception e){

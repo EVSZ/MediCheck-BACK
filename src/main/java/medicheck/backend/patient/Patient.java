@@ -79,10 +79,9 @@ public class Patient
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
     }
-    public void Update(Patient patient) {
-        this.name = patient.getName();
-        this.weight = patient.getWeight();
-        this.length = patient.getLength();
+    public void Update(PatientRepo repo) {
+        PatientConverter converter = new PatientConverter();
+        repo.save(converter.convertToDataModel(this));
     }
 
     public void Delete(){

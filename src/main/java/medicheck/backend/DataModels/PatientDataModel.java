@@ -39,7 +39,5 @@ public class PatientDataModel {
     public PatientDataModel() {
     }
 
-    public PatientDataModel(Patient patient){
 
-    }
 }

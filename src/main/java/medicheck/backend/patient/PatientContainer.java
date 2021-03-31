@@ -47,14 +47,9 @@ public class PatientContainer {
         patienten.add(patient);
     }
 
-    public void updatePatient(Patient patient){
-        for (Patient element:
-             patienten) {
-            if(patient.getId() == element.getId()){
-                element.Update(patient);
-
-            }
-        }
+    public void updatePatient(PatientModel patientModel){
+        Patient patient = new Patient(patientModel);
+        patient.Update(repo);
     }
 
     public void deletePatient(Patient patient){
