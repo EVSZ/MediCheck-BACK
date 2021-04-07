@@ -23,7 +23,7 @@ public class PatientModel
 
     private final LocalDate birthDate;
 
-    private final String gender;
+    private final int gender;
 
     private final List<Prescription> UserPrescriptions;
 
