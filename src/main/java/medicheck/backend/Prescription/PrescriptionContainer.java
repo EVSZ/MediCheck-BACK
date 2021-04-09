@@ -7,18 +7,24 @@ import java.util.List;
 @Component
 public class PrescriptionContainer
 {
-    List<Prescription> Recepten = new ArrayList<>();
+    List<Prescription> Prescriptions = new ArrayList<>();
 
-    public Prescription GetReceptById(int id){
+    public Prescription GetPrescriptionById(int id){
         for (Prescription prescription :
-                Recepten) {
-            if(prescription.getReceptId() == id) return prescription;
+                Prescriptions) {
+            if(prescription.getId() == id) return prescription;
         }
         throw new ArithmeticException("Recept niet gevonden!");
     }
 
-    public List<Prescription> GetReceptByUserID(int id)
+    public List<Prescription> GetPrescriptionByUserID(int Userid)
     {
-        return Recepten;
+        return Prescriptions;
     }
+<<<<<<< Updated upstream
+=======
+    public List<Prescription> GetPrescriptions(){
+        return Prescriptions;
+    }
+>>>>>>> Stashed changes
 }

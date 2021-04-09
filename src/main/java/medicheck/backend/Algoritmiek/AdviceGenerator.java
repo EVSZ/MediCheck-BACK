@@ -1,16 +1,10 @@
 package medicheck.backend.Algoritmiek;
 
 import medicheck.backend.medicine.Medicine;
-import medicheck.backend.medicine.MedicineContainer;
-import medicheck.backend.medicine.MedicineType;
-import medicheck.backend.patient.HealthInformation;
-import medicheck.backend.patient.HealthInformation;
 import medicheck.backend.patient.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import java.awt.*;
 
 public class AdviceGenerator
 {

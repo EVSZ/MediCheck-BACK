@@ -10,6 +10,7 @@ import java.util.List;
 @Builder @Getter
 public class PatientModel
 {
+<<<<<<< Updated upstream
 
     private final Integer id;
 
@@ -27,4 +28,14 @@ public class PatientModel
 
     private final List<Prescription> UserPrescriptions;
 
+=======
+    private long id;
+    private String name;
+    private Integer weight;
+    private Integer height;
+    private Boolean pregnant;
+    private LocalDate birthDate;
+    private String gender;
+    private List<Prescription> UserPrescriptions;
+>>>>>>> Stashed changes
 }

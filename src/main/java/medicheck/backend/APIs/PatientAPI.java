@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import medicheck.backend.patient.PatientModel;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class PatientAPI {
         }
     }
 
-    @PutMapping(value="/update", consumes="application/json")
+    @PutMapping(value="/update", consumes="application/json",produces = "application/json")
     public String UpdatePatient(@RequestBody PatientModel patient){
         try{
             patienten.updatePatient(new Patient(patient));
@@ -44,6 +43,7 @@ public class PatientAPI {
         }
     }
     
+<<<<<<< Updated upstream
     @GetMapping("/get")
     public Patient GetPatiënt()
     {
@@ -53,6 +53,23 @@ public class PatientAPI {
     
     @GetMapping("/getAll")
     public PatientContainer GetPatients(){
+=======
+    @GetMapping(value="/get/{id}",consumes = "application/json", produces = "application/json")
+    public Patient GetPatiëntById(@PathVariable long id)
+    {
+        return patienten.GetPatientByID(id);
+    }
+
+    @GetMapping(value="/get/{name}",consumes = "application/json", produces = "application/json")
+    public Patient GetPatientByName(@PathVariable String name)
+    {
+        return patienten.GetPatientByNaam(name);
+    }
+
+    @GetMapping(value="/getAll",consumes = "application/json", produces = "application/json")
+    public PatientContainer GetPatients()
+    {
+>>>>>>> Stashed changes
         return patienten;
     }
 }

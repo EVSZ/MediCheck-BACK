@@ -34,7 +34,8 @@ public class PatientDTO
     }
 
 
-    public PatientDTO(Patient patient) {
+    public PatientDTO(Patient patient)
+    {
         this.id = patient.getId();
         this.name = patient.getName();
         this.weight = patient.getWeight();
