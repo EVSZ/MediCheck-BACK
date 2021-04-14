@@ -1,5 +1,6 @@
 package medicheck.backend.DataModels;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.Prescription.Prescription;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity @Getter @Setter
+@Entity @Getter @Setter @Builder
 public class PatientDataModel
 {
 

@@ -9,7 +9,7 @@ public class PrescriptionContainer
 {
     List<Prescription> Prescriptions = new ArrayList<>();
 
-    public Prescription GetPrescriptionById(int id){
+    public Prescription GetPrescriptionById(long id){
         for (Prescription prescription :
                 Prescriptions) {
             if(prescription.getId() == id) return prescription;
@@ -17,14 +17,33 @@ public class PrescriptionContainer
         throw new ArithmeticException("Recept niet gevonden!");
     }
 
-    public List<Prescription> GetPrescriptionByUserID(int Userid)
+    public List<Prescription> GetPrescriptionByMedicineID(long MedicineID)
+    {
+        List<Prescription> FilteredList = new ArrayList<>();
+        for (Prescription prescription : Prescriptions)
+        {
+            if(prescription.getId() == MedicineID)
+            {
+                FilteredList.add(prescription);
+            }
+        }
+        return FilteredList;
+    }
+    public List<Prescription> GetPrescriptionByPatientID(long PatientID)
+    {
+        List<Prescription> FilteredList = new ArrayList<>();
+        for (Prescription prescription : Prescriptions)
+        {
+            if(prescription.getId() == PatientID)
+            {
+                FilteredList.add(prescription);
+            }
+        }
+        return FilteredList;
+    }
+
+    public List<Prescription> GetPrescriptions()
     {
         return Prescriptions;
     }
-<<<<<<< Updated upstream
-=======
-    public List<Prescription> GetPrescriptions(){
-        return Prescriptions;
-    }
->>>>>>> Stashed changes
 }

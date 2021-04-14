@@ -3,7 +3,10 @@ package medicheck.backend.Prescription;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import medicheck.backend.Converters.PrescriptionConverter;
 import medicheck.backend.DataModels.PrescriptionDataModel;
+import medicheck.backend.Repos.MedicineRepo;
+import medicheck.backend.Repos.PrescriptionRepo;
 import medicheck.backend.medicine.Medicine;
 
 import java.time.LocalDate;
@@ -14,14 +17,10 @@ public class Prescription
     private long Id;
     private Medicine medicine;
     private int doses;
-<<<<<<< Updated upstream
-    private int receptId;
-
-    public Prescription(Medicine medcine, int doses) {
-        this.medcine = medcine;
-=======
     private Integer amount;
     private LocalDate TimePeriod;
+
+    PrescriptionConverter Converter = new PrescriptionConverter();
 
     public Prescription(Medicine medcine, int doses, long prescriptionId)
     {
@@ -32,16 +31,15 @@ public class Prescription
     public Prescription(Medicine medcine, int doses)
     {
         this.medicine = medcine;
->>>>>>> Stashed changes
         this.doses = doses;
     }
-    public Prescription(PrescriptionDTO prescriptionDTO)
+    public Prescription(PrescriptionModel prescription)
     {
-        this.medicine = prescriptionDTO.getMedcine();
-        this.doses = prescriptionDTO.getDoses();
-        this.Id = prescriptionDTO.getReceptId();
-        this.amount = prescriptionDTO.getAmount();
-        this.TimePeriod = prescriptionDTO.getTimePeriod();
+        this.medicine = prescription.getMedicine();
+        this.doses = prescription.getDoses();
+        this.Id = prescription.getReceptId();
+        this.amount = prescription.getAmount();
+        this.TimePeriod = prescription.getTimePeriod();
     }
     public Prescription(PrescriptionDataModel prescriptionDataModel)
     {
@@ -50,5 +48,18 @@ public class Prescription
         this.TimePeriod = prescriptionDataModel.getTimePeriod();
         this.Id = prescriptionDataModel.getPrescriptionId();
         this.amount = prescriptionDataModel.getAmount();
+    }
+    public void Save(PrescriptionRepo repo)
+    {
+        repo.save(Converter.convertToDataModel(this));
+    }
+    public void Delete(PrescriptionRepo repo)
+    {
+        repo.delete(Converter.convertToDataModel(this));
+    }
+    public void Update(PrescriptionRepo repo)
+    {
+        repo.findById(this.Id);
+        repo.save(Converter.convertToDataModel(this));
     }
 }
