@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import medicheck.backend.patient.PatientModel;
 
-
 import java.time.LocalDate;
-import java.util.List;
 
 
 @RestController
@@ -16,34 +14,34 @@ import java.util.List;
 @CrossOrigin
 public class PatientAPI {
 
-    private PatientContainer patienten;
+    private final PatientContainer Patients;
 
     @Autowired
     public PatientAPI(PatientContainer container){
-        this.patienten = container;
+        this.Patients = container;
     }
 
     @PostMapping(value= "/post", consumes = "application/json", produces = "application/json")
     public String AddPatient(@RequestBody PatientModel patient) {
         try {
-            patienten.SavePatient(new Patient(patient));
+            Patients.SavePatient(new Patient(patient));
             return "Patient is toegevoegd!";
         } catch (Exception e) {
             return "Oops! Er is iets foutgegaan!";
         }
     }
 
-    @PutMapping(value="/update", consumes="application/json")
+    @PutMapping(value="/update", consumes="application/json",produces = "application/json")
     public String UpdatePatient(@RequestBody PatientModel patient){
         try{
-            patienten.updatePatient(new Patient(patient));
+            Patients.updatePatient(new Patient(patient));
             return "Patient is toegevoegd!";
         }
         catch(Exception e){
             return "Oops! Er is iets foutgegaan!";
         }
     }
-    
+
     @GetMapping("/get")
     public Patient GetPatiënt()
     {
@@ -53,6 +51,22 @@ public class PatientAPI {
     
     @GetMapping("/getAll")
     public PatientContainer GetPatients(){
-        return patienten;
+
+    @GetMapping(value="/get/{id}",consumes = "application/json", produces = "application/json")
+    public Patient GetPatiëntById(@PathVariable long id)
+    {
+        return Patients.GetPatientByID(id);
+    }
+
+    @GetMapping(value="/get/{name}",consumes = "application/json", produces = "application/json")
+    public Patient GetPatientByName(@PathVariable String name)
+    {
+        return Patients.GetPatientByNaam(name);
+    }
+
+    @GetMapping(value="/getAll",consumes = "application/json", produces = "application/json")
+    public PatientContainer GetPatients()
+    {
+        return Patients;
     }
 }

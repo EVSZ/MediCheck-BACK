@@ -10,21 +10,13 @@ import java.util.List;
 @Builder @Getter
 public class PatientModel
 {
-
-    private final Integer id;
-
-    private final String name;
-
-    private final Integer weight;
-
-    private final Integer length;
-
-    private final Boolean pregnant;
-
-    private final LocalDate birthDate;
-
-    private final Gender gender;
-
-    private final List<Prescription> UserPrescriptions;
-
+    private Long id;
+    private String name;
+    private Integer weight;
+    private Integer height;
+    private Integer Length;
+    private Boolean pregnant;
+    private LocalDate birthDate;
+    private Gender gender;
+    private List<Prescription> UserPrescriptions;
 }

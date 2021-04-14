@@ -7,18 +7,43 @@ import java.util.List;
 @Component
 public class PrescriptionContainer
 {
-    List<Prescription> Recepten = new ArrayList<>();
+    List<Prescription> Prescriptions = new ArrayList<>();
 
-    public Prescription GetReceptById(int id){
+    public Prescription GetPrescriptionById(long id){
         for (Prescription prescription :
-                Recepten) {
-            if(prescription.getReceptId() == id) return prescription;
+                Prescriptions) {
+            if(prescription.getId() == id) return prescription;
         }
         throw new ArithmeticException("Recept niet gevonden!");
     }
 
-    public List<Prescription> GetReceptByUserID(int id)
+    public List<Prescription> GetPrescriptionByMedicineID(long MedicineID)
     {
-        return Recepten;
+        List<Prescription> FilteredList = new ArrayList<>();
+        for (Prescription prescription : Prescriptions)
+        {
+            if(prescription.getId() == MedicineID)
+            {
+                FilteredList.add(prescription);
+            }
+        }
+        return FilteredList;
+    }
+    public List<Prescription> GetPrescriptionByPatientID(long PatientID)
+    {
+        List<Prescription> FilteredList = new ArrayList<>();
+        for (Prescription prescription : Prescriptions)
+        {
+            if(prescription.getId() == PatientID)
+            {
+                FilteredList.add(prescription);
+            }
+        }
+        return FilteredList;
+    }
+
+    public List<Prescription> GetPrescriptions()
+    {
+        return Prescriptions;
     }
 }

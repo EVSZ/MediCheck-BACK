@@ -1,67 +1,62 @@
 package medicheck.backend.medicine;
 
-import java.time.LocalDate;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import medicheck.backend.medicine.MedicineType;
-import medicheck.backend.patient.Patient;
-
-import java.util.List;
+import medicheck.backend.Repos.MedicineRepo;
+import medicheck.backend.Converters.MedicineConverter;
+import medicheck.backend.DataModels.MedicineDataModel;
 
 @Getter @Setter @Builder
-public class Medicine {
-
-    @Getter @Setter
-    private Integer id;
-
-    @Getter @Setter
-    private Integer amount;
-
-    @Getter @Setter
+public class Medicine
+{
+    private Long id;
     private String name;
-
-    @Getter @Setter
+    private String Discription;
     private MedicineType medicineType;
+    private MedicineConverter converter = new MedicineConverter();
 
-    @Getter @Setter
-    private List<SideEffect> sideEffectList;
-
-    @Getter @Setter
-    private Integer doses;
-
-    @Getter @Setter
-    private LocalDate timePeriod;
-
-
-    public Medicine(Integer id, Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList,
-                    LocalDate timePeriod) {
+    public Medicine(Long id, String discription, String name, MedicineType medicineType)
+    {
         this.id = id;
-        this.amount = amount;
         this.name = name;
+        Discription = discription;
         this.medicineType = medicineType;
-        this.sideEffectList = sideEffectList;
-        this.timePeriod = timePeriod;
+    }
+    public Medicine(String discription, String name, MedicineType medicineType)
+    {
+        this.name = name;
+        Discription = discription;
+        this.medicineType = medicineType;
     }
 
-    public Medicine(Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList,
-                    LocalDate timePeriod) {
-        this.amount = amount;
-        this.name = name;
-        this.medicineType = medicineType;
-        this.sideEffectList = sideEffectList;
-        this.timePeriod = timePeriod;
+    public Medicine(MedicineDataModel medicinedto)
+    {
+        this.id = medicinedto.getId();
+        this.name = medicinedto.getName();
+        Discription = medicinedto.getDiscription();
+        this.medicineType = medicinedto.getMedicineType();
     }
 
-    public Medicine(MedicineDTO medicine)
+    public Medicine(MedicineModel medicine)
     {
         this.id = medicine.getId();
-        this.amount = medicine.getAmount();
         this.name = medicine.getName();
+        Discription = medicine.getDiscription();
         this.medicineType = medicine.getMedicineType();
-        this.sideEffectList = medicine.getSideEffectList();
-        this.timePeriod = medicine.getTimePeriod();
     }
-    public void SaveMedicine() { }
+
+    public void Save(MedicineRepo repo)
+    {
+        repo.save(converter.convertToDataModel(this));
+    }
+    public void Delete(MedicineRepo repo)
+    {
+        repo.delete(converter.convertToDataModel(this));
+    }
+    public void Update(MedicineRepo repo)
+    {
+        repo.findById(this.id);
+        repo.save(converter.convertToDataModel(this));
+    }
 }

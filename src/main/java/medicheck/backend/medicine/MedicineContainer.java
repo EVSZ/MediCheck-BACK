@@ -8,10 +8,9 @@ import java.util.List;
 @Component
 public class MedicineContainer {
 
-    private List<Medicine> medication = new ArrayList<>();
+    private final List<Medicine> medication = new ArrayList<>();
 
-    public MedicineContainer() {
-    }
+    public MedicineContainer() { }
 
     public Medicine GetByName(String naam){
         for (Medicine medicine:
@@ -22,7 +21,7 @@ public class MedicineContainer {
         }
         throw new ArithmeticException("Dit medicijn staat niet in de lijst!");
     }
-    public Medicine GetByID(int id){
+    public Medicine GetByID(long id){
         for (Medicine medicine:
                 medication) {
             if(medicine.getId().equals(id)){
@@ -43,9 +42,5 @@ public class MedicineContainer {
             if(medicine.getMedicineType() == type) output.add(medicine);
         }
         return output;
-    }
-
-    public void AddMedicine(MedicineDTO mediceneDTO){
-
     }
 }

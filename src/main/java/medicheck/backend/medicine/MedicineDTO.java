@@ -10,32 +10,23 @@ import java.util.List;
 @Getter @Setter
 public class MedicineDTO
 {
-    private Integer id;
-    private Integer amount;
+    private long id;
     private String name;
+    private String Discription;
     private MedicineType medicineType;
-    private List<SideEffect> sideEffectList;
-    private Integer doses;
-    private LocalDate timePeriod;
 
-    public MedicineDTO(Integer id, Integer amount, String name, MedicineType medicineType, List<SideEffect> sideEffectList, Integer doses, LocalDate timePeriod)
+    public MedicineDTO(Integer id, String discription, String name, MedicineType medicineType)
     {
         this.id = id;
-        this.amount = amount;
         this.name = name;
-        this.medicineType = medicineType;
-        this.sideEffectList = sideEffectList;
-        this.doses = doses;
-        this.timePeriod = timePeriod;
+        this.Discription = discription;
+        this.medicineType = medicineType;;
     }
     public MedicineDTO(Medicine medicine)
     {
         this.id = medicine.getId();
-        this.amount = medicine.getAmount();
         this.name = medicine.getName();
+        this.Discription = medicine.getDiscription();
         this.medicineType = medicine.getMedicineType();
-        this.sideEffectList = medicine.getSideEffectList();
-        this.doses = medicine.getDoses();
-        this.timePeriod = medicine.getTimePeriod();
     }
 }
