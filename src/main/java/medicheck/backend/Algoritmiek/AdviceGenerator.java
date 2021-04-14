@@ -8,7 +8,6 @@ import java.util.List;
 
 public class AdviceGenerator
 {
-    public boolean advice = false;
     private Patient patient;
     public boolean GenerateAdvice(Patient patientInput)
     {
@@ -41,6 +40,10 @@ public class AdviceGenerator
         return RulesToCheck;
     }
 
+    public Boolean GetAdvice(Patient patient)
+    {
+        return patient.getAge() >= 70;
+    }
 
     public Patient getPatient() {
         return patient;
