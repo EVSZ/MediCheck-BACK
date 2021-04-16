@@ -1,6 +1,5 @@
 package medicheck.backend.Algoritmiek;
 
-import medicheck.backend.medicine.Medicine;
 import medicheck.backend.patient.Patient;
 
 import java.util.ArrayList;
@@ -9,45 +8,79 @@ import java.util.List;
 public class AdviceGenerator
 {
     public boolean advice = false;
-    private Patient patient;
-    public boolean GenerateAdvice(Patient patientInput)
+    RuleSelector ruleSelector;
+    CommandTranslator translator;
+    List<MedicationRule> rulesToCheck;
+    MedicationRuleContainer container;
+    TestPatient patient;
+
+
+    public AdviceGenerator()
     {
-        /*setPatient(patientInput);
-        List<Integer> rulesToCheck = CheckIfMedicationContainsRisks(patient.getMedication());
-        RuleSelector selector = new RuleSelector();
-        for (Integer integer : rulesToCheck)
-        {
-            if (selector.SelectRule(integer,patient))
-            {
-                return true;
-            }
-
-
-        }*/
-        return false;
-
+        ruleSelector= new RuleSelector();
+        translator = new CommandTranslator();
+        rulesToCheck = new ArrayList<>();
     }
 
-    List<Integer> CheckIfMedicationContainsRules(List<Medicine> medication)
+    public boolean GenerateAdvice(TestPatient testPatient)
     {
-        List<Integer>RulesToCheck = new ArrayList<>();
-        for (Medicine medicine: medication)
+        patient = testPatient;
+        RetrieveMedicationRules(ruleSelector.CheckForRules(patient.medication));
+        for (MedicationRule rule : rulesToCheck)
         {
-            if (medicine.getName().equals("nitrofurantoïne")||medicine.getName().equals("norfloxacine")||medicine.getName().equals("cotrimoxazol")){
-                RulesToCheck.add(1);
+            for (int i = 0; i < rule.subRules.size();)
+            {
+                if (rule.subRules.get(i).isResult){
+                    return rule.subRules.get(i).result;
+                }
+                if(ExecuteCommand(rule.subRules.get(i).command)){
+                    i = rule.subRules.get(i).ifTrue;
+                }
+                else i = rule.subRules.get(i).ifFalse;
             }
 
         }
-        return RulesToCheck;
+        return false;
+    }
+    public boolean ExecuteCommand(AlgorithmCommand command){
+
+        switch (translator.TranslateCommandType(command.commandType))
+        {
+
+            case 1:
+                return CompareInteger(command);
+            case 2:
+                return LogicalTest(command);
+        }
+        return false;
+
+    }
+    public boolean LogicalTest(AlgorithmCommand command){
+        return translator.TranslateLogicalTest(command.variableToCheck, patient);
     }
 
+    public boolean CompareInteger(AlgorithmCommand command){
+        int integerToCompare = translator.TranslateCommandVariableToInteger(command.variableToCheck, patient);
+        switch (translator.TranslateConstraint(command.constraint)){
+            case 1:
+                if (integerToCompare > command.valueToCompare)
+                {
+                    return true;
 
-    public Patient getPatient() {
-        return patient;
+                }
+            case 2:
+                if (integerToCompare < command.valueToCompare){
+                    return true;
+                }
+        }
+        return false;
     }
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void RetrieveMedicationRules(List<Long> ruleNumbers){
+    for (Long ruleNumber : ruleNumbers)
+    {
+        rulesToCheck.add(container.GetMedicationRule(ruleNumber));
     }
+}
 
 
 

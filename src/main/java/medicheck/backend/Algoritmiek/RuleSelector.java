@@ -1,23 +1,23 @@
 package medicheck.backend.Algoritmiek;
 
 import medicheck.backend.patient.Patient;
+import medicheck.backend.medicine.Medicine;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RuleSelector {
 
-    boolean SelectRule(int rulenumber, Patient patient)
-    {
-        MedicationRule medicationRules = new MedicationRule();
-        switch (rulenumber)
+    public List<Long> CheckForRules(List<TestMedicine> medication){
+        List<Long> selectedRules = new ArrayList<>();
+        for (TestMedicine medicine : medication)
         {
-            case 0:
-                return false;
-            case 1:
-                return medicationRules.Rule1(patient.getHealthInfo(), patient.CalculateAge());
-            case 2:
-                return medicationRules.Rule2(patient.getHealthInfo());
-
+            if (medicine.hasMedicationRule)
+            {
+                selectedRules.add(medicine.medicationRuleNumber);
+            }
         }
-        return false;
+        return selectedRules;
     }
 }
 

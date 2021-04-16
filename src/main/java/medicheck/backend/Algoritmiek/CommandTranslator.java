@@ -1,39 +1,61 @@
 package medicheck.backend.Algoritmiek;
 
-import com.fasterxml.jackson.core.TSFBuilder;
-import jdk.jshell.spi.ExecutionControl;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class CommandTranslator
 {
-    private TestPatient patient;
-    public CommandTranslator(TestPatient patient)
+    public int TranslateCommandType(String commandType)
     {
-        this.patient = patient;
-    }
-
-    public void TranslateCommand(AlgorithmCommand command){
-        if (command.variableType.equals("integer")){
-            TranslateVariableInteger(command.variable);
+        switch (commandType)
+        {
+            case "integer":
+                return 1;
+            case "boolean":
+                return 2;
         }
+        return 0;
     }
 
-    public int TranslateVariableInteger(String variable)
+    public int TranslateConstraint(String commandConstraint){
+        switch (commandConstraint){
+            case">": return 1;
+            case "<": return 2;
+        }
+        return 0;
+    }
+
+    public int TranslateCommandVariableToInteger(String commandVariable, TestPatient patient)
     {
-        switch (variable){
+        switch (commandVariable)
+        {
+            case "clcr":
+                return patient.clcr;
+            case "lastclcr":
+                return CalculateTimeDifference(patient.lastClcr);
             case "age":
-                // code block
                 return patient.age;
         }
         return 0;
     }
 
-    public int TranslateConstraint(String constraint){
-        switch(constraint){
-            case ">":
-                return 1;
-
+    public boolean TranslateLogicalTest(String commandVariable, TestPatient patient){
+        switch(commandVariable){
+            case "isclcrknown":
+                return patient.lastClcr != null;
         }
-        return 0;
+        return false;
+    }
+
+    private int CalculateTimeDifference(LocalDate date)
+    {
+            LocalDate currentDate = LocalDate.now();
+            if (date != null) {
+                return Period.between(date, currentDate).getYears();
+            } else
+            {
+                return 0;
+            }
     }
 
 }

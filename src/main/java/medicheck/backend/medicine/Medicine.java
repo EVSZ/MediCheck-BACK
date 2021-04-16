@@ -11,6 +11,8 @@ import medicheck.backend.DataModels.MedicineDataModel;
 public class Medicine
 {
     private Long id;
+    private boolean hasRule;
+    private Long ruleID;
     private String name;
     private String Discription;
     private MedicineType medicineType;
