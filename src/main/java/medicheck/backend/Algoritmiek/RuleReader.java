@@ -1,5 +1,6 @@
 package medicheck.backend.Algoritmiek;
 
+import lombok.var;
 import medicheck.backend.patient.Patient;
 
 public class RuleReader
@@ -27,7 +28,8 @@ public class RuleReader
             }
         }
     }
-    public void ExecuteAlgorithmCommand(AlgorithmCommand command, var ding){
+    public void ExecuteAlgorithmCommand(AlgorithmCommand command, int ding)
+    {
 
     }
 

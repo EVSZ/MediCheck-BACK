@@ -2,6 +2,7 @@ package medicheck.backend.Algoritmiek;
 
 import medicheck.backend.medicine.Medicine;
 import medicheck.backend.patient.Patient;
+import medicheck.backend.patient.PatientModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +41,11 @@ public class AdviceGenerator
         return RulesToCheck;
     }
 
-    public Boolean GetAdvice(Patient patient)
+    public String GetAdvice(PatientModel patient)
     {
-        return patient.getAge() >= 70;
+        String advice = "";
+
+        return advice;
     }
 
     public Patient getPatient() {
