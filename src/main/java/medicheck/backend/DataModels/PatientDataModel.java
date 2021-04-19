@@ -39,10 +39,10 @@ public class PatientDataModel
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "patient")
     private List<PrescriptionDataModel> prescriptions;
 
-    public PatientDataModel() {
-    }
+    public PatientDataModel() { }
 
-    public PatientDataModel(Patient patient){
+    public PatientDataModel(Patient patient)
+    {
 
     }
 }

@@ -15,7 +15,7 @@ public class PatientContainer {
     public Patient GetPatientByNaam(String name){
         for (Patient patient:
              patienten) {
-            if(patient.getName() == name) return patient;
+            if(patient.getName().equals(name)) return patient;
         }
         throw new ArithmeticException("De patient is niet gevonden!");
     }

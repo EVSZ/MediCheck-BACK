@@ -1,6 +1,7 @@
 package medicheck.backend.patient;
 
-public enum Gender {
+public enum Gender
+{
     Male,
     Female
 }
