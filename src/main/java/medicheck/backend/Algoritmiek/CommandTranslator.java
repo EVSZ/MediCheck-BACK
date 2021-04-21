@@ -51,7 +51,7 @@ public class CommandTranslator
     {
             LocalDate currentDate = LocalDate.now();
             if (date != null) {
-                return Period.between(date, currentDate).getYears();
+                return (Period.between(date,currentDate).getYears()*12) + Period.between(date, currentDate).getMonths();
             } else
             {
                 return 0;

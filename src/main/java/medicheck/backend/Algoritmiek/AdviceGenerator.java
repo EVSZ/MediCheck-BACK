@@ -22,6 +22,7 @@ public class AdviceGenerator
         ruleSelector= new RuleSelector();
         translator = new CommandTranslator();
         rulesToCheck = new ArrayList<>();
+        container = new MedicationRuleContainer();
     }
 
 
@@ -32,7 +33,7 @@ public class AdviceGenerator
         //RetrieveMedicationRules(ruleSelector.CheckForRules(patient.medication));
         for (MedicationRule rule : rulesToCheck)
         {
-            for (int i = 0; i < rule.subRules.size();)
+            for (int i = 1; i < rule.subRules.size();)
             {
                 if (rule.subRules.get(i).isResult){
                     return rule.subRules.get(i).result;
@@ -70,14 +71,13 @@ public class AdviceGenerator
                 if (integerToCompare > command.valueToCompare)
                 {
                     return true;
-
-
-
                 }
+                break;
             case 2:
                 if (integerToCompare < command.valueToCompare){
                     return true;
                 }
+                break;
         }
         return false;
     }

@@ -23,10 +23,6 @@ public class AlgorithmAPI {
     @GetMapping("/execute")
     public String executeAlgorithm(){
         TestRule test = new TestRule();
-        if (test.Test())
-        {
-            return "Test passed";
-        };
         return "Test kapot";
     }
     @GetMapping("test")
