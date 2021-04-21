@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("algorithm")
 public class AlgorithmAPI {
@@ -29,7 +29,11 @@ public class AlgorithmAPI {
         };
         return "Test kapot";
     }
-
+    @GetMapping("test")
+    public String testalgo(){
+        AdviceGenerator adviceGenerator = new AdviceGenerator();
+        return adviceGenerator.TestAdvice();
+    }
 
 
     @Autowired

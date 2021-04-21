@@ -28,7 +28,8 @@ public class AdviceGenerator
     public boolean GenerateAdvice(TestPatient testPatient)
     {
         patient = testPatient;
-        RetrieveMedicationRules(ruleSelector.CheckForRules(patient.medication));
+        rulesToCheck.add(container.GetMedicationRule());
+        //RetrieveMedicationRules(ruleSelector.CheckForRules(patient.medication));
         for (MedicationRule rule : rulesToCheck)
         {
             for (int i = 0; i < rule.subRules.size();)
@@ -80,6 +81,9 @@ public class AdviceGenerator
         }
         return false;
     }
+    public String TestAdvice(){
+        return "boterham";
+    }
     public String GetAdvice(PatientModel patient)
     {
         String advice = "";
@@ -89,7 +93,7 @@ public class AdviceGenerator
     public void RetrieveMedicationRules(List<Long> ruleNumbers){
     for (Long ruleNumber : ruleNumbers)
     {
-        rulesToCheck.add(container.GetMedicationRule(ruleNumber));
+        rulesToCheck.add(container.GetMedicationRule());
     }
 }
 
