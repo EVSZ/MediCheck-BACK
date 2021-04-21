@@ -20,7 +20,7 @@ public class PatientDTO
     private LocalDate birthDate;
     private Gender gender;
 
-    public PatientDTO(Integer id, String naam,
+    public PatientDTO(long id, String naam,
                       Integer gewicht, Integer lengte,
                       Boolean zwanger,
                       LocalDate birthDate, Gender gender) {
