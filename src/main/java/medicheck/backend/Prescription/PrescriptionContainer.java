@@ -9,6 +9,10 @@ public class PrescriptionContainer
 {
     List<Prescription> Recepten = new ArrayList<>();
 
+    public PrescriptionContainer() {
+
+    }
+
     public Prescription GetReceptById(int id){
         for (Prescription prescription :
                 Recepten) {
