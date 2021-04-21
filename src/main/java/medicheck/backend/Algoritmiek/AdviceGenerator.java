@@ -22,6 +22,7 @@ public class AdviceGenerator
         rulesToCheck = new ArrayList<>();
     }
 
+
     public boolean GenerateAdvice(TestPatient testPatient)
     {
         patient = testPatient;
