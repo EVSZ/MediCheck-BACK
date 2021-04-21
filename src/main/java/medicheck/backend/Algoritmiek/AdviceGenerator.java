@@ -18,10 +18,6 @@ public class AdviceGenerator
 
 
     public AdviceGenerator()
-
-    private Patient patient;
-    public boolean GenerateAdvice(Patient patientInput)
-
     {
         ruleSelector= new RuleSelector();
         translator = new CommandTranslator();

@@ -19,10 +19,10 @@ public class PatientConverter
         PrescriptionConverter converter = new PrescriptionConverter();
         PatientDataModel patientModel = new PatientDataModel();
 
-        for (Prescription prescription: patient.getPrescriptions())
-        {
-            prescriptions.add(converter.convertToDataModel(prescription));
-        }
+        //for (Prescription prescription: patient.getPrescriptions())
+        //{
+         //   prescriptions.add(converter.convertToDataModel(prescription));
+        //}
 
         patientModel.setId(patient.getId());
         patientModel.setAge(patient.getAge());

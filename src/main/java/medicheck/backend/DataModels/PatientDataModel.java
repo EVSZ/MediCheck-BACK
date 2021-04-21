@@ -14,7 +14,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity @Getter @Setter @Builder
+@Entity @Getter @Setter
 public class PatientDataModel
 {
 
@@ -31,8 +31,8 @@ public class PatientDataModel
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
 
-//    @Embedded
-//    private HealthInformation healthInfo;
+    @Embedded
+    private HealthInformation healthInfo;
 
     private int age;
 

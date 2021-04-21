@@ -7,7 +7,7 @@ import medicheck.backend.Repos.MedicineRepo;
 import medicheck.backend.Converters.MedicineConverter;
 import medicheck.backend.DataModels.MedicineDataModel;
 
-@Getter @Setter @Builder
+@Getter @Setter
 public class Medicine
 {
     private Long id;

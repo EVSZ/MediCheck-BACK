@@ -7,12 +7,12 @@ import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.patient.Gender;
 import medicheck.backend.patient.Patient;
-@Builder
+
 @Getter
 @Setter
 public class PatientDTO
 {
-    private Integer id;
+    private long id;
     private String name;
     private Integer weight;
     private Integer length;
