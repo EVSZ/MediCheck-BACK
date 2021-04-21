@@ -15,15 +15,15 @@ public class PatientContainer {
     public Patient GetPatientByNaam(String name){
         for (Patient patient:
              patienten) {
-            if(patient.getName() == name) return patient;
+            if(patient.getName().equals(name)) return patient;
         }
         throw new ArithmeticException("De patient is niet gevonden!");
     }
 
-    public Patient GetPatientByID(Integer id){
+    public Patient GetPatientByID(Long id){
         for (Patient patient:
              patienten) {
-            if(patient.getId() == id) return patient;
+            if(patient.getId().equals(id)) return patient;
         }
         throw new ArithmeticException("De patient is niet gevonden!");
     }
@@ -39,7 +39,7 @@ public class PatientContainer {
     public void updatePatient(Patient patient){
         for (Patient element:
              patienten) {
-            if(patient.getId() == element.getId()){
+            if(patient.getId().equals(element.getId())){
                 element.Update(patient);
 
             }
@@ -49,7 +49,7 @@ public class PatientContainer {
     public void deletePatient(Patient patient){
         for (Patient element:
              patienten) {
-            if(patient.getId() == element.getId()){
+            if(patient.getId().equals(element.getId())){
                 element.Delete();
             }
         }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.DataModels.PatientDataModel;
 import medicheck.backend.Prescription.Prescription;
 import medicheck.backend.Prescription.PrescriptionContainer;
 
@@ -30,7 +31,8 @@ public class Patient
 
     public Patient() { }
 
-    public Patient(Long id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, PrescriptionContainer prescriptions, int age) {
+    public Patient(Long id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, PrescriptionContainer prescriptions, int age)
+    {
         this.id = id;
         this.name = name;
         this.weight = weight;
@@ -43,7 +45,7 @@ public class Patient
         this.age = age;
     }
 
-    public Patient(PatientDTO patient)
+    public Patient(PatientDataModel patient)
     {
         this.id = patient.getId();
         this.name = patient.getName();

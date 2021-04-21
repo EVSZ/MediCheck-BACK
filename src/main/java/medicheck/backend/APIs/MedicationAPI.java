@@ -24,13 +24,13 @@ public class MedicationAPI
     }
 
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
-    public String AddMedicine(@RequestBody MedicineModel medicine)
+    public void AddMedicine(@RequestBody MedicineModel medicine)
     {
         new Medicine(medicine).Save(Medicinerepo);
     }
 
     @DeleteMapping(value= "/DeleteMedicine", consumes = "application/json", produces = "application/json")
-    public String DeleteMedicine(@RequestBody MedicineModel medicine)
+    public void DeleteMedicine(@RequestBody MedicineModel medicine)
     {
         new Medicine(medicine).Delete(Medicinerepo);
     }

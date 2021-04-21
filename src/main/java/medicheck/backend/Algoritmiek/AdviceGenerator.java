@@ -1,12 +1,14 @@
 package medicheck.backend.Algoritmiek;
 
 import medicheck.backend.patient.Patient;
+import medicheck.backend.patient.PatientModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdviceGenerator
 {
+
     public boolean advice = false;
     RuleSelector ruleSelector;
     CommandTranslator translator;
@@ -16,6 +18,10 @@ public class AdviceGenerator
 
 
     public AdviceGenerator()
+
+    private Patient patient;
+    public boolean GenerateAdvice(Patient patientInput)
+
     {
         ruleSelector= new RuleSelector();
         translator = new CommandTranslator();
@@ -68,6 +74,8 @@ public class AdviceGenerator
                 {
                     return true;
 
+
+
                 }
             case 2:
                 if (integerToCompare < command.valueToCompare){
@@ -75,6 +83,12 @@ public class AdviceGenerator
                 }
         }
         return false;
+    }
+    public String GetAdvice(PatientModel patient)
+    {
+        String advice = "";
+
+        return advice;
     }
     public void RetrieveMedicationRules(List<Long> ruleNumbers){
     for (Long ruleNumber : ruleNumbers)
