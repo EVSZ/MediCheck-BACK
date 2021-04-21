@@ -9,7 +9,7 @@ import javax.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 
-@Entity @Builder @Getter @Setter
+@Entity  @Getter @Setter
 public class MedicineDataModel
 {
     @Id

@@ -14,7 +14,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity @Getter @Setter @Builder
+@Entity @Getter @Setter
 public class PatientDataModel
 {
 

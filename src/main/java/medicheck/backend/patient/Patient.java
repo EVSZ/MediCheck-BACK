@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
-@Getter @Setter @Builder
+@Getter @Setter
 public class Patient
 {
     private Long id;
