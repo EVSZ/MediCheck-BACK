@@ -12,7 +12,7 @@ import medicheck.backend.patient.Patient;
 @Setter
 public class PatientDTO
 {
-    private long id;
+    private Long id;
     private String name;
     private Integer weight;
     private Integer length;
@@ -20,7 +20,7 @@ public class PatientDTO
     private LocalDate birthDate;
     private Gender gender;
 
-    public PatientDTO(long id, String naam,
+    public PatientDTO(Long id, String naam,
                       Integer gewicht, Integer lengte,
                       Boolean zwanger,
                       LocalDate birthDate, Gender gender) {

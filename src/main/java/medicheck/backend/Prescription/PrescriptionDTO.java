@@ -7,7 +7,7 @@ import medicheck.backend.medicine.Medicine;
 
 import java.time.LocalDate;
 
-@Getter @Setter @Builder
+@Getter @Setter
 public class PrescriptionDTO
 {
     private Medicine medcine;
