@@ -7,10 +7,15 @@ import org.hibernate.annotations.BatchSize;
 import javax.persistence.*;
 
 @Entity @Getter
+@NamedNativeQuery(
+        name="SubRuleEntity.FindByParentRule",
+        query = "SELECT * FROM sub_rule_entity WHERE parentRule = ?",
+        resultClass = SubRuleEntity.class
+)
 public class SubRuleEntity
 {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long ID;
 
     @Column(nullable = false)
@@ -31,7 +36,7 @@ public class SubRuleEntity
     @Column
     boolean result;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn
-    AlgorithmCommandEntity command;
+    AlgorithmCommandEntity Command;
 }
