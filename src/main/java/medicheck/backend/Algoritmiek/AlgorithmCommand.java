@@ -1,7 +1,12 @@
 package medicheck.backend.Algoritmiek;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class AlgorithmCommand
 {
+    long ID;
     String variableToCheck;
     String constraint;
     String commandType;

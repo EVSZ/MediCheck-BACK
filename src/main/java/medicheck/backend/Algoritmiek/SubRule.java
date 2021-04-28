@@ -1,7 +1,14 @@
 package medicheck.backend.Algoritmiek;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.SecondaryTable;
+
+@Getter @Setter
 public class SubRule
 {
+    long ID;
     int parentRule;
     int ruleNumber;
     int ifTrue;
