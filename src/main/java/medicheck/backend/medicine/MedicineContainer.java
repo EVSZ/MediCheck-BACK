@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public class MedicineContainer {
 
-    private final List<Medicine> medication = new ArrayList<>();
+    private List<Medicine> medication = new ArrayList<>();
 
     public MedicineContainer() { }
 
@@ -33,6 +33,8 @@ public class MedicineContainer {
     }
 
     public List<Medicine> GetAllMedicines(){
+        MockMedicines();
+
         return medication;
     }
 
@@ -43,5 +45,19 @@ public class MedicineContainer {
             if(medicine.getMedicineType() == type) output.add(medicine);
         }
         return output;
+    }
+
+    public void MockMedicines(){
+        List<Medicine> mockMedication = new ArrayList<>();
+
+        Medicine paracetemol = new Medicine("Niet voor de lol, paracetemol.", "Paracetemol", MedicineType.Pillen);
+        Medicine hoestsiroop = new Medicine("It's only to cope, hoestsiroop", "Hoestdrank", MedicineType.Siroop);
+        Medicine ibuprofen = new Medicine("Iets met een pen, ibuprofen", "Ibuprofen", MedicineType.Pillen);
+
+        mockMedication.add(paracetemol);
+        mockMedication.add(hoestsiroop);
+        mockMedication.add(ibuprofen);
+
+        medication = mockMedication;
     }
 }
