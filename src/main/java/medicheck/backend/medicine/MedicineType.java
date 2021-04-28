@@ -1,5 +1,6 @@
 package medicheck.backend.medicine;
 
 public enum MedicineType {
-    Pillen
+    Pillen,
+    Siroop
 }

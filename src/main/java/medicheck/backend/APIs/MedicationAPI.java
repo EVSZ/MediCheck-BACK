@@ -18,7 +18,7 @@ public class MedicationAPI
     private final MedicineContainer Medicines;
     private MedicineRepo Medicinerepo;
 
-    @Autowired
+
     public MedicationAPI(MedicineContainer container) {
         this.Medicines = container;
     }
@@ -26,20 +26,20 @@ public class MedicationAPI
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
     public void AddMedicine(@RequestBody MedicineModel medicine)
     {
-        new Medicine(medicine).Save(Medicinerepo);
+        //new Medicine(medicine).Save(Medicinerepo);
     }
 
     @DeleteMapping(value= "/DeleteMedicine", consumes = "application/json", produces = "application/json")
     public void DeleteMedicine(@RequestBody MedicineModel medicine)
     {
-        new Medicine(medicine).Delete(Medicinerepo);
+        //new Medicine(medicine).Delete(Medicinerepo);
     }
 
     @PutMapping(value="/PutMedicine", consumes="application/json",produces = "application/json")
     public String UpdateMedicine(@RequestBody MedicineModel medicinemodel)
     {
         try{
-            new Medicine(medicinemodel).Update(Medicinerepo);
+            //new Medicine(medicinemodel).Update(Medicinerepo);
             return "Patient is toegevoegd!";
         }
         catch(Exception e){

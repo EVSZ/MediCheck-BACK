@@ -16,7 +16,7 @@ public class Medicine
     private String name;
     private String Discription;
     private MedicineType medicineType;
-    private MedicineConverter converter = new MedicineConverter();
+    //private MedicineConverter converter = new MedicineConverter();
 
     public Medicine(Long id, String discription, String name, MedicineType medicineType)
     {
@@ -48,7 +48,7 @@ public class Medicine
         this.medicineType = medicine.getMedicineType();
     }
 
-    public void Save(MedicineRepo repo)
+    /*public void Save(MedicineRepo repo)
     {
         repo.save(converter.convertToDataModel(this));
     }
@@ -60,5 +60,5 @@ public class Medicine
     {
         repo.findById(this.id);
         repo.save(converter.convertToDataModel(this));
-    }
+    }*/
 }

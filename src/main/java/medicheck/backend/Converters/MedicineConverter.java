@@ -5,6 +5,9 @@ import medicheck.backend.medicine.Medicine;
 
 public class MedicineConverter
 {
+    public MedicineConverter() {
+    }
+
     public MedicineDataModel convertToDataModel(Medicine medicine)
     {
         MedicineDataModel medicineDataModel = new MedicineDataModel();
@@ -14,4 +17,5 @@ public class MedicineConverter
         medicineDataModel.setMedicineType(medicine.getMedicineType());
         return medicineDataModel;
     }
+
 }
