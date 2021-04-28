@@ -1,12 +1,10 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.patient.Patient;
-import medicheck.backend.patient.PatientContainer;
+import medicheck.backend.Logic.Models.patient.Patient;
+import medicheck.backend.Logic.Models.patient.PatientContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import medicheck.backend.patient.PatientModel;
-
-import java.time.LocalDate;
+import medicheck.backend.APIs.RequestModels.PatientModel;
 
 
 @RestController

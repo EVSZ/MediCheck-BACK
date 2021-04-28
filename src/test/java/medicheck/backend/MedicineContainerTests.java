@@ -1,18 +1,14 @@
 package medicheck.backend;
 
-import medicheck.backend.medicine.Medicine;
-import medicheck.backend.medicine.MedicineContainer;
-import medicheck.backend.medicine.MedicineType;
-import medicheck.backend.medicine.SideEffect;
+import medicheck.backend.Logic.Models.medicine.MedicineContainer;
+import medicheck.backend.Logic.Models.medicine.SideEffect;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.time.LocalDate;
+
 import java.util.*;
 
 @SpringBootTest

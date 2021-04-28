@@ -1,19 +1,11 @@
 package medicheck.backend;
 
 import medicheck.backend.Converters.PatientConverter;
-import medicheck.backend.DataModels.PatientDataModel;
-import medicheck.backend.Prescription.PrescriptionContainer;
-import medicheck.backend.patient.Gender;
-import medicheck.backend.patient.HealthInformation;
-import medicheck.backend.patient.Patient;
 import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDate;
 
 @SpringBootTest
 public class PatientConverterTest {

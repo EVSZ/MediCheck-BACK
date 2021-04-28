@@ -1,7 +1,7 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.Login.LoginInfo;
-import medicheck.backend.Login.LoginService;
+import medicheck.backend.APIs.RequestModels.LoginInfo;
+import medicheck.backend.Logic.Services.Login.LoginService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

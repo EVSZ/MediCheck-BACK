@@ -1,11 +1,10 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.Repos.MedicineRepo;
-import medicheck.backend.medicine.Medicine;
-import medicheck.backend.medicine.MedicineContainer;
-import medicheck.backend.medicine.MedicineModel;
-import medicheck.backend.medicine.MedicineType;
-import org.springframework.beans.factory.annotation.Autowired;
+import medicheck.backend.DAL.Repos.MedicineRepo;
+import medicheck.backend.Logic.Models.medicine.Medicine;
+import medicheck.backend.Logic.Models.medicine.MedicineContainer;
+import medicheck.backend.APIs.RequestModels.MedicineModel;
+import medicheck.backend.Logic.Models.medicine.MedicineType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

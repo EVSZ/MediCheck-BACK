@@ -1,14 +1,9 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.Prescription.Prescription;
-import medicheck.backend.Prescription.PrescriptionContainer;
-import medicheck.backend.Prescription.PrescriptionModel;
-import medicheck.backend.Repos.MedicineRepo;
-import medicheck.backend.Repos.PrescriptionRepo;
-import medicheck.backend.medicine.Medicine;
-import medicheck.backend.medicine.MedicineContainer;
-import medicheck.backend.medicine.MedicineModel;
-import medicheck.backend.medicine.MedicineType;
+import medicheck.backend.Logic.Models.Prescription.Prescription;
+import medicheck.backend.Logic.Models.Prescription.PrescriptionContainer;
+import medicheck.backend.APIs.RequestModels.PrescriptionModel;
+import medicheck.backend.DAL.Repos.PrescriptionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
