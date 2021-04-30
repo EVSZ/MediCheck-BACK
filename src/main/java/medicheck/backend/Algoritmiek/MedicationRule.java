@@ -1,6 +1,7 @@
 package medicheck.backend.Algoritmiek;
 
 import lombok.Getter;
+import medicheck.backend.Algoritmiek.Algorithm.SubRule;
 
 import java.util.List;
 

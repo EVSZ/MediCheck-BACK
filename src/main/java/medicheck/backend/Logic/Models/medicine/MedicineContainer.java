@@ -1,5 +1,10 @@
 package medicheck.backend.Logic.Models.medicine;
 
+import medicheck.backend.Algoritmiek.Algorithm.SubRule;
+import medicheck.backend.DAL.Interfaces.MedicationContainerInterface;
+import medicheck.backend.DTO.MedicineDTO;
+import medicheck.backend.DTO.SubRuleDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,8 +14,12 @@ import java.util.List;
 public class MedicineContainer {
 
     private List<Medicine> medication = new ArrayList<>();
+    MedicationContainerInterface Interface;
 
-    public MedicineContainer() { }
+    public MedicineContainer(MedicationContainerInterface Inter)
+    {
+        Interface = Inter;
+    }
 
     public void AddMedicine(Medicine medicine){ medication.add(medicine); }
 
@@ -33,10 +42,15 @@ public class MedicineContainer {
         throw new ArithmeticException("Dit medicijn staat niet in de lijst!");
     }
 
-    public List<Medicine> GetAllMedicines(){
-        MockMedicines();
-
-        return medication;
+    public List<Medicine> GetAllMedicines()
+    {
+        List<MedicineDTO> MedicinesDTO = Interface.GetAllMedication();
+        List<Medicine> Medicines = new ArrayList<Medicine>();
+        for (MedicineDTO Medicine: MedicinesDTO)
+        {
+            Medicines.add(new Medicine(Medicine));
+        }
+        return Medicines;
     }
 
     public List<Medicine> GetAllMedicineByType(MedicineType type){
