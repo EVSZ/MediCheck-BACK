@@ -12,6 +12,8 @@ public class MedicineContainer {
 
     public MedicineContainer() { }
 
+    public void AddMedicine(Medicine medicine){ medication.add(medicine); }
+
     public Medicine GetByName(String naam){
         for (Medicine medicine:
              medication) {

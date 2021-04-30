@@ -22,10 +22,17 @@ public class MedicationAPI
         this.Medicines = container;
     }
 
-    @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
-    public void AddMedicine(@RequestBody MedicineModel medicine)
+    @PostMapping(value= "/PostMedicine", consumes = "application/json")
+    public void AddMedicine(@RequestBody MedicineModel medicineModel)
     {
-        //new Medicine(medicine).Save(Medicinerepo);
+        Medicine medicine = new Medicine(
+                medicineModel.getId(),
+                medicineModel.getDiscription(),
+                medicineModel.getName(),
+                medicineModel.getMedicineType()
+        );
+
+        Medicines.AddMedicine(medicine);
     }
 
     @DeleteMapping(value= "/DeleteMedicine", consumes = "application/json", produces = "application/json")
