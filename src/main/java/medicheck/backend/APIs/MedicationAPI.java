@@ -27,6 +27,8 @@ public class MedicationAPI
     {
         Medicine medicine = new Medicine(
                 medicineModel.getId(),
+                medicineModel.isHasRule(),
+                medicineModel.getRuleID(),
                 medicineModel.getDiscription(),
                 medicineModel.getName(),
                 medicineModel.getMedicineType()
