@@ -2,7 +2,12 @@ package medicheck.backend.Algoritmiek;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< Updated upstream
 import medicheck.backend.patient.HealthInformation;
+=======
+import lombok.Getter;
+import medicheck.backend.Logic.Models.Algorithm.SubRule;
+>>>>>>> Stashed changes
 
 public class MedicationRule {
 

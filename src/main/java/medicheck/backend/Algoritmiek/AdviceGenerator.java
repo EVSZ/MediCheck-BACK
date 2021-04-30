@@ -1,8 +1,13 @@
 package medicheck.backend.Algoritmiek;
 
+<<<<<<< Updated upstream
 import medicheck.backend.medicine.Medicine;
 import medicheck.backend.patient.Patient;
 import medicheck.backend.patient.PatientModel;
+=======
+import medicheck.backend.APIs.RequestModels.PatientModel;
+import medicheck.backend.Logic.Models.Algorithm.AlgorithmCommand;
+>>>>>>> Stashed changes
 
 import java.util.ArrayList;
 import java.util.List;
