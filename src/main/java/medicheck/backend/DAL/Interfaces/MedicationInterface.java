@@ -1,6 +1,8 @@
 package medicheck.backend.DAL.Interfaces;
 
 import medicheck.backend.DTO.MedicineDTO;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 public interface MedicationInterface
 {

@@ -9,10 +9,12 @@ import medicheck.backend.DAL.Interfaces.MedicationInterface;
 import medicheck.backend.DAL.Repos.MedicineRepo;
 import medicheck.backend.DTO.MedicineDTO;
 import medicheck.backend.DTO.SubRuleDTO;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MedicineDAL implements MedicationContainerInterface, MedicationInterface
 {
     MedicineRepo repo;
