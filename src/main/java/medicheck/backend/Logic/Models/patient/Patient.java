@@ -5,6 +5,7 @@ import lombok.Setter;
 import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.DAL.DataModels.PatientDataModel;
+import medicheck.backend.DTO.PatientDTO;
 import medicheck.backend.Logic.Models.Prescription.PrescriptionContainer;
 
 import java.time.LocalDate;
@@ -37,6 +38,13 @@ public class Patient
     }
 
     public Patient(PatientDataModel patient)
+    {
+        this.id = patient.getId();
+        this.name = patient.getName();
+        this.birthDate = patient.getBirthDate();
+        this.gender = patient.getGender();
+    }
+    public Patient(PatientDTO patient)
     {
         this.id = patient.getId();
         this.name = patient.getName();

@@ -1,4 +1,5 @@
 package medicheck.backend.Logic.Models.patient;
+import medicheck.backend.DAL.Interfaces.IPatientContainer;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -7,8 +8,16 @@ import java.util.List;
 public class PatientContainer {
 
     private List<Patient> patienten = new ArrayList<>();
+    IPatientContainer Interface;
 
-    public PatientContainer() {
+    public PatientContainer(IPatientContainer Inter)
+    {
+        Interface = Inter;
+    }
+
+    public Patient GetPatientByUsernameAndPassword(String Username, String Password)
+    {
+      return new Patient(Interface.GetInlogPatient(Username,Password));
     }
 
     public Patient GetPatientByNaam(String name){
@@ -39,7 +48,7 @@ public class PatientContainer {
         for (Patient element:
              patienten) {
             if(patient.getId().equals(element.getId())){
-                element.Update(patient);
+                element.Update();
 
             }
         }

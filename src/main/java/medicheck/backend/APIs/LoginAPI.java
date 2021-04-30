@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/Login")
 @CrossOrigin
-public class LoginAPI {
+public class LoginAPI
+{
     private final LoginService loginService;
 
     public LoginAPI(LoginService _loginService){

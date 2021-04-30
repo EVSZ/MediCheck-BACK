@@ -20,15 +20,9 @@ public class IPatientDAL implements IPatientContainer, IPatient
         repo = Repo;
     }
 
-    public List<PatientDTO> GetAllPatient()
+    public PatientDTO GetInlogPatient(String Username, String Password)
     {
-        List<PatientDataModel> patientDataModels = repo.findAll();
-        List<PatientDTO> PatientsDTO = new ArrayList<PatientDTO>();
-        for (PatientDataModel patient: patientDataModels)
-        {
-            PatientsDTO.add(new PatientDTO(patient));
-        }
-        return PatientsDTO;
+        return new PatientDTO(repo.FindByUsernameAndPassword(Username,Password));
     }
     public void SavePatient(PatientDTO patientDTO)
     {

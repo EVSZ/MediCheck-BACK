@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IPatientContainer
 {
-    public List<PatientDTO> GetAllPatient();
+    public PatientDTO GetInlogPatient(String Username, String Password);
 }
