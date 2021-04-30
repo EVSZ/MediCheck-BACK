@@ -1,22 +1,17 @@
 package medicheck.backend.DAL;
 
-import medicheck.backend.Algoritmiek.AlgorithmRepo;
-import medicheck.backend.Algoritmiek.Entities.SubRuleEntity;
-import medicheck.backend.Algoritmiek.Interface.SubRuleContainerInterface;
 import medicheck.backend.DAL.DataModels.MedicineDataModel;
-import medicheck.backend.DAL.Interfaces.MedicationContainerInterface;
-import medicheck.backend.DAL.Interfaces.MedicationInterface;
+import medicheck.backend.DAL.Interfaces.IMedicationContainer;
+import medicheck.backend.DAL.Interfaces.IMedication;
 import medicheck.backend.DAL.Repos.MedicineRepo;
 import medicheck.backend.DTO.MedicineDTO;
-import medicheck.backend.DTO.SubRuleDTO;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class MedicineDAL implements MedicationContainerInterface, MedicationInterface
+public class MedicineDAL implements IMedicationContainer, IMedication
 {
     MedicineRepo repo;
 

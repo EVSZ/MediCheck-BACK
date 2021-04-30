@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
+import medicheck.backend.DAL.DataModels.PatientDataModel;
 import medicheck.backend.Logic.Models.patient.Gender;
+import medicheck.backend.Logic.Models.patient.HealthInformation;
 import medicheck.backend.Logic.Models.patient.Patient;
 
 @Getter
@@ -13,23 +15,17 @@ public class PatientDTO
 {
     private Long id;
     private String name;
-    private Integer weight;
-    private Integer length;
-    private Boolean pregnant;
     private LocalDate birthDate;
     private Gender gender;
+    private HealthInformation healthInfo;
 
-    public PatientDTO(Long id, String naam,
-                      Integer gewicht, Integer lengte,
-                      Boolean zwanger,
-                      LocalDate birthDate, Gender gender) {
+    public PatientDTO(Long id, String naam, LocalDate birthDate, Gender gender, HealthInformation HealthInfo)
+    {
         this.id = id;
         this.name = naam;
-        this.weight = gewicht;
-        this.length = lengte;
-        this.pregnant = zwanger;
         this.birthDate = birthDate;
         this.gender = gender;
+        this.healthInfo = HealthInfo;
     }
 
 
@@ -37,10 +33,17 @@ public class PatientDTO
     {
         this.id = patient.getId();
         this.name = patient.getName();
-        this.weight = patient.getWeight();
-        this.length = patient.getLength();
-        this.pregnant = patient.getPregnant();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
+        this.healthInfo = patient.getHealthInfo();
+    }
+
+    public PatientDTO(PatientDataModel patient)
+    {
+        this.id = patient.getId();
+        this.name = patient.getName();
+        this.birthDate = patient.getBirthDate();
+        this.gender = patient.getGender();
+        this.healthInfo = patient.getHealthInfo();
     }
 }

@@ -1,10 +1,7 @@
 package medicheck.backend.Logic.Models.medicine;
 
-import medicheck.backend.Algoritmiek.Algorithm.SubRule;
-import medicheck.backend.DAL.Interfaces.MedicationContainerInterface;
+import medicheck.backend.DAL.Interfaces.IMedicationContainer;
 import medicheck.backend.DTO.MedicineDTO;
-import medicheck.backend.DTO.SubRuleDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,9 +11,9 @@ import java.util.List;
 public class MedicineContainer {
 
     private List<Medicine> medication = new ArrayList<>();
-    MedicationContainerInterface Interface;
+    IMedicationContainer Interface;
 
-    public MedicineContainer(MedicationContainerInterface Inter)
+    public MedicineContainer(IMedicationContainer Inter)
     {
         Interface = Inter;
     }

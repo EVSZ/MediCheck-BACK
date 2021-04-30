@@ -15,9 +15,6 @@ public class Patient
 {
     private Long id;
     private String name;
-    private Integer weight;
-    private Integer length;
-    private Boolean pregnant;
     private LocalDate birthDate;
     private Gender gender;
     private HealthInformation healthInfo;
@@ -28,13 +25,10 @@ public class Patient
 
     public Patient() { }
 
-    public Patient(Long id, String name, Integer weight, Integer length, Boolean pregnant, LocalDate birthDate, Gender gender, HealthInformation healthInfo, PrescriptionContainer prescriptions, int age)
+    public Patient(Long id, String name,LocalDate birthDate, Gender gender, HealthInformation healthInfo, PrescriptionContainer prescriptions, int age)
     {
         this.id = id;
         this.name = name;
-        this.weight = weight;
-        this.length = length;
-        this.pregnant = pregnant;
         this.birthDate = birthDate;
         this.gender = gender;
         this.healthInfo = healthInfo;
@@ -46,9 +40,6 @@ public class Patient
     {
         this.id = patient.getId();
         this.name = patient.getName();
-        this.weight = patient.getWeight();
-        this.length = patient.getLength();
-        this.pregnant = patient.getPregnant();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
     }
@@ -57,18 +48,11 @@ public class Patient
     {
         this.id = patient.getId();
         this.name = patient.getName();
-        this.weight = patient.getWeight();
-        this.length = patient.getLength();
-        this.pregnant = patient.getPregnant();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
     }
 
-    public void Update(Patient patient) {
-        this.name = patient.getName();
-        this.weight = patient.getWeight();
-        this.length = patient.getLength();
-    }
+    public void Update() { }
 
     public void Delete() { }
 
