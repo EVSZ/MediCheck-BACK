@@ -1,10 +1,13 @@
 package medicheck.backend.Converters;
 
-import medicheck.backend.DataModels.MedicineDataModel;
-import medicheck.backend.medicine.Medicine;
+import medicheck.backend.DAL.DataModels.MedicineDataModel;
+import medicheck.backend.Logic.Models.medicine.Medicine;
 
 public class MedicineConverter
 {
+    public MedicineConverter() {
+    }
+
     public MedicineDataModel convertToDataModel(Medicine medicine)
     {
         MedicineDataModel medicineDataModel = new MedicineDataModel();
@@ -14,4 +17,5 @@ public class MedicineConverter
         medicineDataModel.setMedicineType(medicine.getMedicineType());
         return medicineDataModel;
     }
+
 }

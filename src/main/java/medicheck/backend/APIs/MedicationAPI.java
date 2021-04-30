@@ -1,11 +1,10 @@
 package medicheck.backend.APIs;
 
-import medicheck.backend.Repos.MedicineRepo;
-import medicheck.backend.medicine.Medicine;
-import medicheck.backend.medicine.MedicineContainer;
-import medicheck.backend.medicine.MedicineModel;
-import medicheck.backend.medicine.MedicineType;
-import org.springframework.beans.factory.annotation.Autowired;
+import medicheck.backend.DAL.Repos.MedicineRepo;
+import medicheck.backend.Logic.Models.medicine.Medicine;
+import medicheck.backend.Logic.Models.medicine.MedicineContainer;
+import medicheck.backend.APIs.RequestModels.MedicineModel;
+import medicheck.backend.Logic.Models.medicine.MedicineType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class MedicationAPI
     private final MedicineContainer Medicines;
     private MedicineRepo Medicinerepo;
 
-    @Autowired
+
     public MedicationAPI(MedicineContainer container) {
         this.Medicines = container;
     }
@@ -26,20 +25,20 @@ public class MedicationAPI
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
     public void AddMedicine(@RequestBody MedicineModel medicine)
     {
-        new Medicine(medicine).Save(Medicinerepo);
+        //new Medicine(medicine).Save(Medicinerepo);
     }
 
     @DeleteMapping(value= "/DeleteMedicine", consumes = "application/json", produces = "application/json")
     public void DeleteMedicine(@RequestBody MedicineModel medicine)
     {
-        new Medicine(medicine).Delete(Medicinerepo);
+        //new Medicine(medicine).Delete(Medicinerepo);
     }
 
     @PutMapping(value="/PutMedicine", consumes="application/json",produces = "application/json")
     public String UpdateMedicine(@RequestBody MedicineModel medicinemodel)
     {
         try{
-            new Medicine(medicinemodel).Update(Medicinerepo);
+            //new Medicine(medicinemodel).Update(Medicinerepo);
             return "Patient is toegevoegd!";
         }
         catch(Exception e){

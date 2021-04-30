@@ -2,11 +2,10 @@ package medicheck.backend.DTO;
 
 import java.time.LocalDate;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import medicheck.backend.patient.Gender;
-import medicheck.backend.patient.Patient;
+import medicheck.backend.Logic.Models.patient.Gender;
+import medicheck.backend.Logic.Models.patient.Patient;
 
 @Getter
 @Setter

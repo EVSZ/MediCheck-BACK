@@ -1,6 +1,8 @@
 package medicheck.backend.Algoritmiek.Entities;
 
 import lombok.Getter;
+import medicheck.backend.Algoritmiek.AlgorithmCommand;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 

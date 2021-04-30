@@ -1,13 +1,9 @@
 package medicheck.backend.Converters;
 
-import lombok.Builder;
-import lombok.Getter;
-import medicheck.backend.DataModels.MedicineDataModel;
-import medicheck.backend.DataModels.PatientDataModel;
-import medicheck.backend.DataModels.PrescriptionDataModel;
-import medicheck.backend.Prescription.Prescription;
-import medicheck.backend.medicine.Medicine;
-import medicheck.backend.patient.Patient;
+import medicheck.backend.DAL.DataModels.PatientDataModel;
+import medicheck.backend.DAL.DataModels.PrescriptionDataModel;
+import medicheck.backend.Logic.Models.Prescription.Prescription;
+import medicheck.backend.Logic.Models.patient.Patient;
 
 import java.util.*;
 

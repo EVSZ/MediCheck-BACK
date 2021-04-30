@@ -1,8 +1,5 @@
 package medicheck.backend.Algoritmiek;
 
-import medicheck.backend.Logic.Models.Algorithm.AlgorithmCommand;
-import medicheck.backend.Logic.Models.Algorithm.SubRule;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +14,7 @@ public class MedicationRuleContainer
         subrules.add(new SubRule(1,4,6,6,false,new AlgorithmCommand("integer","clcr",">",10)));
         subrules.add(new SubRule(1,5,6,0,false,new AlgorithmCommand("integer","clcr",">",70)));
         subrules.add(new SubRule(1,6,true,true));
-        return new MedicationRule(1,subrules);
+        MedicationRule rule = new MedicationRule(1,subrules);
+        return rule;
     }
 }

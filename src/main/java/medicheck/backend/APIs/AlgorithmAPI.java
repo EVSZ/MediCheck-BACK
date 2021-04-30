@@ -1,7 +1,6 @@
 package medicheck.backend.APIs;
 
 //import medicheck.backend.Algoritmiek.AdviceGenerator;
-import medicheck.backend.patient.PatientModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

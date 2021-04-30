@@ -1,7 +1,7 @@
 package medicheck.backend.Converters;
 
-import medicheck.backend.DataModels.PrescriptionDataModel;
-import medicheck.backend.Prescription.Prescription;
+import medicheck.backend.DAL.DataModels.PrescriptionDataModel;
+import medicheck.backend.Logic.Models.Prescription.Prescription;
 
 public class PrescriptionConverter
 {
