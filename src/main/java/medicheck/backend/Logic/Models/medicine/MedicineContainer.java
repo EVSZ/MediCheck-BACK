@@ -49,7 +49,7 @@ public class MedicineContainer {
     public void MockMedicines(){
         List<Medicine> mockMedication = new ArrayList<>();
 
-        Medicine paracetemol = new Medicine("Niet voor de lol, paracetemol.", "Paracetemol", MedicineType.Pillen);
+        Medicine paracetemol = new Medicine("Niet voor de lol, paracetamol.", "Paracetamol", MedicineType.Pillen);
         Medicine hoestsiroop = new Medicine("It's only to cope, hoestsiroop", "Hoestdrank", MedicineType.Siroop);
         Medicine ibuprofen = new Medicine("Iets met een pen, ibuprofen", "Ibuprofen", MedicineType.Pillen);
 
