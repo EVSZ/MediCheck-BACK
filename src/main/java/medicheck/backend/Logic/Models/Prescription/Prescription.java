@@ -42,7 +42,6 @@ public class Prescription
     }
     public Prescription(PrescriptionDataModel prescriptionDataModel)
     {
-        this.medicine = new Medicine(prescriptionDataModel.getMedicine());
         this.doses = prescriptionDataModel.getDoses();
         this.TimePeriod = prescriptionDataModel.getTimePeriod();
         this.Id = prescriptionDataModel.getPrescriptionId();

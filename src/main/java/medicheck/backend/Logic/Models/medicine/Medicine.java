@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.APIs.RequestModels.MedicineModel;
 import medicheck.backend.DAL.DataModels.MedicineDataModel;
+import medicheck.backend.DTO.MedicineDTO;
 
 @Getter @Setter
 public class Medicine
@@ -16,9 +17,10 @@ public class Medicine
     private MedicineType medicineType;
     //private MedicineConverter converter = new MedicineConverter();
 
-    public Medicine(Long id, String discription, String name, MedicineType medicineType)
+    public Medicine(Long id, boolean HasRule, Long ruleID, String discription, String name, MedicineType medicineType)
     {
         this.id = id;
+        hasRule = HasRule;
         this.name = name;
         Discription = discription;
         this.medicineType = medicineType;
@@ -30,33 +32,23 @@ public class Medicine
         this.medicineType = medicineType;
     }
 
-    public Medicine(MedicineDataModel medicinedto)
-    {
-        this.id = medicinedto.getId();
-        this.name = medicinedto.getName();
-        Discription = medicinedto.getDiscription();
-        this.medicineType = medicinedto.getMedicineType();
-    }
-
     public Medicine(MedicineModel medicine)
     {
         this.id = medicine.getId();
+        this.hasRule = medicine.isHasRule();
+        this.ruleID = medicine.getRuleID();
         this.name = medicine.getName();
         Discription = medicine.getDiscription();
         this.medicineType = medicine.getMedicineType();
     }
 
-    /*public void Save(MedicineRepo repo)
+    public Medicine(MedicineDTO medicine)
     {
-        repo.save(converter.convertToDataModel(this));
+        this.id = medicine.getId();
+        this.hasRule = medicine.isHasRule();
+        this.ruleID = medicine.getRuleID();
+        this.name = medicine.getName();
+        Discription = medicine.getDiscription();
+        this.medicineType = medicine.getMedicineType();
     }
-    public void Delete(MedicineRepo repo)
-    {
-        repo.delete(converter.convertToDataModel(this));
-    }
-    public void Update(MedicineRepo repo)
-    {
-        repo.findById(this.id);
-        repo.save(converter.convertToDataModel(this));
-    }*/
 }

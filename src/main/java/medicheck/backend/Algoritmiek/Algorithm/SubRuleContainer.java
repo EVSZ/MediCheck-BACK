@@ -1,6 +1,5 @@
-package medicheck.backend.Logic.Models.Algorithm;
+package medicheck.backend.Algoritmiek.Algorithm;
 
-import medicheck.backend.Algoritmiek.Entities.SubRuleEntity;
 import medicheck.backend.Algoritmiek.Interface.SubRuleContainerInterface;
 import medicheck.backend.DTO.SubRuleDTO;
 
@@ -19,7 +18,7 @@ public class SubRuleContainer
 
     public List<SubRule> GetSubRulesByParentRule(long parentRule)
     {
-        List<SubRuleDTO> SubRuleDTO = Interface.GetSubRulesByParentRule(parentRule);
+        List<SubRuleDTO> SubRuleDTO = Interface.GetAllSubRules(parentRule);
         List<SubRule> SubRules = new ArrayList<SubRule>();
         for (SubRuleDTO SubRule: SubRuleDTO)
         {

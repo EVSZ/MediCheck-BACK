@@ -9,4 +9,6 @@ public class MedicineModel
     private String name;
     private String Discription;
     private MedicineType medicineType;
+    private boolean hasRule;
+    private Long ruleID;
 }

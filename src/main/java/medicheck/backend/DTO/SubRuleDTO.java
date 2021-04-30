@@ -3,7 +3,7 @@ package medicheck.backend.DTO;
 import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.Algoritmiek.Entities.SubRuleEntity;
-import medicheck.backend.Algoritmiek.SubRule;
+import medicheck.backend.Algoritmiek.Algorithm.SubRule;
 
 @Getter @Setter
 public class SubRuleDTO

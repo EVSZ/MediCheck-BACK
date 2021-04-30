@@ -1,4 +1,4 @@
-package medicheck.backend.Logic.Models.Algorithm;
+package medicheck.backend.Algoritmiek.Algorithm;
 
 import lombok.Getter;
 import lombok.Setter;

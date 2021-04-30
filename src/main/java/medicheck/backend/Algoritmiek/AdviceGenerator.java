@@ -1,6 +1,8 @@
 package medicheck.backend.Algoritmiek;
 
 import medicheck.backend.APIs.RequestModels.PatientModel;
+import medicheck.backend.Algoritmiek.Algorithm.AlgorithmCommand;
+import medicheck.backend.Algoritmiek.Algorithm.SubRule;
 
 import java.util.ArrayList;
 import java.util.List;

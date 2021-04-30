@@ -2,8 +2,8 @@ package medicheck.backend.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
-import medicheck.backend.Algoritmiek.AlgorithmCommand;
 import medicheck.backend.Algoritmiek.Entities.AlgorithmCommandEntity;
+import medicheck.backend.Algoritmiek.Algorithm.AlgorithmCommand;
 
 @Getter @Setter
 public class AlgorithmCommandDTO

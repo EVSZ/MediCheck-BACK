@@ -1,5 +1,6 @@
 package medicheck.backend.APIs;
 
+import medicheck.backend.DAL.MedicineDAL;
 import medicheck.backend.DAL.Repos.MedicineRepo;
 import medicheck.backend.Logic.Models.medicine.Medicine;
 import medicheck.backend.Logic.Models.medicine.MedicineContainer;
@@ -15,11 +16,10 @@ import java.util.List;
 public class MedicationAPI
 {
     private final MedicineContainer Medicines;
-    private MedicineRepo Medicinerepo;
 
-
-    public MedicationAPI(MedicineContainer container) {
-        this.Medicines = container;
+    public MedicationAPI()
+    {
+        Medicines = new MedicineContainer(new MedicineDAL());
     }
 
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
