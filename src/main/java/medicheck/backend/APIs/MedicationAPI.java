@@ -17,9 +17,9 @@ public class MedicationAPI
 {
     private final MedicineContainer Medicines;
 
-    public MedicationAPI()
+    public MedicationAPI(MedicineContainer container)
     {
-        Medicines = new MedicineContainer(new MedicineDAL());
+        Medicines = container;
     }
 
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
