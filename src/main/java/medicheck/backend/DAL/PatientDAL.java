@@ -17,14 +17,19 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 {
     PatientRepo repo;
 
-    public PatientDAL(PatientRepo Repo)
+    public PatientDAL(PatientRepo repo)
     {
-        repo = Repo;
+
     }
 
     public PatientDTO GetInlogPatient(String Username, String Password)
     {
         return new PatientDTO(repo.FindByUsernameAndPassword(Username,Password));
+    }
+
+    public PatientDTO GetPatient(long patientID)
+    {
+        return new PatientDTO(repo.getOne(patientID));
     }
 
     public void SavePatient(PatientDTO patientDTO)

@@ -1,6 +1,7 @@
 package medicheck.backend.APIs;
 
 //import medicheck.backend.Algoritmiek.AdviceGenerator;
+import medicheck.backend.Algoritmiek.AdviceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,15 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("algorithm")
 public class AlgorithmAPI {
 
-    @Autowired
-    public AlgorithmAPI() {}
+    private final AdviceGenerator adviceGenerator;
+
+    public AlgorithmAPI(AdviceGenerator adviceGenerator) {
+        this.adviceGenerator = adviceGenerator;
+    }
 
     @GetMapping("/getAdvice")
-    public String GetAdvise()
+    public String GetAdvice()
     {
-        /*AdviceGenerator adviceGenerator = new AdviceGenerator();
 
-        return adviceGenerator.GetAdvice(patient);*/
+        //return adviceGenerator.GenerateAdvice();
         return "Request recieved";
     }
 

@@ -4,14 +4,15 @@ import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.Algoritmiek.Algorithm.AlgorithmCommand;
 import medicheck.backend.Algoritmiek.Algorithm.SubRule;
 import medicheck.backend.Algoritmiek.Algorithm.SubRuleContainer;
-import medicheck.backend.DAL.IPatientDAL;
+import medicheck.backend.DAL.PatientDAL;
 import medicheck.backend.Logic.Models.medicine.Medicine;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Models.patient.PatientContainer;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class AdviceGenerator
 {
 
@@ -20,19 +21,19 @@ public class AdviceGenerator
     CommandTranslator translator;
     List<MedicationRule> rulesToCheck;
     Patient patient;
+    PatientContainer container;
 
 
-    public AdviceGenerator()
+    public AdviceGenerator(PatientContainer container)
     {
+        this.container = container;
         ruleSelector= new RuleSelector();
         translator = new CommandTranslator();
         rulesToCheck = new ArrayList<>();
     }
 
-
     public boolean GenerateAdvice(List<Medicine> medication, long patientID)
     {
-        PatientContainer container = new PatientContainer(new IPatientDAL);
         patient = container.GetPatientByID(patientID);
         boolean result = false;
         boolean finished = false;
