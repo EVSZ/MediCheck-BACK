@@ -14,6 +14,9 @@ import medicheck.backend.Logic.Models.patient.Patient;
 public class PatientDTO
 {
     private Long id;
+    private String Username;
+    private String Password;
+    private String EmailAddress;
     private String name;
     private LocalDate birthDate;
     private Gender gender;

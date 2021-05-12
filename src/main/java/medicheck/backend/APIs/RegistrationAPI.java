@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/register")
 @CrossOrigin
-public class RegistrationAPI {
+public class RegistrationAPI
+{
     private RegistrationService registrationService;
 
     public RegistrationAPI(RegistrationService registrationService) {
@@ -15,7 +16,8 @@ public class RegistrationAPI {
     }
 
     @PostMapping(value="/post/accountInfo", consumes = "application/json", produces = "application/json")
-    public boolean register(@RequestBody AccountInfo info){
+    public boolean register(@RequestBody AccountInfo info)
+    {
         return registrationService.register(info);
     }
 }
