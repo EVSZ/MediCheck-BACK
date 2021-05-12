@@ -2,11 +2,16 @@ package medicheck.backend.Logic.Models.patient;
 
 import lombok.Getter;
 import lombok.Setter;
+import medicheck.backend.APIs.RequestModels.AccountInfo;
 import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.DAL.DataModels.PatientDataModel;
+import medicheck.backend.DAL.Interfaces.IAuthentication;
+import medicheck.backend.DAL.Interfaces.IPatient;
+import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
 import medicheck.backend.Logic.Models.Prescription.PrescriptionContainer;
+import org.apache.catalina.User;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -15,6 +20,9 @@ import java.time.Period;
 public class Patient
 {
     private Long id;
+    private String Username;
+    private String Password;
+    private String EmailAddress;
     private String name;
     private LocalDate birthDate;
     private Gender gender;
@@ -26,17 +34,6 @@ public class Patient
 
     public Patient() { }
 
-    public Patient(Long id, String name,LocalDate birthDate, Gender gender, HealthInformation healthInfo, PrescriptionContainer prescriptions, int age)
-    {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.healthInfo = healthInfo;
-        this.Prescriptions = prescriptions;
-        this.age = age;
-    }
-
     public Patient(PatientDataModel patient)
     {
         this.id = patient.getId();
@@ -47,6 +44,9 @@ public class Patient
     public Patient(PatientDTO patient)
     {
         this.id = patient.getId();
+        this.Username = patient.getUsername();
+        this.Password = patient.getPassword();
+        this.EmailAddress = patient.getEmailAddress();
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
@@ -60,6 +60,17 @@ public class Patient
         this.gender = patient.getGender();
     }
 
+    public Patient(AccountInfo info)
+    {
+        this.Username = info.getUsername();
+        this.Password = info.getPassword();
+        this.EmailAddress = info.getEmail();
+    }
+
+    public void RegisterPatient(IAuthentication authentication)
+    {
+        authentication.RegisterPatient(new AccountDTO(this));
+    }
     public void Update() { }
 
     public void Delete() { }

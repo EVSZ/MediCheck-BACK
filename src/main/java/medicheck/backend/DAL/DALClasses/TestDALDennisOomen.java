@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class TestDALDennisOomen implements ITestDALDennisOomen {
 
     public AccountDTO getAccountInfoByName(String username) throws Exception {
-        AccountDTO account = new AccountDTO("test", "testpassword", "test@test.test") ;
+        AccountDTO account = new AccountDTO(new AccountInfo("test", "testpassword", "test@test.test")) ;
         if(account.getUsername().equals(username)){
             return account;
         }

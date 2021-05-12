@@ -23,10 +23,10 @@ public class PatientConverter
         patientModel.setId(patient.getId());
         patientModel.setAge(patient.getAge());
         patientModel.setBirthDate(patient.getBirthDate());
-        patientModel.setLength(patient.getLength());
-        patientModel.setWeight(patient.getWeight());
+        patientModel.getHealthInfo().setLength(patient.getHealthInfo().getLength());
+        patientModel.getHealthInfo().setWeight(patient.getHealthInfo().getWeight());
         patientModel.setName(patient.getName());
-        patientModel.setPregnant(patient.getPregnant());
+        patientModel.getHealthInfo().setPregnant(patient.getHealthInfo().getPregnant());
         patientModel.setPrescriptions(prescriptions);
 
         return patientModel;
