@@ -61,6 +61,7 @@ public class PatientDataModel
     }
     public PatientDataModel(AccountDTO patient)
     {
+        healthInfo = new HealthInformation();
         Username = patient.getUsername();
         Password = patient.getPassword();
         EmailAddress = patient.getEmail();

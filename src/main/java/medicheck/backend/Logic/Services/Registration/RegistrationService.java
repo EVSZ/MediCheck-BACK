@@ -16,12 +16,7 @@ public class RegistrationService {
     }
 
     public boolean register(AccountInfo info){
-        try{
             dal.RegisterPatient(new AccountDTO(info));
             return true;
-        }
-        catch(Exception ex){
-            return false;
-        }
     }
 }
