@@ -1,17 +1,24 @@
 package medicheck.backend.Algoritmiek;
 
+import medicheck.backend.Logic.Models.medicine.Medicine;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RuleSelector {
 
-    public List<Long> CheckForRules(List<TestMedicine> medication){
+    public List<Long> CheckForRules(List<Medicine> medication){
         List<Long> selectedRules = new ArrayList<>();
-        for (TestMedicine medicine : medication)
+
+        for (Medicine medicine : medication)
         {
-            if (medicine.hasMedicationRule)
+            if (medicine.isHasRule())
             {
-                selectedRules.add(medicine.medicationRuleNumber);
+                long ruleID = medicine.getRuleID();
+                if (!selectedRules.contains(ruleID))
+                {
+                    selectedRules.add(ruleID);
+                }
             }
         }
         return selectedRules;

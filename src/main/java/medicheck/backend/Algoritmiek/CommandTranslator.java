@@ -1,5 +1,7 @@
 package medicheck.backend.Algoritmiek;
 
+import medicheck.backend.Logic.Models.patient.Patient;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -25,24 +27,25 @@ public class CommandTranslator
         return 0;
     }
 
-    public int TranslateCommandVariableToInteger(String commandVariable, TestPatient patient)
+    public int TranslateCommandVariableToInteger(String commandVariable, Patient patient)
     {
         switch (commandVariable)
         {
             case "clcr":
-                return patient.clcr;
+                return patient.getHealthInfo().clcr;
             case "lastclcr":
-                return CalculateTimeDifference(patient.lastClcr);
+                return CalculateTimeDifference(patient.getHealthInfo().lastclcr);
             case "age":
-                return patient.age;
+                return patient.getAge();
         }
         return 0;
     }
 
-    public boolean TranslateLogicalTest(String commandVariable, TestPatient patient){
-        switch(commandVariable){
+    public boolean TranslateLogicalTest(String commandVariable, Patient patient){
+        switch(commandVariable)
+        {
             case "isclcrknown":
-                return patient.lastClcr != null;
+                return patient.getHealthInfo().lastclcr != null;
         }
         return false;
     }

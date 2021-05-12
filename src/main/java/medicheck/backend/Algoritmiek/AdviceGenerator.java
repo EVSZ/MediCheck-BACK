@@ -3,6 +3,11 @@ package medicheck.backend.Algoritmiek;
 import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.Algoritmiek.Algorithm.AlgorithmCommand;
 import medicheck.backend.Algoritmiek.Algorithm.SubRule;
+import medicheck.backend.Algoritmiek.Algorithm.SubRuleContainer;
+import medicheck.backend.DAL.IPatientDAL;
+import medicheck.backend.Logic.Models.medicine.Medicine;
+import medicheck.backend.Logic.Models.patient.Patient;
+import medicheck.backend.Logic.Models.patient.PatientContainer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +19,7 @@ public class AdviceGenerator
     RuleSelector ruleSelector;
     CommandTranslator translator;
     List<MedicationRule> rulesToCheck;
-    MedicationRuleContainer container;
-    TestPatient patient;
+    Patient patient;
 
 
     public AdviceGenerator()
@@ -23,32 +27,42 @@ public class AdviceGenerator
         ruleSelector= new RuleSelector();
         translator = new CommandTranslator();
         rulesToCheck = new ArrayList<>();
-        container = new MedicationRuleContainer();
     }
 
 
-    public boolean GenerateAdvice(TestPatient testPatient)
+    public boolean GenerateAdvice(List<Medicine> medication, long patientID)
     {
-        patient = testPatient;
-        rulesToCheck.add(container.GetMedicationRule());
-        //RetrieveMedicationRules(ruleSelector.CheckForRules(patient.medication));
+        PatientContainer container = new PatientContainer(new IPatientDAL);
+        patient = container.GetPatientByID(patientID);
+        boolean result = false;
+        boolean finished = false;
+
+        RetrieveMedicationRules(ruleSelector.CheckForRules(medication));
         for (MedicationRule rule : rulesToCheck)
         {
-            for (int i = 1; i < rule.subRules.size();)
+            for (int i = 1; i < rule.subRules.size(); )
             {
-                if (rule.subRules.get(i).isResult){
-                    return rule.subRules.get(i).result;
+                if (rule.subRules.get(i).isResult)
+                {
+                    result = rule.subRules.get(i).result;
+                    finished = true;
+                    break;
                 }
-                if(ExecuteCommand(rule.subRules.get(i).command)){
+                if (ExecuteCommand(rule.subRules.get(i).command))
+                {
                     i = rule.subRules.get(i).ifTrue;
-                }
-                else i = rule.subRules.get(i).ifFalse;
+                } else
+                    i = rule.subRules.get(i).ifFalse;
             }
+            if (finished)
+                break;
 
         }
-        return false;
+        return result;
     }
-    public boolean ExecuteCommand(AlgorithmCommand command){
+
+    public boolean ExecuteCommand(AlgorithmCommand command)
+    {
 
         switch (translator.TranslateCommandType(command.commandType))
         {
@@ -61,11 +75,13 @@ public class AdviceGenerator
         return false;
 
     }
-    public boolean LogicalTest(AlgorithmCommand command){
+    public boolean LogicalTest(AlgorithmCommand command)
+    {
         return translator.TranslateLogicalTest(command.variableToCheck, patient);
     }
 
-    public boolean CompareInteger(AlgorithmCommand command){
+    public boolean CompareInteger(AlgorithmCommand command)
+    {
         int integerToCompare = translator.TranslateCommandVariableToInteger(command.variableToCheck, patient);
         switch (translator.TranslateConstraint(command.constraint)){
             case 1:
@@ -82,21 +98,16 @@ public class AdviceGenerator
         }
         return false;
     }
-    public String TestAdvice(){
-        return "boterham";
-    }
-    public String GetAdvice(PatientModel patient)
-    {
-        String advice = "";
 
-        return advice;
-    }
-    public void RetrieveMedicationRules(List<Long> ruleNumbers){
-    for (Long ruleNumber : ruleNumbers)
+    public void RetrieveMedicationRules(List<Long> ruleNumbers)
     {
-        rulesToCheck.add(container.GetMedicationRule());
+        SubRuleContainer subRuleContainer = new SubRuleContainer(new AlgorithmDAL());
+        for (Long ruleNumber : ruleNumbers)
+        {
+            MedicationRule medRule = new MedicationRule(ruleNumber, subRuleContainer.GetSubRulesByParentRule(ruleNumber));
+            rulesToCheck.add(medRule);
+        }
     }
-}
 
 
 
