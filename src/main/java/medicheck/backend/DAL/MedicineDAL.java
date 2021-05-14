@@ -27,21 +27,18 @@ public class MedicineDAL implements IMedicationContainer, IMedication
 
         TypedQuery<MedicineDataModel> tq = manager.createQuery(strQuery, MedicineDataModel.class);
 
-        try
+        List<MedicineDTO> medlist = new ArrayList<>();
+        List<MedicineDataModel> dinglijst = tq.getResultList();
+        for (MedicineDataModel model: dinglijst)
         {
-            return converter.ConvertListMedicineToListMedicineDTO(tq.getResultList());
+          medlist.add(new MedicineDTO(model));
         }
-        catch (Exception ex)
-        {
-            return null;
-        }
-        finally
-        {
+
             if(manager.isOpen())
             {
                 manager.close();
             }
-        }
+        return medlist;
     }
     public void SaveMedicine(MedicineDTO medicineDTO)
     {

@@ -3,9 +3,11 @@ package medicheck.backend;
 import medicheck.backend.Algoritmiek.AdviceGenerator;
 import medicheck.backend.Algoritmiek.TestMedicine;
 import medicheck.backend.Algoritmiek.TestPatient;
+import medicheck.backend.DAL.MedicineDAL;
 import medicheck.backend.DAL.PatientDAL;
 import medicheck.backend.DAL.Repos.PatientRepo;
 import medicheck.backend.Logic.Models.medicine.Medicine;
+import medicheck.backend.Logic.Models.medicine.MedicineContainer;
 import medicheck.backend.Logic.Models.medicine.MedicineType;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Models.patient.PatientContainer;
@@ -61,6 +63,13 @@ class AlgorithmTest
         medication.add(new Medicine(medid, true, ruleid3, "Cotrimoxazol", "Hello", MedicineType.Pillen));
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
         Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
+    }
+
+    @Test
+    public void GetMedstest(){
+        MedicineContainer container = new MedicineContainer(new MedicineDAL());
+        List<Medicine> medlist = container.GetAllMedicines();
+        medlist.size();
     }
 
 

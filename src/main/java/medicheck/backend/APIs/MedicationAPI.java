@@ -8,6 +8,7 @@ import medicheck.backend.APIs.RequestModels.MedicineModel;
 import medicheck.backend.Logic.Models.medicine.MedicineType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -15,11 +16,11 @@ import java.util.List;
 @CrossOrigin
 public class MedicationAPI
 {
-    private final MedicineContainer Medicines;
+    private MedicineContainer Medicines;
 
-    public MedicationAPI(MedicineContainer container)
+    public MedicationAPI()
     {
-        Medicines = container;
+
     }
 
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
@@ -60,7 +61,9 @@ public class MedicationAPI
     @GetMapping("/getAll")
     public List<Medicine> GetMedicines()
     {
-        return Medicines.GetAllMedicines();
+        Medicines = new MedicineContainer(new MedicineDAL());
+        List<Medicine> medication = Medicines.GetAllMedicines();
+        return medication;
     }
 
 }
