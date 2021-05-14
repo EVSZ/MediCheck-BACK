@@ -27,10 +27,10 @@ public class PatientContainer {
         }
         throw new ArithmeticException("De patient is niet gevonden!");
     }
-
     public Patient GetPatientByID(Long id){
         return new Patient(Interface.GetPatient(id));
         //throw new ArithmeticException("De patient is niet gevonden!");
+
     }
 
     public void SavePatient(Patient patient){

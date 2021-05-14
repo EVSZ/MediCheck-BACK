@@ -1,6 +1,7 @@
 package medicheck.backend.APIs;
 
 //import medicheck.backend.Algoritmiek.AdviceGenerator;
+import medicheck.backend.APIs.RequestModels.MedicationListInfo;
 import medicheck.backend.Algoritmiek.AdviceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,9 @@ public class AlgorithmAPI {
     }
 
     @GetMapping("/getAdvice")
-    public String GetAdvice()
+    public boolean GetAdvice(@RequestBody MedicationListInfo info)
     {
-
-        //return adviceGenerator.GenerateAdvice();
-        return "Request recieved";
+        return info.getMedicines().size() > 0;
     }
 
 }
