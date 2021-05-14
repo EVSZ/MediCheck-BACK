@@ -43,6 +43,7 @@ public class SubRule
         this.ifTrue = SubRule.getIfTrue();
         this.ifFalse = SubRule.getIfFalse();
         this.isResult = SubRule.isResult();
+        this.result = SubRule.isResult();
         this.command = new AlgorithmCommand(SubRule.getCommand());
     }
 }

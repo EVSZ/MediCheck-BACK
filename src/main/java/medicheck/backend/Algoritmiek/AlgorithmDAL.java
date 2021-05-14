@@ -15,14 +15,14 @@ public class AlgorithmDAL implements SubRuleContainerInterface
     EntityTransaction transaction;
     EntityManager manager  = factory.createEntityManager();
 
-    public List<SubRuleDTO> GetAllSubRules(long parentRule)
+    public List<SubRuleDTO> GetAllSubRules(Long parentRule)
     {
         manager = factory.createEntityManager();
         String query = "SELECT subrule FROM SubRuleEntity subrule WHERE subrule.parentRule = :id";
         SubRuleEntityListTOSubRuleDTOList ListConverter = new SubRuleEntityListTOSubRuleDTOList();
 
         TypedQuery<SubRuleEntity> tq = manager.createQuery(query, SubRuleEntity.class);
-        tq.setParameter("id",parentRule);
+        tq.setParameter("id",parentRule.intValue());
         try
         {
             return ListConverter.ConvertListSubRuleToListSubRuleDTO(tq.getResultList());

@@ -44,6 +44,7 @@ public class CommandTranslator
     public boolean TranslateLogicalTest(String commandVariable, Patient patient){
         switch(commandVariable)
         {
+
             case "isclcrknown":
                 return patient.getHealthInfo().lastclcr != null;
         }

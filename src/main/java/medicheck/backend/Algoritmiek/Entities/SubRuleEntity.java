@@ -1,13 +1,14 @@
 package medicheck.backend.Algoritmiek.Entities;
 
 import lombok.Getter;
+import medicheck.backend.DAL.DataModels.PatientDataModel;
 
 import javax.persistence.*;
 
 @Entity @Getter
 @NamedNativeQuery(
         name="SubRuleEntity.FindByParentRule",
-        query = "SELECT * FROM sub_rule_entity WHERE parentRule = ?",
+        query = "SELECT * FROM Sub WHERE parentRule = ?",
         resultClass = SubRuleEntity.class
 )
 public class SubRuleEntity
@@ -36,5 +37,5 @@ public class SubRuleEntity
 
     @ManyToOne
     @JoinColumn
-    AlgorithmCommandEntity Command;
+    AlgorithmCommandEntity Command = new AlgorithmCommandEntity();
 }

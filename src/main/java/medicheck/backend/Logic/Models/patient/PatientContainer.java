@@ -29,11 +29,8 @@ public class PatientContainer {
     }
 
     public Patient GetPatientByID(Long id){
-        for (Patient patient:
-             patienten) {
-            if(patient.getId().equals(id)) return patient;
-        }
-        throw new ArithmeticException("De patient is niet gevonden!");
+        return new Patient(Interface.GetPatient(id));
+        //throw new ArithmeticException("De patient is niet gevonden!");
     }
 
     public void SavePatient(Patient patient){

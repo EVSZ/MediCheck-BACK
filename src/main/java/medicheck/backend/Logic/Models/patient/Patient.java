@@ -40,6 +40,7 @@ public class Patient
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
+        this.healthInfo = patient.getHealthInfo();
     }
     public Patient(PatientDTO patient)
     {
@@ -50,6 +51,7 @@ public class Patient
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
+        this.healthInfo = new HealthInformation(patient.getHealthInfo());
     }
 
     public Patient(PatientModel patient)
