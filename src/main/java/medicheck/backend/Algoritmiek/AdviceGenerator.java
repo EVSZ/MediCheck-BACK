@@ -8,6 +8,7 @@ import medicheck.backend.DAL.PatientDAL;
 import medicheck.backend.Logic.Models.medicine.Medicine;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Models.patient.PatientContainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class AdviceGenerator
     List<MedicationRule> rulesToCheck;
     Patient patient;
     PatientContainer container;
+    @Autowired
+    AlgorithmRepo repo;
 
 
     public AdviceGenerator(PatientContainer container)
@@ -102,7 +105,7 @@ public class AdviceGenerator
 
     public void RetrieveMedicationRules(List<Long> ruleNumbers)
     {
-        SubRuleContainer subRuleContainer = new SubRuleContainer(new AlgorithmDAL());
+        SubRuleContainer subRuleContainer = new SubRuleContainer(new AlgorithmDAL(repo));
         for (Long ruleNumber : ruleNumbers)
         {
             MedicationRule medRule = new MedicationRule(ruleNumber, subRuleContainer.GetSubRulesByParentRule(ruleNumber));

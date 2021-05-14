@@ -7,6 +7,8 @@ import medicheck.backend.DAL.Interfaces.IPatient;
 import medicheck.backend.DAL.Repos.PatientRepo;
 import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,11 +17,12 @@ import java.util.List;
 @Component
 public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 {
-    PatientRepo repo;
 
+    PatientRepo repo;
+    @Autowired
     public PatientDAL(PatientRepo repo)
     {
-
+        this.repo = repo;
     }
 
     public PatientDTO GetInlogPatient(String Username, String Password)
@@ -29,7 +32,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public PatientDTO GetPatient(long patientID)
     {
-        return new PatientDTO(repo.getOne(patientID));
+        return new PatientDTO(repo.findById(patientID));
     }
 
     public void SavePatient(PatientDTO patientDTO)

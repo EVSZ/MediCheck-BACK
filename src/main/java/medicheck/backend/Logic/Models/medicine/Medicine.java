@@ -24,6 +24,7 @@ public class Medicine
         this.name = name;
         Discription = discription;
         this.medicineType = medicineType;
+        this.ruleID = ruleID;
     }
     public Medicine(String discription, String name, MedicineType medicineType)
     {

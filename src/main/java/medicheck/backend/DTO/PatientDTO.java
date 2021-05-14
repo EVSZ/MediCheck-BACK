@@ -1,6 +1,7 @@
 package medicheck.backend.DTO;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -48,5 +49,15 @@ public class PatientDTO
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
         this.healthInfo = patient.getHealthInfo();
+    }
+
+    public PatientDTO(Optional<PatientDataModel> byId)
+    {
+        this.id = byId.get().getId();
+        this.name = byId.get().getName();
+        this.birthDate = byId.get().getBirthDate();
+        this.gender = byId.get().getGender();
+        this.healthInfo = byId.get().getHealthInfo();
+
     }
 }

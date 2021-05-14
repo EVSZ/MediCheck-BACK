@@ -29,6 +29,7 @@ public class PatientContainer {
     }
 
     public Patient GetPatientByID(Long id){
+        patienten.add(new Patient(Interface.GetPatient(id)));
         for (Patient patient:
              patienten) {
             if(patient.getId().equals(id)) return patient;

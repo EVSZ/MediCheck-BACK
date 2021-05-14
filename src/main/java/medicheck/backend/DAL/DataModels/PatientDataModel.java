@@ -8,6 +8,7 @@ import medicheck.backend.Logic.Models.patient.Gender;
 import medicheck.backend.Logic.Models.patient.HealthInformation;
 import medicheck.backend.Logic.Models.patient.Patient;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ import java.util.List;
         query = "SELECT * FROM PatientDataModel WHERE username = ? AND password = ?",
         resultClass = PatientDataModel.class
 )
+@Lazy()
 public class PatientDataModel
 {
     @Id

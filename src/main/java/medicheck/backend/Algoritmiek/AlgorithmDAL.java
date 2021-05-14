@@ -3,6 +3,7 @@ package medicheck.backend.Algoritmiek;
 import medicheck.backend.Algoritmiek.Entities.SubRuleEntity;
 import medicheck.backend.Algoritmiek.Interface.SubRuleContainerInterface;
 import medicheck.backend.DTO.SubRuleDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,12 @@ import java.util.List;
 public class AlgorithmDAL implements SubRuleContainerInterface
 {
     AlgorithmRepo repo;
+
+    @Autowired
+    public AlgorithmDAL(AlgorithmRepo repo)
+    {
+        this.repo = repo;
+    }
 
     public List<SubRuleDTO> GetAllSubRules(long parentRule)
     {
