@@ -28,7 +28,7 @@ public class PatientContainer {
         throw new ArithmeticException("De patient is niet gevonden!");
     }
 
-    public Patient GetPatientByID(Long id){
+    public Patient GetPatientByID(Long id) {
         for (Patient patient:
              patienten) {
             if(patient.getId().equals(id)) return patient;
