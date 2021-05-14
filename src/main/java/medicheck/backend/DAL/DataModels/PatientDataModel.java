@@ -44,7 +44,7 @@ public class PatientDataModel
     private Gender gender;
 
     @Embedded
-    private HealthInformation healthInfo;
+    private HealthInformation healthInfo = new HealthInformation();
 
     private int age;
 
@@ -59,7 +59,7 @@ public class PatientDataModel
         name = patient.getName();
         birthDate = patient.getBirthDate();
         gender = patient.getGender();
-        healthInfo = patient.getHealthInfo();
+        healthInfo = new HealthInformation(patient.getHealthInfo());
     }
     public PatientDataModel(AccountDTO patient)
     {

@@ -1,27 +1,19 @@
-package medicheck.backend.Logic.Models.patient;
+package medicheck.backend.DTO;
 
 import lombok.Getter;
-import lombok.Setter;
-import medicheck.backend.DTO.HealthInformationDTO;
+import medicheck.backend.Logic.Models.patient.HealthInformation;
 
-import javax.persistence.Embeddable;
 import java.time.LocalDate;
-
-@Embeddable @Getter @Setter
-public class HealthInformation {
-
-
+@Getter
+public class HealthInformationDTO
+{
     public int clcr;
     public LocalDate lastclcr;
     private Integer weight;
     private Integer length;
     private Boolean pregnant;
 
-    public HealthInformation() {
-
-    }
-
-    public HealthInformation(HealthInformationDTO healthInfo)
+    public HealthInformationDTO(HealthInformation healthInfo)
     {
         this.clcr = healthInfo.getClcr();
         this.lastclcr = healthInfo.getLastclcr();

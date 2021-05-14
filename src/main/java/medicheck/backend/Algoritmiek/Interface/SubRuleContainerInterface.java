@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SubRuleContainerInterface
 {
-    public List<SubRuleDTO> GetAllSubRules(long parentRule);
+    public List<SubRuleDTO> GetAllSubRules(Long parentRule);
 }

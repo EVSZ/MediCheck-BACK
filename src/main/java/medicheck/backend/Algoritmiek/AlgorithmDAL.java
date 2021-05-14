@@ -2,31 +2,43 @@ package medicheck.backend.Algoritmiek;
 
 import medicheck.backend.Algoritmiek.Entities.SubRuleEntity;
 import medicheck.backend.Algoritmiek.Interface.SubRuleContainerInterface;
+import medicheck.backend.DAL.ListConverters.SubRuleEntityListTOSubRuleDTOList;
 import medicheck.backend.DTO.SubRuleDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AlgorithmDAL implements SubRuleContainerInterface
 {
-    AlgorithmRepo repo;
+    static EntityManagerFactory factory = Persistence.createEntityManagerFactory("MediCheck-BACK");
+    EntityTransaction transaction;
+    EntityManager manager  = factory.createEntityManager();
 
-    @Autowired
-    public AlgorithmDAL(AlgorithmRepo repo)
+    public List<SubRuleDTO> GetAllSubRules(Long parentRule)
     {
-        this.repo = repo;
-    }
+        manager = factory.createEntityManager();
+        String query = "SELECT subrule FROM SubRuleEntity subrule WHERE subrule.parentRule = :id";
+        SubRuleEntityListTOSubRuleDTOList ListConverter = new SubRuleEntityListTOSubRuleDTOList();
 
-    public List<SubRuleDTO> GetAllSubRules(long parentRule)
-    {
-        List<SubRuleEntity> SubRulesEntitys = repo.FindByParentRule(parentRule);
-        List<SubRuleDTO> SubRules = new ArrayList<SubRuleDTO>();
-        for (SubRuleEntity SubRule: SubRulesEntitys)
+        TypedQuery<SubRuleEntity> tq = manager.createQuery(query, SubRuleEntity.class);
+        tq.setParameter("id",parentRule.intValue());
+        try
         {
-            SubRules.add(new SubRuleDTO(SubRule));
+            return ListConverter.ConvertListSubRuleToListSubRuleDTO(tq.getResultList());
         }
-        return SubRules;
+        catch (NoResultException ex)
+        {
+            System.out.println("ex");
+            return null;
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+        }
     }
 
 }

@@ -30,21 +30,37 @@ class AlgorithmTest
     LocalDate birthday2;
     boolean expectedResult = false;
     long medid = 18;
-    long ruleid = 1;
-    long patientID = 17;
+    long ruleid1 = 1;
+    long ruleid2 = 2;
+    long ruleid3 = 3;
+    long patientID = 5;
 
-    @Autowired
-    PatientRepo patientRepo;
 
     @Before("")
     public void init(){MockitoAnnotations.openMocks(this);}
 
     @Test
-    public void testAlgorithm(){
-        medication.add(new Medicine(medid,true,ruleid,"Nitrofurantoine","Hello", MedicineType.Pillen));
-        AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL(patientRepo)));
-        Assertions.assertTrue(generator.GenerateAdvice(medication ,patientID));
+    public void testAlgorithmrule1()
+    {
+        medication.add(new Medicine(medid, true, ruleid1, "Nitrofurantoine", "Hello", MedicineType.Pillen));
+        AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
+        Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
+    }
 
+    @Test
+    public void testAlgorithmrule2()
+    {
+        medication.add(new Medicine(medid, true, ruleid2, "Norfloxacine", "Hello", MedicineType.Pillen));
+        AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
+        Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
+    }
+
+    @Test
+    public void testAlgorithmrule3()
+    {
+        medication.add(new Medicine(medid, true, ruleid3, "Cotrimoxazol", "Hello", MedicineType.Pillen));
+        AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
+        Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
     }
 
 

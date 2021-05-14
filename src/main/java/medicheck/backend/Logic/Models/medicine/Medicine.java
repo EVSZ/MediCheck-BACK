@@ -20,6 +20,7 @@ public class Medicine
     public Medicine(Long id, boolean HasRule, Long ruleID, String discription, String name, MedicineType medicineType)
     {
         this.id = id;
+        this.ruleID = ruleID;
         hasRule = HasRule;
         this.name = name;
         Discription = discription;

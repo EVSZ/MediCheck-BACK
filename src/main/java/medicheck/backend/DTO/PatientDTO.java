@@ -21,7 +21,7 @@ public class PatientDTO
     private String name;
     private LocalDate birthDate;
     private Gender gender;
-    private HealthInformation healthInfo;
+    private HealthInformationDTO healthInfo;
 
     public PatientDTO(Long id, String naam, LocalDate birthDate, Gender gender, HealthInformation HealthInfo)
     {
@@ -29,9 +29,8 @@ public class PatientDTO
         this.name = naam;
         this.birthDate = birthDate;
         this.gender = gender;
-        this.healthInfo = HealthInfo;
-    }
 
+    }
 
     public PatientDTO(Patient patient)
     {
@@ -39,7 +38,7 @@ public class PatientDTO
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
-        this.healthInfo = patient.getHealthInfo();
+        this.healthInfo = new HealthInformationDTO(patient.getHealthInfo());
     }
 
     public PatientDTO(PatientDataModel patient)
@@ -48,7 +47,7 @@ public class PatientDTO
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
-        this.healthInfo = patient.getHealthInfo();
+        this.healthInfo = new HealthInformationDTO(patient.getHealthInfo());
     }
 
     public PatientDTO(Optional<PatientDataModel> byId)
