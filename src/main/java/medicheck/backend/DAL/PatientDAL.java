@@ -9,41 +9,137 @@ import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 {
-    PatientRepo repo;
-
-    public PatientDAL(PatientRepo repo)
-    {
-
-    }
+    static EntityManagerFactory factory = Persistence.createEntityManagerFactory("MediCheck-BACK");
+    EntityTransaction transaction;
+    EntityManager manager  = factory.createEntityManager();
 
     public PatientDTO GetInlogPatient(String Username, String Password)
     {
-        return new PatientDTO(repo.FindByUsernameAndPassword(Username,Password));
+        String query = "SELECT patient FROM PatientDataModel patient WHERE patient.Username = :username AND patient.Password = :password";
+
+        TypedQuery<PatientDataModel> tq = manager.createQuery(query, PatientDataModel.class);
+        tq.setParameter("username",Username);
+        tq.setParameter("password",Password);
+
+        try
+        {
+            return new PatientDTO(tq.getSingleResult());
+        }
+        catch (NoResultException ex)
+        {
+            System.out.println("ex");
+            return null;
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+        }
     }
 
     public PatientDTO GetPatient(long patientID)
     {
-        return new PatientDTO(repo.getOne(patientID));
+        String query = "SELECT patient FROM PatientDataModel patient WHERE patient.id = :id";
+
+        TypedQuery<PatientDataModel> tq = manager.createQuery(query, PatientDataModel.class);
+        tq.setParameter("id",patientID);
+
+        try
+        {
+            return new PatientDTO(tq.getSingleResult());
+        }
+        catch (NoResultException ex)
+        {
+            System.out.println("ex");
+            return null;
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+        }
     }
 
     public void SavePatient(PatientDTO patientDTO)
     {
-        repo.save(new PatientDataModel(patientDTO));
+        try
+        {
+            transaction = manager.getTransaction();
+            transaction.begin();
+            manager.persist(new PatientDataModel(patientDTO));
+            transaction.commit();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            transaction.rollback();
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+            transaction = null;
+        }
     }
 
     public void RegisterPatient(AccountDTO patientDTO)
     {
-        repo.save(new PatientDataModel(patientDTO));
+        try
+        {
+            transaction = manager.getTransaction();
+            transaction.begin();
+            manager.persist(new PatientDataModel(patientDTO));
+            transaction.commit();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            transaction.rollback();
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+            transaction = null;
+        }
     }
 
     public void DeletePatient(PatientDTO patientDTO)
     {
-        repo.delete(new PatientDataModel(patientDTO));
+        try
+        {
+            transaction = manager.getTransaction();
+            transaction.begin();
+            manager.remove(new PatientDataModel(patientDTO));
+            transaction.commit();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            transaction.rollback();
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+            transaction = null;
+        }
     }
 }
