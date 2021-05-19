@@ -35,7 +35,9 @@ public class AdviceGenerator
 
     public boolean GenerateAdvice(List<Medicine> medication, long patientID)
     {
-        patient = container.GetPatientByID(patientID);
+        if (patient == null){
+            patient = container.GetPatientByID(patientID);
+        }
         boolean result = false;
         boolean finished = false;
 
@@ -58,7 +60,10 @@ public class AdviceGenerator
 
             }
         }
+
+        rulesToCheck.clear();
         return result;
+
 
     }
     public boolean GenerateAdviceDemo(List<Medicine> medication)
