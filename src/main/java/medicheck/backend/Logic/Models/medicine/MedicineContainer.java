@@ -1,6 +1,7 @@
 package medicheck.backend.Logic.Models.medicine;
 
 import medicheck.backend.DAL.Interfaces.IMedicationContainer;
+import medicheck.backend.DAL.ListConverters.MedicineDataModelListTOMedicineDTOList;
 import medicheck.backend.DTO.MedicineDTO;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +40,8 @@ public class MedicineContainer {
 
     public List<Medicine> GetAllMedicines()
     {
-        List<MedicineDTO> MedicinesDTO = Interface.GetAllMedication();
+        MedicineDataModelListTOMedicineDTOList converter = new MedicineDataModelListTOMedicineDTOList();
+        List<MedicineDTO> MedicinesDTO =Interface.GetAllMedication() ;
         List<Medicine> Medicines = new ArrayList<Medicine>();
         for (MedicineDTO Medicine: MedicinesDTO)
         {

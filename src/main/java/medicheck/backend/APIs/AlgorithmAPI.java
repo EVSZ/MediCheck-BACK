@@ -17,10 +17,10 @@ public class AlgorithmAPI {
         this.adviceGenerator = adviceGenerator;
     }
 
-    @GetMapping("/getAdvice")
+    @PostMapping(value = "/postAdvice", consumes = "application/json", produces = "application/json")
     public boolean GetAdvice(@RequestBody MedicationListInfo info)
     {
-        return info.getMedicines().size() > 0;
+        return adviceGenerator.GenerateAdvice(info.getMedicines(),15);
     }
 
 }

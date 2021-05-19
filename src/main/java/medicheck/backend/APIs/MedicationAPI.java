@@ -6,7 +6,9 @@ import medicheck.backend.Logic.Models.medicine.Medicine;
 import medicheck.backend.Logic.Models.medicine.MedicineContainer;
 import medicheck.backend.APIs.RequestModels.MedicineModel;
 import medicheck.backend.Logic.Models.medicine.MedicineType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,11 @@ import java.util.List;
 @CrossOrigin
 public class MedicationAPI
 {
-    private MedicineContainer Medicines;
+    private final MedicineContainer Medicines;
 
     public MedicationAPI()
     {
-
+        Medicines = new MedicineContainer(new MedicineDAL());
     }
 
     @PostMapping(value= "/PostMedicine", consumes = "application/json", produces = "application/json")
@@ -61,9 +63,7 @@ public class MedicationAPI
     @GetMapping("/getAll")
     public List<Medicine> GetMedicines()
     {
-        Medicines = new MedicineContainer(new MedicineDAL());
-        List<Medicine> medication = Medicines.GetAllMedicines();
-        return medication;
+        return Medicines.GetAllMedicines();
     }
 
 }
