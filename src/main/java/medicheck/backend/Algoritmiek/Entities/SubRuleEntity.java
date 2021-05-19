@@ -30,7 +30,7 @@ public class SubRuleEntity
     int ifFalse;
 
     @Column(nullable = false)
-    boolean isResult;
+    boolean hasResult;
 
     @Column
     boolean result;

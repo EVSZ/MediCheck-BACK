@@ -13,7 +13,7 @@ public class SubRuleDTO
     int ruleNumber;
     int ifTrue;
     int ifFalse;
-    boolean isResult;
+    boolean hasResult;
     boolean result;
     AlgorithmCommandDTO Command;
 
@@ -24,7 +24,7 @@ public class SubRuleDTO
         ruleNumber = subRule.getRuleNumber();
         ifTrue = subRule.getIfTrue();
         ifFalse = subRule.getIfFalse();
-        isResult = subRule.isResult();
+        hasResult = subRule.isResult();
         result = subRule.isResult();
         Command = new AlgorithmCommandDTO(subRule.getCommand());
     }
@@ -35,7 +35,7 @@ public class SubRuleDTO
         ruleNumber = subRuleEntity.getRuleNumber();
         ifTrue = subRuleEntity.getIfTrue();
         ifFalse = subRuleEntity.getIfFalse();
-        isResult = subRuleEntity.isResult();
+        hasResult = subRuleEntity.isHasResult();
         result = subRuleEntity.isResult();
         Command = new AlgorithmCommandDTO(subRuleEntity.getCommand());
     }

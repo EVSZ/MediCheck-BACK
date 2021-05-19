@@ -13,7 +13,7 @@ public class SubRule
     public int ruleNumber;
     public int ifTrue;
     public int ifFalse;
-    public boolean isResult;
+    public boolean hasResult;
     public boolean result;
     public AlgorithmCommand command;
 
@@ -23,7 +23,7 @@ public class SubRule
         this.ruleNumber = ruleNumber;
         this.ifTrue = ifTrue;
         this.ifFalse = ifFalse;
-        this.isResult = isResult;
+        this.hasResult = isResult;
         this.command = command;
     }
 
@@ -31,7 +31,7 @@ public class SubRule
     {
         this.parentRule = parentRule;
         this.ruleNumber = ruleNumber;
-        this.isResult = isResult;
+        this.hasResult = isResult;
         this.result = result;
 
     }
@@ -42,7 +42,7 @@ public class SubRule
         this.ruleNumber = SubRule.getRuleNumber();
         this.ifTrue = SubRule.getIfTrue();
         this.ifFalse = SubRule.getIfFalse();
-        this.isResult = SubRule.isResult();
+        this.hasResult = SubRule.isHasResult();
         this.result = SubRule.isResult();
         this.command = new AlgorithmCommand(SubRule.getCommand());
     }

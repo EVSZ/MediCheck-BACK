@@ -6,6 +6,7 @@ import medicheck.backend.Algoritmiek.Algorithm.SubRule;
 import medicheck.backend.Algoritmiek.Algorithm.SubRuleContainer;
 import medicheck.backend.DAL.PatientDAL;
 import medicheck.backend.Logic.Models.medicine.Medicine;
+import medicheck.backend.Logic.Models.medicine.MedicineType;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Models.patient.PatientContainer;
 import org.springframework.stereotype.Component;
@@ -42,7 +43,7 @@ public class AdviceGenerator
         if(rulesToCheck.size() > 0) {
             for (MedicationRule rule : rulesToCheck) {
                 for (int i = 1; i < rule.subRules.size(); ) {
-                    if (rule.subRules.get(i).isResult) {
+                    if (rule.subRules.get(i).hasResult) {
                         result = rule.subRules.get(i).result;
                         finished = true;
                         break;
@@ -59,6 +60,19 @@ public class AdviceGenerator
         }
         return result;
 
+    }
+    public boolean GenerateAdviceDemo(List<Medicine> medication)
+    {
+        boolean Advice = false;
+        for (Medicine medicine:
+                medication) {
+            if (medicine.getMedicineType() == MedicineType.Siroop)
+            {
+                Advice = true;
+                break;
+            }
+        }
+        return Advice;
     }
 
     public boolean ExecuteCommand(AlgorithmCommand command)
