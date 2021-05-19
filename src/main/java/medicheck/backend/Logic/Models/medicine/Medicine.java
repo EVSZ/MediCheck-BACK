@@ -9,12 +9,12 @@ import medicheck.backend.DTO.MedicineDTO;
 @Getter @Setter
 public class Medicine
 {
-    private Long id;
-    private boolean hasRule;
-    private Long ruleID;
-    private String name;
     private String Discription;
+    private boolean hasRule;
+    private Long id;
     private MedicineType medicineType;
+    private String name;
+    private Long ruleID;
     //private MedicineConverter converter = new MedicineConverter();
 
     public Medicine(Long id, boolean HasRule, Long ruleID, String discription, String name, MedicineType medicineType)

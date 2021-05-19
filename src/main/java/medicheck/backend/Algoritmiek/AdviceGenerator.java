@@ -39,27 +39,26 @@ public class AdviceGenerator
         boolean finished = false;
 
         RetrieveMedicationRules(ruleSelector.CheckForRules(medication));
-        for (MedicationRule rule : rulesToCheck)
-        {
-            for (int i = 1; i < rule.subRules.size(); )
-            {
-                if (rule.subRules.get(i).isResult)
-                {
-                    result = rule.subRules.get(i).result;
-                    finished = true;
-                    break;
+        if(rulesToCheck.size() > 0) {
+            for (MedicationRule rule : rulesToCheck) {
+                for (int i = 1; i < rule.subRules.size(); ) {
+                    if (rule.subRules.get(i).isResult) {
+                        result = rule.subRules.get(i).result;
+                        finished = true;
+                        break;
+                    }
+                    if (ExecuteCommand(rule.subRules.get(i).command)) {
+                        i = rule.subRules.get(i).ifTrue;
+                    } else
+                        i = rule.subRules.get(i).ifFalse;
                 }
-                if (ExecuteCommand(rule.subRules.get(i).command))
-                {
-                    i = rule.subRules.get(i).ifTrue;
-                } else
-                    i = rule.subRules.get(i).ifFalse;
-            }
-            if (finished)
-                break;
+                if (finished)
+                    break;
 
+            }
         }
         return result;
+
     }
 
     public boolean ExecuteCommand(AlgorithmCommand command)

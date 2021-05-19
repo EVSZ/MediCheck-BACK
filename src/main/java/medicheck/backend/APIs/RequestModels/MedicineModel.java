@@ -5,10 +5,10 @@ import medicheck.backend.Logic.Models.medicine.MedicineType;
 @Getter @Setter
 public class MedicineModel
 {
-    private Long id;
-    private String name;
-    private String Discription;
-    private MedicineType medicineType;
+    private String discription;
     private boolean hasRule;
+    private Long id;
+    private MedicineType medicineType;
+    private String name;
     private Long ruleID;
 }

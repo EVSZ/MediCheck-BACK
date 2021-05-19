@@ -9,5 +9,5 @@ import java.util.List;
 @Getter @Setter
 public class MedicationListInfo
 {
-    List<Medicine> Medicines;
+    List<MedicineModel> Medicines;
 }

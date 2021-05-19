@@ -2,9 +2,14 @@ package medicheck.backend.APIs;
 
 //import medicheck.backend.Algoritmiek.AdviceGenerator;
 import medicheck.backend.APIs.RequestModels.MedicationListInfo;
+import medicheck.backend.APIs.RequestModels.MedicineModel;
 import medicheck.backend.Algoritmiek.AdviceGenerator;
+import medicheck.backend.Logic.Models.medicine.Medicine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -17,10 +22,28 @@ public class AlgorithmAPI {
         this.adviceGenerator = adviceGenerator;
     }
 
-    @PostMapping(value = "/postAdvice", consumes = "application/json", produces = "application/json")
-    public boolean GetAdvice(@RequestBody MedicationListInfo info)
+    @PostMapping(value = "/getAdvice", consumes = "application/json", produces = "application/json")
+    public boolean GetAdvice(@RequestBody List<MedicineModel> info)
     {
-        return adviceGenerator.GenerateAdvice(info.getMedicines(),15);
+        List<Medicine> medicines = new ArrayList<Medicine>();
+        for (MedicineModel medicineModel:
+                info) {
+            Medicine medicine = new Medicine(
+                    medicineModel.getId(),
+                    medicineModel.isHasRule(),
+                    medicineModel.getRuleID(),
+                    medicineModel.getDiscription(),
+                    medicineModel.getName(),
+                    medicineModel.getMedicineType()
+            );
+            medicines.add(medicine);
+        }
+        return adviceGenerator.GenerateAdvice(medicines,5);
+    }
+
+    @GetMapping()
+    MedicationListInfo GetMedicationList(MedicationListInfo info) {
+        return info;
     }
 
 }
