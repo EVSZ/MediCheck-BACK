@@ -55,6 +55,8 @@ public class PatientDataModel
     {
         id = patient.getId();
         name = patient.getName();
+        Password = patient.getPassword();
+        Username = patient.getPassword();
         birthDate = patient.getBirthDate();
         gender = patient.getGender();
         healthInfo = new HealthInformation(patient.getHealthInfo());

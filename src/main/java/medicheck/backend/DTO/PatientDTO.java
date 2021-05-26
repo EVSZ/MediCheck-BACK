@@ -44,6 +44,8 @@ public class PatientDTO
     {
         this.id = patient.getId();
         this.name = patient.getName();
+        this.Username = patient.getPassword();
+        this.Password = patient.getPassword();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
         this.healthInfo = new HealthInformationDTO(patient.getHealthInfo());
