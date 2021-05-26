@@ -10,6 +10,9 @@ import medicheck.backend.DTO.PatientDTO;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +25,16 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public PatientDTO GetInlogPatient(String Username, String Password)
     {
-        String query = "SELECT patient FROM PatientDataModel patient WHERE patient.Username = :username AND patient.Password = :password";
-
-        TypedQuery<PatientDataModel> tq = manager.createQuery(query, PatientDataModel.class);
-        tq.setParameter("username",Username);
-        tq.setParameter("password",Password);
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<PatientDataModel> query = builder.createQuery(PatientDataModel.class);
+        Root<PatientDataModel> root = query.from(PatientDataModel.class);
+        query.select(root)
+                .where(builder.like(root.get("Username"), Username))
+                .where(builder.like(root.get("Password"), Password));
 
         try
         {
-            return new PatientDTO(tq.getSingleResult());
+            return new PatientDTO(manager.createQuery(query).getSingleResult());
         }
         catch (NoResultException ex)
         {
@@ -99,6 +103,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
     {
         try
         {
+            manager = factory.createEntityManager();
             transaction = manager.getTransaction();
             transaction.begin();
             manager.persist(new PatientDataModel(patientDTO));
