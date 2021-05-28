@@ -12,8 +12,14 @@ public class PrescriptionDataModel {
     @Id
     @GeneratedValue
     private long prescriptionId;
+
+    @Column(nullable = true)
     private LocalDate timePeriod;
+
+    @Column(nullable = true)
     private Integer amount;
+
+    @Column(nullable = true)
     private int doses;
 
     @ManyToOne(fetch = FetchType.LAZY)
