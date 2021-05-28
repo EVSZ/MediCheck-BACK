@@ -1,5 +1,6 @@
 package medicheck.backend.APIs;
 
+import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Models.patient.PatientContainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class PatientAPI
 {
 
     private final PatientContainer Patients;
+    private PatientConverter converter = new PatientConverter();
 
     @Autowired
     public PatientAPI(PatientContainer container)
@@ -49,20 +51,15 @@ public class PatientAPI
 
 
     @GetMapping(value = "/get/{id}", consumes = "application/json", produces = "application/json")
-    public Patient GetPatiëntById(@PathVariable long id)
+    public PatientModel GetPatiëntById(@PathVariable long id)
     {
-        return Patients.GetPatientByID(id);
+        return converter.convertToRequestModel(Patients.GetPatientByID(id));
     }
 
     @GetMapping(value = "/get/{name}", consumes = "application/json", produces = "application/json")
-    public Patient GetPatientByName(@PathVariable String name)
+    public PatientModel GetPatientByName(@PathVariable String name)
     {
-        return Patients.GetPatientByNaam(name);
+        return converter.convertToRequestModel(Patients.GetPatientByNaam(name));
     }
 
-    @GetMapping(value = "/getAll", consumes = "application/json", produces = "application/json")
-    public PatientContainer GetPatients()
-    {
-        return Patients;
-    }
 }

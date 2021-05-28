@@ -1,5 +1,6 @@
 package medicheck.backend.Converters;
 
+import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.DAL.DataModels.PatientDataModel;
 import medicheck.backend.DAL.DataModels.PrescriptionDataModel;
 import medicheck.backend.Logic.Models.Prescription.Prescription;
@@ -9,26 +10,18 @@ import java.util.*;
 
 public class PatientConverter
 {
-    public PatientDataModel convertToDataModel(Patient patient)
+    public PatientModel convertToRequestModel(Patient patient)
     {
-        List<PrescriptionDataModel> prescriptions = new ArrayList<>();
-        PrescriptionConverter converter = new PrescriptionConverter();
-        PatientDataModel patientModel = new PatientDataModel();
-
-        for (Prescription prescription: patient.getPrescriptions().GetPrescriptions())
-        {
-            prescriptions.add(converter.convertToDataModel(prescription));
-        }
-
+        PatientModel patientModel = new PatientModel();
         patientModel.setId(patient.getId());
-        patientModel.setAge(patient.getAge());
         patientModel.setBirthDate(patient.getBirthDate());
-        patientModel.getHealthInfo().setLength(patient.getHealthInfo().getLength());
-        patientModel.getHealthInfo().setWeight(patient.getHealthInfo().getWeight());
+        patientModel.setLength(patient.getHealthInfo().getLength());
+        patientModel.setWeight(patient.getHealthInfo().getWeight());
         patientModel.setName(patient.getName());
-        patientModel.getHealthInfo().setPregnant(patient.getHealthInfo().getPregnant());
-        patientModel.setPrescriptions(prescriptions);
+        patientModel.setPregnant(patient.getHealthInfo().getPregnant());
 
         return patientModel;
     }
+
+
 }
