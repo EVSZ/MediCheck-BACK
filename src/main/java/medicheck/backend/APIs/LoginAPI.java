@@ -1,6 +1,7 @@
 package medicheck.backend.APIs;
 
 import medicheck.backend.APIs.RequestModels.LoginInfo;
+import medicheck.backend.DAL.DataModels.PatientDataModel;
 import medicheck.backend.Logic.Services.Login.LoginService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class LoginAPI
     }
 
     @PostMapping(value="/post/loginInfo", consumes = "application/json", produces = "application/json")
-    public boolean Login(@RequestBody LoginInfo info){
+    public PatientDataModel Login(@RequestBody LoginInfo info){
         return loginService.logIn(info);
     }
 }

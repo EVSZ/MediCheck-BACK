@@ -10,6 +10,10 @@ import medicheck.backend.DTO.PatientDTO;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +26,23 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public PatientDTO GetInlogPatient(String Username, String Password)
     {
-        String query = "SELECT patient FROM PatientDataModel patient WHERE patient.Username = :username AND patient.Password = :password";
+        manager  = factory.createEntityManager();
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<PatientDataModel> query = builder.createQuery(PatientDataModel.class);
+        Root<PatientDataModel> root = query.from(PatientDataModel.class);
 
-        TypedQuery<PatientDataModel> tq = manager.createQuery(query, PatientDataModel.class);
-        tq.setParameter("username",Username);
-        tq.setParameter("password",Password);
+        Predicate predicateUsername
+                = builder.like(root.get("Username"), Username);
+        Predicate predicatePassword
+                = builder.like(root.get("Password"), Password);
+        Predicate predicateLogIn
+                = builder.and(predicateUsername, predicatePassword);
+
+        query.select(root).where(predicateLogIn);
 
         try
         {
-            return new PatientDTO(tq.getSingleResult());
+            return new PatientDTO(manager.createQuery(query).getSingleResult());
         }
         catch (NoResultException ex)
         {
@@ -48,6 +60,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public PatientDTO GetPatient(long patientID)
     {
+        manager  = factory.createEntityManager();
         String query = "SELECT patient FROM PatientDataModel patient WHERE patient.id = :id";
 
         TypedQuery<PatientDataModel> tq = manager.createQuery(query, PatientDataModel.class);
@@ -73,6 +86,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public void SavePatient(PatientDTO patientDTO)
     {
+        manager  = factory.createEntityManager();
         try
         {
             transaction = manager.getTransaction();
@@ -97,8 +111,10 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public void RegisterPatient(AccountDTO patientDTO)
     {
+        manager  = factory.createEntityManager();
         try
         {
+            manager = factory.createEntityManager();
             transaction = manager.getTransaction();
             transaction.begin();
             manager.persist(new PatientDataModel(patientDTO));
@@ -121,6 +137,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 
     public void DeletePatient(PatientDTO patientDTO)
     {
+        manager  = factory.createEntityManager();
         try
         {
             transaction = manager.getTransaction();
