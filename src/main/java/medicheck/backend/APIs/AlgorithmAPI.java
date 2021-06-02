@@ -38,7 +38,7 @@ public class AlgorithmAPI {
             );
             medicines.add(medicine);
         }
-        return adviceGenerator.GenerateAdvice(medicines,5);
+        return adviceGenerator.GenerateAdvice(5);
     }
 
     @GetMapping()

@@ -6,6 +6,7 @@ import medicheck.backend.APIs.RequestModels.PrescriptionModel;
 import medicheck.backend.Converters.PrescriptionConverter;
 import medicheck.backend.DAL.DataModels.PrescriptionDataModel;
 import medicheck.backend.DAL.Repos.PrescriptionRepo;
+import medicheck.backend.DTO.PrescriptionDTO;
 import medicheck.backend.Logic.Models.medicine.Medicine;
 
 import java.time.LocalDate;
@@ -35,6 +36,13 @@ public class Prescription
     public Prescription(PrescriptionModel prescription)
     {
         this.medicine = prescription.getMedicine();
+        this.doses = prescription.getDoses();
+        this.Id = prescription.getReceptId();
+        this.amount = prescription.getAmount();
+        this.TimePeriod = prescription.getTimePeriod();
+    }
+    public Prescription(PrescriptionDTO prescription){
+        this.medicine = new Medicine(prescription.getMedicine());
         this.doses = prescription.getDoses();
         this.Id = prescription.getReceptId();
         this.amount = prescription.getAmount();

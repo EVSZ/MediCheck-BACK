@@ -20,7 +20,7 @@ public class PrescriptionDataModel {
     private Integer amount;
 
     @Column(nullable = true)
-    private int doses;
+    private Integer doses;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medicine_id", insertable = true, updatable = false, referencedColumnName = "id")

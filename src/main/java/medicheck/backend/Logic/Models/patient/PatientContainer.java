@@ -28,7 +28,14 @@ public class PatientContainer {
         throw new ArithmeticException("De patient is niet gevonden!");
     }
     public Patient GetPatientByID(Long id){
-        return new Patient(Interface.GetPatient(id));
+        Patient patient =new Patient(Interface.GetPatient(id));
+
+        if(patient.getHealthInfo().lastclcr!=null)
+        {
+            return patient;
+        }
+        return patient;
+
         //throw new ArithmeticException("De patient is niet gevonden!");
 
     }

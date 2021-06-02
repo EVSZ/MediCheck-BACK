@@ -52,6 +52,8 @@ public class Patient
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
         this.healthInfo = new HealthInformation(patient.getHealthInfo());
+        Prescriptions = new PrescriptionContainer();
+        Prescriptions.SetPrescriptions(patient.getPrescriptions());
     }
 
     public Patient(PatientModel patient)

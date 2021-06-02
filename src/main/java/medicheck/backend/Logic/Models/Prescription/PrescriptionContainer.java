@@ -1,5 +1,7 @@
 package medicheck.backend.Logic.Models.Prescription;
 
+import lombok.Setter;
+import medicheck.backend.DTO.PrescriptionDTO;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 @Component
 public class PrescriptionContainer
 {
+    @Setter
     List<Prescription> Prescriptions = new ArrayList<>();
 
     public Prescription GetPrescriptionById(long id){
@@ -45,5 +48,13 @@ public class PrescriptionContainer
     public List<Prescription> GetPrescriptions()
     {
         return Prescriptions;
+    }
+
+    public void SetPrescriptions(List<PrescriptionDTO> prescriptions){
+        for (PrescriptionDTO prescription : prescriptions
+             )
+        {
+            Prescriptions.add(new Prescription(prescription));
+        }
     }
 }

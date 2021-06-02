@@ -33,7 +33,7 @@ public class AdviceGenerator
         rulesToCheck = new ArrayList<>();
     }
 
-    public boolean GenerateAdvice(List<Medicine> medication, long patientID)
+    public boolean GenerateAdvice(long patientID)
     {
         if (patient == null){
             patient = container.GetPatientByID(patientID);
@@ -41,7 +41,7 @@ public class AdviceGenerator
         boolean result = false;
         boolean finished = false;
 
-        RetrieveMedicationRules(ruleSelector.CheckForRules(medication));
+        RetrieveMedicationRules(ruleSelector.CheckForRules(patient.getPrescriptions().GetPrescriptions()));
         if(rulesToCheck.size() > 0) {
             for (MedicationRule rule : rulesToCheck) {
                 for (int i = 1; i < rule.subRules.size(); ) {
