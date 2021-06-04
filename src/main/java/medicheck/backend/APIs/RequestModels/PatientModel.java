@@ -9,7 +9,7 @@ import medicheck.backend.Logic.Models.patient.Gender;
 import java.time.LocalDate;
 import java.util.List;
 
-@Builder @Getter @Setter
+@Getter @Setter
 public class PatientModel
 {
     private Long id;
