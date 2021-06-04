@@ -14,6 +14,7 @@ import medicheck.backend.Logic.Models.patient.PatientContainer;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Convert;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ class AlgorithmTest
     {
         medication.add(new Medicine(medid, true, ruleid1, "Nitrofurantoine", "Hello", MedicineType.Pillen));
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
-        Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
+        Assertions.assertTrue(generator.GenerateAdvice(patientID));
     }
 
     @Test
@@ -54,7 +55,7 @@ class AlgorithmTest
     {
         medication.add(new Medicine(medid, true, ruleid2, "Norfloxacine", "Hello", MedicineType.Pillen));
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
-        Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
+        Assertions.assertTrue(generator.GenerateAdvice(patientID));
     }
 
     @Test
@@ -62,15 +63,26 @@ class AlgorithmTest
     {
         medication.add(new Medicine(medid, true, ruleid3, "Cotrimoxazol", "Hello", MedicineType.Pillen));
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
-        Assertions.assertTrue(generator.GenerateAdvice(medication, patientID));
+        Assertions.assertTrue(generator.GenerateAdvice(patientID));
+    }
+    @Test
+    public void PatientMedstest(){
+        PatientContainer container = new PatientContainer(new PatientDAL());
+        long patientid = 5;
+        long id = 1;
+        Patient testpatient = container.GetPatientByID(patientid);
+
+        long test = testpatient.getId();
+        Assertions.assertTrue(testpatient.getPrescriptions().GetPrescriptions().get(0).getId() == id) ;
     }
 
     @Test
     public void GetMedstest(){
         MedicineContainer container = new MedicineContainer(new MedicineDAL());
         List<Medicine> medlist = container.GetAllMedicines();
-        medlist.size();
+
     }
+
 
 
 
