@@ -8,6 +8,7 @@ import medicheck.backend.Logic.Models.medicine.Medicine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class AlgorithmAPI {
     }
 
     @PostMapping(value = "/getAdvice", consumes = "application/json", produces = "application/json")
-    public boolean GetAdvice(@RequestBody List<MedicineModel> info)
+    public boolean GetAdvice(@RequestBody List<MedicineModel> info, HttpServletRequest request)
     {
         List<Medicine> medicines = new ArrayList<Medicine>();
         for (MedicineModel medicineModel:
@@ -38,7 +39,7 @@ public class AlgorithmAPI {
             );
             medicines.add(medicine);
         }
-        return adviceGenerator.GenerateAdvice(5);
+        return adviceGenerator.GenerateAdvice((int)request.getSession().getAttribute("patientId"));
     }
 
     @GetMapping()
