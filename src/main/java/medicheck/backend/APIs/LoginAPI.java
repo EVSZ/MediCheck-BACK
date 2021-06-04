@@ -29,11 +29,14 @@ public class LoginAPI
     public String Login(@RequestBody LoginInfo info, HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
         Patient patient = loginService.logIn(info);
-        session.setAttribute("patientId", patient.getId());
-        Cookie cookie = new Cookie("JSESSIONID", session.getId());
-        response.addCookie(cookie);
-        return "Logged in successfully";
+        if (patient != null) {
+            session.setAttribute("patientId", patient.getId());
+            Cookie cookie = new Cookie("JSESSIONID", session.getId());
+            response.addCookie(cookie);
+            return "Logged in successfully";
+        }
+        else{
+            return "";
+        }
     }
-
-
 }

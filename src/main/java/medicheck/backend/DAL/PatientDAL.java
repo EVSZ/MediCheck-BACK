@@ -46,7 +46,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
         }
         catch (NoResultException ex)
         {
-            System.out.println("ex");
+            System.out.println(ex.getMessage());
             return null;
         }
         finally
