@@ -22,7 +22,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
 {
     static EntityManagerFactory factory = Persistence.createEntityManagerFactory("MediCheck-BACK");
     EntityTransaction transaction;
-    EntityManager manager  = factory.createEntityManager();
+    EntityManager manager;
 
     public PatientDTO GetInlogPatient(String Username, String Password)
     {
@@ -91,7 +91,35 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
         {
             transaction = manager.getTransaction();
             transaction.begin();
-            manager.persist(new PatientDataModel(patientDTO));
+            PatientDataModel patientDataModel = new PatientDataModel(patientDTO);
+            manager.persist(patientDataModel);
+            transaction.commit();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            transaction.rollback();
+        }
+        finally
+        {
+            if(manager.isOpen())
+            {
+                manager.close();
+            }
+            transaction = null;
+        }
+    }
+    public void UpdatePatient(PatientDTO patientDTO)
+    {
+        manager  = factory.createEntityManager();
+        try
+        {
+            transaction = manager.getTransaction();
+            transaction.begin();
+            PatientDataModel patient = manager.find(PatientDataModel.class, patientDTO.getId());
+            patient.getPrescriptions().clear();
+            patient = new PatientDataModel(patientDTO);
+            manager.merge(patient);
             transaction.commit();
         }
         catch(Exception ex)

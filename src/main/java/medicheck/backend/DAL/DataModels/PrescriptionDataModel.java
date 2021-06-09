@@ -2,6 +2,7 @@ package medicheck.backend.DAL.DataModels;
 
 import lombok.Getter;
 import lombok.Setter;
+import medicheck.backend.DTO.PrescriptionDTO;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -31,4 +32,12 @@ public class PrescriptionDataModel {
     private PatientDataModel patient;
 
     public PrescriptionDataModel() { }
+
+    public PrescriptionDataModel(PrescriptionDTO prescriptionDTO)    {
+        this.Medicine = new MedicineDataModel(prescriptionDTO.getMedicine());
+        this.amount = prescriptionDTO.getAmount();
+        this.doses = prescriptionDTO.getDoses();
+        patient = new PatientDataModel();
+        patient.setId(prescriptionDTO.getPatientID());
+    }
 }

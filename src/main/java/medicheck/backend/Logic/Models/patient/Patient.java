@@ -3,6 +3,7 @@ package medicheck.backend.Logic.Models.patient;
 import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.APIs.RequestModels.AccountInfo;
+import medicheck.backend.APIs.RequestModels.MedicineModel;
 import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.DAL.DataModels.PatientDataModel;
@@ -10,11 +11,14 @@ import medicheck.backend.DAL.Interfaces.IAuthentication;
 import medicheck.backend.DAL.Interfaces.IPatient;
 import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.Logic.Models.Prescription.Prescription;
 import medicheck.backend.Logic.Models.Prescription.PrescriptionContainer;
+import medicheck.backend.Logic.Models.medicine.Medicine;
 import org.apache.catalina.User;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 @Getter @Setter
 public class Patient

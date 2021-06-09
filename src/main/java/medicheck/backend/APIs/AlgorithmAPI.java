@@ -38,6 +38,7 @@ public class AlgorithmAPI {
             );
             medicines.add(medicine);
         }
+
         return adviceGenerator.GenerateAdvice(5);
     }
 

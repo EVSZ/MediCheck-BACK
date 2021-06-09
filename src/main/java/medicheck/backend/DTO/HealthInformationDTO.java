@@ -1,10 +1,11 @@
 package medicheck.backend.DTO;
 
 import lombok.Getter;
+import lombok.Setter;
 import medicheck.backend.Logic.Models.patient.HealthInformation;
 
 import java.time.LocalDate;
-@Getter
+@Getter @Setter
 public class HealthInformationDTO
 {
     public int clcr;
@@ -20,5 +21,10 @@ public class HealthInformationDTO
         this.weight = healthInfo.getWeight();
         this.length = healthInfo.getLength();
         this.pregnant = healthInfo.getPregnant();
+    }
+
+    public HealthInformationDTO()
+    {
+
     }
 }

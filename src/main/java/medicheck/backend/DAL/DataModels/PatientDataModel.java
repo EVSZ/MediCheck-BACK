@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.DTO.PrescriptionDTO;
 import medicheck.backend.Logic.Models.patient.Gender;
 import medicheck.backend.Logic.Models.patient.HealthInformation;
 import medicheck.backend.Logic.Models.patient.Patient;
@@ -11,14 +12,11 @@ import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Getter @Setter
-@NamedNativeQuery(
-        name="PatientDataModel.FindByUsernameAndPassword",
-        query = "SELECT * FROM PatientDataModel WHERE username = ? AND password = ?",
-        resultClass = PatientDataModel.class
-)
+
 public class PatientDataModel
 {
     @Id
@@ -46,7 +44,7 @@ public class PatientDataModel
 
     private int age;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "patient")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "patient", orphanRemoval = true)
     private List<PrescriptionDataModel> prescriptions;
 
     public PatientDataModel() { }
@@ -59,11 +57,17 @@ public class PatientDataModel
         Username = patient.getPassword();
         birthDate = patient.getBirthDate();
         gender = patient.getGender();
+        EmailAddress = patient.getEmailAddress();
         healthInfo = new HealthInformation(patient.getHealthInfo());
+        prescriptions = new ArrayList<>();
+        for (PrescriptionDTO prescription : patient.getPrescriptions())
+        {
+            prescriptions.add(new PrescriptionDataModel(prescription));
+        }
+
     }
     public PatientDataModel(AccountDTO patient)
     {
-        healthInfo = new HealthInformation();
         Username = patient.getUsername();
         Password = patient.getPassword();
         EmailAddress = patient.getEmail();

@@ -68,7 +68,7 @@ class AlgorithmTest
     @Test
     public void PatientMedstest(){
         PatientContainer container = new PatientContainer(new PatientDAL());
-        long patientid = 5;
+        long patientid = 41;
         long id = 1;
         Patient testpatient = container.GetPatientByID(patientid);
 

@@ -47,7 +47,7 @@ public class PatientDTO
     {
         this.id = patient.getId();
         this.name = patient.getName();
-        this.Username = patient.getPassword();
+        this.Username = patient.getUsername();
         this.Password = patient.getPassword();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
@@ -56,5 +56,10 @@ public class PatientDTO
         {
             prescriptions.add(new PrescriptionDTO(prescription));
         }
+    }
+
+    public PatientDTO()
+    {
+
     }
 }
