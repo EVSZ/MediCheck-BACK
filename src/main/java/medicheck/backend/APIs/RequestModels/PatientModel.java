@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.Logic.Models.Prescription.Prescription;
 import medicheck.backend.Logic.Models.patient.Gender;
+import medicheck.backend.Logic.Models.patient.HealthInformation;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,6 +21,7 @@ public class PatientModel
     private Boolean pregnant;
     private LocalDate birthDate;
     private Gender gender;
+    private HealthInformation healthInformation;
     private List<Prescription> UserPrescriptions;
 
     public PatientModel() {

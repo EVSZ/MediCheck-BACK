@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import medicheck.backend.APIs.RequestModels.PatientModel;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 @RestController
 @RequestMapping("api/patienten")
@@ -37,12 +40,12 @@ public class PatientAPI
     }
 
     @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-    public String UpdatePatient(@RequestBody PatientModel patient)
+    public String UpdatePatient(@RequestBody PatientModel patient, HttpServletRequest request, HttpServletResponse response)
     {
         try
         {
             Patients.updatePatient(new Patient(patient));
-            return "Patient is toegevoegd!";
+            return "Patient is Geupdated!";
         } catch (Exception e)
         {
             return "Oops! Er is iets foutgegaan!";
@@ -53,7 +56,8 @@ public class PatientAPI
     @GetMapping(value = "/get/{id}", consumes = "application/json", produces = "application/json")
     public PatientModel GetPatiëntById(@PathVariable long id)
     {
-        return converter.convertToRequestModel(Patients.GetPatientByID(id));
+        PatientModel model = converter.convertToRequestModel(Patients.GetPatientByID(id));
+        return model;
     }
 
     @GetMapping(value = "/get/{name}", consumes = "application/json", produces = "application/json")

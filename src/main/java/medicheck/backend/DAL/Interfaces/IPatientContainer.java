@@ -8,4 +8,5 @@ public interface IPatientContainer
 {
     public PatientDTO GetInlogPatient(String Username, String Password);
     public PatientDTO GetPatient(long PatientID);
+    void UpdatePatient(PatientDTO patientDTO);
 }

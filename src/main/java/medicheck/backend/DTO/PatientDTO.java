@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.DAL.DataModels.PatientDataModel;
 import medicheck.backend.DAL.DataModels.PrescriptionDataModel;
+import medicheck.backend.Logic.Models.Prescription.Prescription;
 import medicheck.backend.Logic.Models.patient.Gender;
 import medicheck.backend.Logic.Models.patient.HealthInformation;
 import medicheck.backend.Logic.Models.patient.Patient;
@@ -41,6 +42,11 @@ public class PatientDTO
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
         this.healthInfo = new HealthInformationDTO(patient.getHealthInfo());
+        for (Prescription pre :patient.getPrescriptions().GetPrescriptions()
+             )
+        {
+            prescriptions.add(new PrescriptionDTO(pre));
+        }
     }
 
     public PatientDTO(PatientDataModel patient)

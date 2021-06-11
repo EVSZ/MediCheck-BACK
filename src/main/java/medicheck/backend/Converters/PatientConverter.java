@@ -19,6 +19,12 @@ public class PatientConverter
         patientModel.setWeight(patient.getHealthInfo().getWeight());
         patientModel.setName(patient.getName());
         patientModel.setPregnant(patient.getHealthInfo().getPregnant());
+        patientModel.setHealthInformation(patient.getHealthInfo());
+        for (Prescription pres:patient.getPrescriptions().GetPrescriptions())
+        {
+            patientModel.setUserPrescriptions(patient.getPrescriptions().GetPrescriptions());
+        }
+
 
         return patientModel;
     }
