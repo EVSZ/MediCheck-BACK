@@ -1,5 +1,6 @@
 package medicheck.backend.Logic.Models.Prescription;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import medicheck.backend.APIs.RequestModels.PrescriptionModel;
@@ -8,6 +9,8 @@ import medicheck.backend.DAL.DataModels.PrescriptionDataModel;
 import medicheck.backend.DAL.Repos.PrescriptionRepo;
 import medicheck.backend.DTO.PrescriptionDTO;
 import medicheck.backend.Logic.Models.medicine.Medicine;
+import medicheck.backend.Logic.Models.medicine.MedicineType;
+import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
 
@@ -16,17 +19,23 @@ public class Prescription
 {
     private long Id;
     private Medicine medicine;
-    private int doses;
+    private Integer doses;
     private Integer amount;
     private LocalDate TimePeriod;
+    private long patientID;
 
 //    PrescriptionConverter Converter = new PrescriptionConverter();
 
-    public Prescription(Medicine medcine, int doses, long prescriptionId)
-    {
-        this.medicine = medcine;
+
+    public Prescription(Medicine medicine, int doses, int amount, long id, LocalDate timePeriod){
+        this.medicine = medicine;
+        this.amount = amount;
         this.doses = doses;
-        this.Id = prescriptionId;
+        this.Id = id;
+        this.TimePeriod = timePeriod;
+    }
+    public Prescription(){
+
     }
     public Prescription(Medicine medcine, int doses)
     {

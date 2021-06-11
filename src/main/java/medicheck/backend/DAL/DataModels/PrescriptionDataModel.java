@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class PrescriptionDataModel {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long prescriptionId;
 
     @Column(nullable = true)
@@ -34,6 +34,7 @@ public class PrescriptionDataModel {
     public PrescriptionDataModel() { }
 
     public PrescriptionDataModel(PrescriptionDTO prescriptionDTO)    {
+
         this.Medicine = new MedicineDataModel(prescriptionDTO.getMedicine());
         this.amount = prescriptionDTO.getAmount();
         this.doses = prescriptionDTO.getDoses();

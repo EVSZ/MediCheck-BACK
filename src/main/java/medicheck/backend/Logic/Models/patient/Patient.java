@@ -11,6 +11,7 @@ import medicheck.backend.DAL.Interfaces.IAuthentication;
 import medicheck.backend.DAL.Interfaces.IPatient;
 import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.DTO.PrescriptionDTO;
 import medicheck.backend.Logic.Models.Prescription.Prescription;
 import medicheck.backend.Logic.Models.Prescription.PrescriptionContainer;
 import medicheck.backend.Logic.Models.medicine.Medicine;
@@ -18,6 +19,7 @@ import org.apache.catalina.User;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
@@ -66,6 +68,15 @@ public class Patient
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
+        this.healthInfo = patient.getHealthInformation();
+        Prescriptions = new PrescriptionContainer();
+        List<PrescriptionDTO> prescriptionDTOs = new ArrayList<>();
+        for (Prescription pre:patient.getUserPrescriptions()
+             )
+        {
+            prescriptionDTOs.add(new PrescriptionDTO(pre));
+        }
+        Prescriptions.SetPrescriptions(prescriptionDTOs);
     }
 
     public Patient(AccountInfo info)

@@ -1,6 +1,7 @@
 package medicheck.backend.Logic.Models.patient;
 import medicheck.backend.DAL.Interfaces.IPatientContainer;
 import medicheck.backend.DTO.PatientDTO;
+import medicheck.backend.Logic.Models.Prescription.Prescription;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -50,6 +51,11 @@ public class PatientContainer {
     }
 
     public void updatePatient(Patient patient){
+        for (Prescription pres:patient.getPrescriptions().GetPrescriptions()
+             )
+        {
+            pres.setPatientID(patient.getId());
+        }
         Interface.UpdatePatient(new PatientDTO(patient));
     }
 

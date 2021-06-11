@@ -17,11 +17,12 @@ public class Medicine
     private Long ruleID;
     //private MedicineConverter converter = new MedicineConverter();
 
-    public Medicine(Long id, boolean HasRule, Long ruleID, String discription, String name, MedicineType medicineType)
+    public Medicine(){}
+    public Medicine( boolean hasRule,Long id,MedicineType medicineType,String name, Long ruleID, String discription)
     {
         this.id = id;
         this.ruleID = ruleID;
-        hasRule = HasRule;
+        this.hasRule = hasRule;
         this.name = name;
         Discription = discription;
         this.medicineType = medicineType;

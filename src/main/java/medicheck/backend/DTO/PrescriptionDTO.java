@@ -23,10 +23,21 @@ public class PrescriptionDTO
 
     public PrescriptionDTO(Prescription prescription)
     {
-        this.amount = prescription.getAmount();
-        this.doses = prescription.getDoses();
+        medicine = new MedicineDTO(prescription.getMedicine());
+        if (prescription.getAmount()!=null)
+        {
+            this.amount = prescription.getAmount();
+        }
+        if (prescription.getDoses()!=null)
+        {
+            this.doses = prescription.getDoses();
+        }
         this.receptId = prescription.getId();
-        this.TimePeriod = prescription.getTimePeriod();
+        if(prescription.getTimePeriod()!=null)
+        {
+            this.TimePeriod = prescription.getTimePeriod();
+        }
+        this.patientID = prescription.getPatientID();
     }
     public PrescriptionDTO(PrescriptionDataModel prescription){
         this.receptId = prescription.getPrescriptionId();

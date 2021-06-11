@@ -42,14 +42,16 @@ public class PatientAPI
     @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
     public String UpdatePatient(@RequestBody PatientModel patient)
     {
-        try
-        {
-            Patients.updatePatient(new Patient(patient));
+//        try
+//        {
+            Patient pat = new Patient(patient);
+            Patients.updatePatient(pat);
             return "Patient is Geupdated!";
-        } catch (Exception e)
-        {
-            return "Oops! Er is iets foutgegaan!";
-        }
+//        } catch (Exception e)
+//        {
+//            e.printStackTrace();
+//            return "Oops! Er is iets foutgegaan!";
+//        }
     }
 
 //    @GetMapping(value = "/patient", produces = "application/json")

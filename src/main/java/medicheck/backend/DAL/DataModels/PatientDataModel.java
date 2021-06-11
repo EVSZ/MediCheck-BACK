@@ -54,7 +54,7 @@ public class PatientDataModel
         id = patient.getId();
         name = patient.getName();
         Password = patient.getPassword();
-        Username = patient.getPassword();
+        Username = patient.getUsername();
         birthDate = patient.getBirthDate();
         gender = patient.getGender();
         EmailAddress = patient.getEmailAddress();
@@ -72,4 +72,23 @@ public class PatientDataModel
         Password = patient.getPassword();
         EmailAddress = patient.getEmail();
     }
+
+    public PatientDataModel(PatientDTO updateData, PatientDataModel userData)
+    {
+        id = updateData.getId();
+        name = updateData.getName();
+        Password = userData.getPassword();
+        Username = userData.getUsername();
+        birthDate = updateData.getBirthDate();
+        gender = updateData.getGender();
+        EmailAddress = userData.getEmailAddress();
+        healthInfo = new HealthInformation(updateData.getHealthInfo());
+        prescriptions = new ArrayList<>();
+        for (PrescriptionDTO prescription : updateData.getPrescriptions())
+        {
+            prescriptions.add(new PrescriptionDataModel(prescription));
+        }
+
+    }
+
 }

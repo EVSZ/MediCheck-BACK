@@ -41,7 +41,7 @@ class AlgorithmTest
     @Test
     public void testAlgorithmrule1()
     {
-        medication.add(new Medicine(medid, true, ruleid1, "Nitrofurantoine", "Hello", MedicineType.Pillen));
+        medication.add(new Medicine(true, medid, MedicineType.Pillen, "Nitrofurantoine", ruleid1,"Hello"));
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
         Assertions.assertTrue(generator.GenerateAdvice(patientID));
     }
@@ -49,7 +49,7 @@ class AlgorithmTest
     @Test
     public void testAlgorithmrule2()
     {
-        medication.add(new Medicine(medid, true, ruleid2, "Norfloxacine", "Hello", MedicineType.Pillen));
+        medication.add(new Medicine(true, medid, MedicineType.Pillen, "Nitrofurantoine", ruleid2,"Hello"));
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
         Assertions.assertTrue(generator.GenerateAdvice(patientID));
     }
@@ -57,7 +57,8 @@ class AlgorithmTest
     @Test
     public void testAlgorithmrule3()
     {
-        medication.add(new Medicine(medid, true, ruleid3, "Cotrimoxazol", "Hello", MedicineType.Pillen));
+        medication.add(new Medicine(true, medid, MedicineType.Pillen, "Nitrofurantoine", ruleid3,"Hello"));
+
         AdviceGenerator generator = new AdviceGenerator(new PatientContainer(new PatientDAL()));
         Assertions.assertTrue(generator.GenerateAdvice(patientID));
     }

@@ -115,7 +115,7 @@ public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
             transaction.begin();
             PatientDataModel patient = manager.find(PatientDataModel.class, patientDTO.getId());
             patient.getPrescriptions().clear();
-            patient = new PatientDataModel(patientDTO);
+            patient = new PatientDataModel(patientDTO, patient);
             manager.merge(patient);
             transaction.commit();
         }

@@ -32,19 +32,19 @@ public class PrescriptionTest
     public void test(){
         patient.setUsername("Broodje");
         patient.setPassword("Wattefuak");
-        patient.setEmailAddress("Boterham@boter.ham");
+        patient.setEmailAddress("Boter@boter.ham");
         patient.setName("Boter");
         patient.setId(patID);
-        healthInformationDTO.setClcr(5);
-        healthInformationDTO.setLength(170);
-        healthInformationDTO.setPregnant(true);
+        healthInformationDTO.setClcr(40);
+        healthInformationDTO.setLength(180);
+        healthInformationDTO.setPregnant(false);
         healthInformationDTO.setLastclcr(date);
         healthInformationDTO.setWeight(90);
         patient.setHealthInfo(healthInformationDTO);
-        patient.setGender(Gender.Female);
+        patient.setGender(Gender.Male);
         patient.setBirthDate(date);
-        PrescriptionDTO pre = new PrescriptionDTO(new Medicine(medID,true,medID,"NierFunctie","nitrofurantoine", MedicineType.Siroop),9000,17,medID,date,patID);
-        PrescriptionDTO pre2 = new PrescriptionDTO(new Medicine(medID,true,medID,"Testfunctie","nitrofurantoine", MedicineType.Siroop),45,4,medID,date,patID);
+        PrescriptionDTO pre = new PrescriptionDTO(new Medicine(true,medID,MedicineType.Pillen,"nitrofurantoine",medID, "Nierfunctie"),1,2,medID,date,patID);
+        PrescriptionDTO pre2 = new PrescriptionDTO(new Medicine(true,medID,MedicineType.Pillen,"nitrofurantoine",medID, "Nierfunctie"),2,2,medID,date,patID);
         prescriptions.add(pre);
         prescriptions.add(pre2);
 
