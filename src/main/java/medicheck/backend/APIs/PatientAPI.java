@@ -40,7 +40,7 @@ public class PatientAPI
     }
 
     @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-    public String UpdatePatient(@RequestBody PatientModel patient, HttpServletRequest request, HttpServletResponse response)
+    public String UpdatePatient(@RequestBody PatientModel patient)
     {
         try
         {
@@ -52,12 +52,15 @@ public class PatientAPI
         }
     }
 
-
-    @GetMapping(value = "/get/{id}", consumes = "application/json", produces = "application/json")
-    public PatientModel GetPatiëntById(@PathVariable long id)
+//    @GetMapping(value = "/patient", produces = "application/json")
+//    public PatientModel GetPatientById(HttpServletRequest request)
+//    {
+//        return converter.convertToRequestModel(Patients.GetPatientByID((long)request.getSession().getAttribute("patientId")));
+//    }
+    @GetMapping(value = "/patient", produces = "application/json")
+    public PatientModel GetPatientById()
     {
-        PatientModel model = converter.convertToRequestModel(Patients.GetPatientByID(id));
-        return model;
+        return converter.convertToRequestModel(Patients.GetPatientByID((long)5));
     }
 
     @GetMapping(value = "/get/{name}", consumes = "application/json", produces = "application/json")

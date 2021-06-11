@@ -49,7 +49,7 @@ public class Medicine
         this.hasRule = medicine.isHasRule();
         this.ruleID = medicine.getRuleID();
         this.name = medicine.getName();
-        Discription = medicine.getDiscription();
+        this.Discription = medicine.getDiscription();
         this.medicineType = medicine.getMedicineType();
     }
 }

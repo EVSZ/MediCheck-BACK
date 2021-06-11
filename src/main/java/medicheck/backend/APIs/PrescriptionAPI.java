@@ -20,23 +20,23 @@ public class PrescriptionAPI
     @Autowired
     public PrescriptionAPI() { this.Prescriptions = new PrescriptionContainer(); }
 
-    @PostMapping(value= "/PostPrescription", consumes = "application/json", produces = "application/json")
-    public void AddMedicine(@RequestBody PrescriptionModel prescription)
-    {
-        new Prescription(prescription).Save(Repo);
-    }
-
-    @DeleteMapping(value= "/DeletePrescription", consumes = "application/json", produces = "application/json")
-    public void DeleteMedicine(@RequestBody PrescriptionModel prescription)
-    {
-        new Prescription(prescription).Delete(Repo);
-    }
-
-    @PutMapping(value="/PutPrescription", consumes="application/json",produces = "application/json")
-    public void UpdateMedicine(@RequestBody PrescriptionModel prescription)
-    {
-        new Prescription(prescription).Update(Repo);
-    }
+//    @PostMapping(value= "/PostPrescription", consumes = "application/json", produces = "application/json")
+//    public void AddMedicine(@RequestBody PrescriptionModel prescription)
+//    {
+//        new Prescription(prescription).Save(Repo);
+//    }
+//
+//    @DeleteMapping(value= "/DeletePrescription", consumes = "application/json", produces = "application/json")
+//    public void DeleteMedicine(@RequestBody PrescriptionModel prescription)
+//    {
+//        new Prescription(prescription).Delete(Repo);
+//    }
+//
+//    @PutMapping(value="/PutPrescription", consumes="application/json",produces = "application/json")
+//    public void UpdateMedicine(@RequestBody PrescriptionModel prescription)
+//    {
+//        new Prescription(prescription).Update(Repo);
+//    }
     @GetMapping("/getByID")
     public Prescription GetPrescription(@RequestBody long ID)
     {

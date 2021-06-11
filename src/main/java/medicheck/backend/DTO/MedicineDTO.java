@@ -7,7 +7,7 @@ import medicheck.backend.Logic.Models.medicine.Medicine;
 import medicheck.backend.Logic.Models.medicine.MedicineType;
 
 @Getter @Setter
-public class MedicineDTO
+public class    MedicineDTO
 {
     private long id;
     private boolean hasRule;

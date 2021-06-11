@@ -20,7 +20,7 @@ public class Prescription
     private Integer amount;
     private LocalDate TimePeriod;
 
-    PrescriptionConverter Converter = new PrescriptionConverter();
+//    PrescriptionConverter Converter = new PrescriptionConverter();
 
     public Prescription(Medicine medcine, int doses, long prescriptionId)
     {
@@ -55,17 +55,17 @@ public class Prescription
         this.Id = prescriptionDataModel.getPrescriptionId();
         this.amount = prescriptionDataModel.getAmount();
     }
-    public void Save(PrescriptionRepo repo)
-    {
-        repo.save(Converter.convertToDataModel(this));
-    }
-    public void Delete(PrescriptionRepo repo)
-    {
-        repo.delete(Converter.convertToDataModel(this));
-    }
-    public void Update(PrescriptionRepo repo)
-    {
-        repo.findById(this.Id);
-        repo.save(Converter.convertToDataModel(this));
-    }
+//    public void Save(PrescriptionRepo repo)
+//    {
+//        repo.save(Converter.convertToDataModel(this));
+//    }
+//    public void Delete(PrescriptionRepo repo)
+//    {
+//        repo.delete(Converter.convertToDataModel(this));
+//    }
+//    public void Update(PrescriptionRepo repo)
+//    {
+//        repo.findById(this.Id);
+//        repo.save(Converter.convertToDataModel(this));
+//    }
 }

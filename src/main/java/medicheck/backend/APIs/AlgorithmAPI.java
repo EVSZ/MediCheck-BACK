@@ -23,24 +23,12 @@ public class AlgorithmAPI {
         this.adviceGenerator = adviceGenerator;
     }
 
-    @PostMapping(value = "/getAdvice", consumes = "application/json", produces = "application/json")
-    public boolean GetAdvice(@RequestBody List<MedicineModel> info, HttpServletRequest request)
+    @GetMapping(value = "/getAdvice", produces = "application/json")
+    public boolean GetAdvice(HttpServletRequest request)
     {
-        List<Medicine> medicines = new ArrayList<Medicine>();
-        for (MedicineModel medicineModel:
-                info) {
-            Medicine medicine = new Medicine(
-                    medicineModel.getId(),
-                    medicineModel.isHasRule(),
-                    medicineModel.getRuleID(),
-                    medicineModel.getDiscription(),
-                    medicineModel.getName(),
-                    medicineModel.getMedicineType()
-            );
-            medicines.add(medicine);
-        }
-
         return adviceGenerator.GenerateAdvice((int)request.getSession().getAttribute("patientId"));
+        //return adviceGenerator.GenerateAdvice(41);
+
     }
 
     @GetMapping()
