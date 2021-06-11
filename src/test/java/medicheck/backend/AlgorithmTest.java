@@ -1,11 +1,9 @@
 package medicheck.backend;
 
 import medicheck.backend.Algoritmiek.AdviceGenerator;
-import medicheck.backend.Algoritmiek.TestMedicine;
 import medicheck.backend.Algoritmiek.TestPatient;
 import medicheck.backend.DAL.MedicineDAL;
 import medicheck.backend.DAL.PatientDAL;
-import medicheck.backend.DAL.Repos.PatientRepo;
 import medicheck.backend.Logic.Models.medicine.Medicine;
 import medicheck.backend.Logic.Models.medicine.MedicineContainer;
 import medicheck.backend.Logic.Models.medicine.MedicineType;
@@ -14,10 +12,8 @@ import medicheck.backend.Logic.Models.patient.PatientContainer;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Convert;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.*;
@@ -69,7 +65,7 @@ class AlgorithmTest
     public void PatientMedstest(){
         PatientContainer container = new PatientContainer(new PatientDAL());
         long patientid = 41;
-        long id = 1;
+        long id = 82;
         Patient testpatient = container.GetPatientByID(patientid);
 
         long test = testpatient.getId();

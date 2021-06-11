@@ -1,7 +1,6 @@
 package medicheck.backend.DAL.DALClasses;
 
 import medicheck.backend.APIs.RequestModels.AccountInfo;
-import medicheck.backend.DAL.Repos.PatientRepo;
 import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.Interfaces.ITestDALDennisOomen;
 import org.springframework.stereotype.Component;

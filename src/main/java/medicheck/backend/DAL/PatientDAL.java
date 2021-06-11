@@ -4,7 +4,6 @@ import medicheck.backend.DAL.DataModels.PatientDataModel;
 import medicheck.backend.DAL.Interfaces.IAuthentication;
 import medicheck.backend.DAL.Interfaces.IPatientContainer;
 import medicheck.backend.DAL.Interfaces.IPatient;
-import medicheck.backend.DAL.Repos.PatientRepo;
 import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.DTO.PatientDTO;
 import org.springframework.stereotype.Component;
@@ -14,8 +13,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class PatientDAL implements IPatientContainer, IPatient, IAuthentication
