@@ -1,23 +1,28 @@
 package medicheck.backend.APIs;
 
 import medicheck.backend.APIs.RequestModels.LoginInfo;
-import medicheck.backend.APIs.RequestModels.PatientModel;
+import medicheck.backend.APIs.RequestModels.AccessData;
 import medicheck.backend.Converters.PatientConverter;
-import medicheck.backend.DAL.DataModels.PatientDataModel;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Services.Login.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 @RestController
-@RequestMapping("api/Login")
 @CrossOrigin
+@Scope(value = "session")
 public class LoginAPI
 {
+    @Autowired
+    private AccessData accessData;
+
+    @ModelAttribute("sessionData")
+    public AccessData getAccessData() {
+        return this.accessData;
+    }
+
+
     private final LoginService loginService;
     private PatientConverter converter  = new PatientConverter();
 
@@ -26,13 +31,20 @@ public class LoginAPI
     }
 
     @PostMapping(value="/post/loginInfo", consumes = "application/json", produces = "application/json")
-    public String Login(@RequestBody LoginInfo info, HttpServletRequest request, HttpServletResponse response){
-        HttpSession session = request.getSession();
+    public String Login(@RequestBody LoginInfo info){
+//        HttpSession session = request.getSession();
         Patient patient = loginService.logIn(info);
-        session.setAttribute("patientId", patient.getId());
-        Cookie cookie = new Cookie("JSESSIONID", session.getId());
-        response.addCookie(cookie);
+        AccessData sessionData2 = new AccessData(patient.getId());
+        sessionData2.setUserID(patient.getId());
+        //session.setAttribute("patientId", patient.getId());
+        CopyProperties(accessData,sessionData2);
+//        Cookie cookie = new Cookie("JSESSIONID", session.getId());
+//        response.addCookie(cookie);
         return "Logged in successfully";
+    }
+
+    public void CopyProperties(AccessData data1, AccessData data2 ){
+        data1.setUserID(data2.getUserID());
     }
 
 

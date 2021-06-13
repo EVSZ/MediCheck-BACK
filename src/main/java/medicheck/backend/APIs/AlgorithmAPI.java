@@ -2,31 +2,37 @@ package medicheck.backend.APIs;
 
 //import medicheck.backend.Algoritmiek.AdviceGenerator;
 import medicheck.backend.APIs.RequestModels.MedicationListInfo;
-import medicheck.backend.APIs.RequestModels.MedicineModel;
+import medicheck.backend.APIs.RequestModels.AccessData;
 import medicheck.backend.Algoritmiek.AdviceGenerator;
-import medicheck.backend.Logic.Models.medicine.Medicine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("algorithm")
+@Scope(value = "session")
 public class AlgorithmAPI {
 
     private final AdviceGenerator adviceGenerator;
+    @Autowired
+    private AccessData accessData;
+
+    @ModelAttribute("accesData")
+    public AccessData getAccesData() {
+        return this.accessData;
+    }
+
+
 
     public AlgorithmAPI(AdviceGenerator adviceGenerator) {
         this.adviceGenerator = adviceGenerator;
     }
 
     @GetMapping(value = "/getAdvice", produces = "application/json")
-    public boolean GetAdvice(HttpServletRequest request)
+    public boolean GetAdvice()
     {
-        return adviceGenerator.GenerateAdvice((int)request.getSession().getAttribute("patientId"));
+        long ding = accessData.getUserID();
+        return adviceGenerator.GenerateAdvice(ding);
         //return adviceGenerator.GenerateAdvice(41);
 
     }
