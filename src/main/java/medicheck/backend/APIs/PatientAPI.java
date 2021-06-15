@@ -59,7 +59,7 @@ public class PatientAPI
 //    {
 //        return converter.convertToRequestModel(Patients.GetPatientByID((long)request.getSession().getAttribute("patientId")));
 //    }
-    @GetMapping(value = "/patient", produces = "application/json")
+    @PostMapping(value = "/patient", produces = "application/json")
     public PatientModel GetPatientById()
     {
         return converter.convertToRequestModel(Patients.GetPatientByID((long)5));
