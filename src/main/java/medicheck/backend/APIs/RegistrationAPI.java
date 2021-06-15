@@ -1,6 +1,7 @@
 package medicheck.backend.APIs;
 
 import medicheck.backend.APIs.RequestModels.AccountInfo;
+import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.Logic.Services.Registration.RegistrationService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,8 @@ public class RegistrationAPI
     }
 
     @PostMapping(value="/post/accountInfo", consumes = "application/json", produces = "application/json")
-    public boolean register(@RequestBody AccountInfo info)
+    public long register(@RequestBody AccountInfo info)
     {
-        return registrationService.register(info);
+        return registrationService.register(info).getId();
     }
 }

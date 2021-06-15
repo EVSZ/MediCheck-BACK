@@ -15,8 +15,9 @@ public class RegistrationService {
         this.dal = dal;
     }
 
-    public boolean register(AccountInfo info){
-            dal.RegisterPatient(new AccountDTO(info));
-            return true;
+    public AccountDTO register(AccountInfo info){
+        AccountDTO dto = new AccountDTO(info);
+            dal.RegisterPatient(dto);
+            return dto;
     }
 }

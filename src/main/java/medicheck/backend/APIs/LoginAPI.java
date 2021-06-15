@@ -4,6 +4,7 @@ import medicheck.backend.APIs.RequestModels.LoginInfo;
 import medicheck.backend.APIs.RequestModels.PatientModel;
 import medicheck.backend.Converters.PatientConverter;
 import medicheck.backend.DAL.DataModels.PatientDataModel;
+import medicheck.backend.DTO.AccountDTO;
 import medicheck.backend.Logic.Models.patient.Patient;
 import medicheck.backend.Logic.Services.Login.LoginService;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +27,13 @@ public class LoginAPI
     }
 
     @PostMapping(value="/post/loginInfo", consumes = "application/json", produces = "application/json")
-    public String Login(@RequestBody LoginInfo info, HttpServletRequest request, HttpServletResponse response){
-        HttpSession session = request.getSession();
+    public long Login(@RequestBody LoginInfo info, HttpServletRequest request, HttpServletResponse response){
+        //HttpSession session = request.getSession();
         Patient patient = loginService.logIn(info);
-        session.setAttribute("patientId", patient.getId());
-        Cookie cookie = new Cookie("JSESSIONID", session.getId());
-        response.addCookie(cookie);
-        return "Logged in successfully";
+        //session.setAttribute("patientId", patient.getId());
+        //Cookie cookie = new Cookie("JSESSIONID", session.getId());
+        //response.addCookie(cookie);
+        return patient.getId();
     }
 
 

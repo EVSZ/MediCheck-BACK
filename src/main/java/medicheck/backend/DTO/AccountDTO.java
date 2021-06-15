@@ -6,6 +6,7 @@ import medicheck.backend.Logic.Models.patient.Patient;
 
 @Getter
 public class AccountDTO {
+    private long id;
     private String username;
     private String password;
     private String email;
@@ -17,6 +18,7 @@ public class AccountDTO {
     }
 
     public AccountDTO(Patient patient){
+        id = patient.getId();
         username = patient.getUsername();
         password = patient.getPassword();
         email = patient.getEmailAddress();
