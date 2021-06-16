@@ -23,10 +23,11 @@ public class AlgorithmAPI {
         this.adviceGenerator = adviceGenerator;
     }
 
-    @GetMapping(value = "/getAdvice", produces = "application/json")
-    public boolean GetAdvice(HttpServletRequest request)
+    @PostMapping(value = "/getAdvice/{id}", produces = "application/json")
+    public boolean GetAdvice(int id)
     {
-        return adviceGenerator.GenerateAdvice((int)request.getSession().getAttribute("patientId"));
+        int worst = id;
+        return adviceGenerator.GenerateAdvice(id);
         //return adviceGenerator.GenerateAdvice(41);
 
     }
