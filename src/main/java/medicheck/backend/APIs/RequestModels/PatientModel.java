@@ -14,7 +14,7 @@ import java.util.List;
 @Getter @Setter
 public class PatientModel
 {
-    private Long id;
+    private Long userid;
     private String name;
     private Integer weight;
     private Integer height;

@@ -64,11 +64,13 @@ public class Patient
 
     public Patient(PatientModel patient)
     {
-        this.id = patient.getId();
+        this.id = patient.getUserid();
         this.name = patient.getName();
         this.birthDate = patient.getBirthDate();
         this.gender = patient.getGender();
         this.healthInfo = patient.getHealthInformation();
+        this.healthInfo.setLength(patient.getLength());
+        this.healthInfo.setWeight(patient.getWeight());
         Prescriptions = new PrescriptionContainer();
         List<PrescriptionDTO> prescriptionDTOs = new ArrayList<>();
         for (Prescription pre:patient.getUserPrescriptions()

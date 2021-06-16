@@ -13,7 +13,7 @@ public class PatientConverter
     public PatientModel convertToRequestModel(Patient patient)
     {
         PatientModel patientModel = new PatientModel();
-        patientModel.setId(patient.getId());
+        patientModel.setUserid(patient.getId());
         patientModel.setBirthDate(patient.getBirthDate());
         patientModel.setLength(patient.getHealthInfo().getLength());
         patientModel.setWeight(patient.getHealthInfo().getWeight());

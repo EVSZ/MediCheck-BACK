@@ -24,7 +24,7 @@ public class AlgorithmAPI {
     }
 
     @PostMapping(value = "/getAdvice/{id}", produces = "application/json")
-    public boolean GetAdvice(int id)
+    public boolean GetAdvice(@PathVariable int id )
     {
         int worst = id;
         return adviceGenerator.GenerateAdvice(id);
