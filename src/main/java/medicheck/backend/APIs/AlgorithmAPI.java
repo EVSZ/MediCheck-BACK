@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
+@RequestMapping("algorithm")
+
 @Scope(value = "session")
 public class AlgorithmAPI {
 
@@ -17,15 +19,16 @@ public class AlgorithmAPI {
     @Autowired
     private AccessData accessData;
 
-    @ModelAttribute("accesData")
-    public AccessData getAccesData() {
+    @ModelAttribute("accessData")
+    public AccessData getAccessData() {
         return this.accessData;
     }
 
 
 
-    public AlgorithmAPI(AdviceGenerator adviceGenerator) {
+    public AlgorithmAPI(AdviceGenerator adviceGenerator, AccessData accessdat) {
         this.adviceGenerator = adviceGenerator;
+        this.accessData = accessdat;
     }
 
     @GetMapping(value = "/getAdvice", produces = "application/json")
@@ -36,10 +39,4 @@ public class AlgorithmAPI {
         //return adviceGenerator.GenerateAdvice(41);
 
     }
-
-    @GetMapping()
-    MedicationListInfo GetMedicationList(MedicationListInfo info) {
-        return info;
-    }
-
 }

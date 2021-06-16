@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@RequestMapping("api/Login")
 @Scope(value = "session")
 public class LoginAPI
 {
     @Autowired
     private AccessData accessData;
 
-    @ModelAttribute("sessionData")
+    @ModelAttribute("accessData")
     public AccessData getAccessData() {
         return this.accessData;
     }
@@ -26,15 +27,16 @@ public class LoginAPI
     private final LoginService loginService;
     private PatientConverter converter  = new PatientConverter();
 
-    public LoginAPI(LoginService _loginService){
+    public LoginAPI(LoginService _loginService, AccessData accessdat){
         loginService = _loginService;
+        this.accessData = accessdat;
     }
 
     @PostMapping(value="/post/loginInfo", consumes = "application/json", produces = "application/json")
     public String Login(@RequestBody LoginInfo info){
 //        HttpSession session = request.getSession();
         Patient patient = loginService.logIn(info);
-        AccessData sessionData2 = new AccessData(patient.getId());
+        AccessData sessionData2 = new AccessData();
         sessionData2.setUserID(patient.getId());
         //session.setAttribute("patientId", patient.getId());
         CopyProperties(accessData,sessionData2);

@@ -17,8 +17,8 @@ public class AccessData
 
         private String userKey;
 
-        public AccessData(long userID){
-                this.userID = userID;
+        public AccessData(){
+
         }
 
 
