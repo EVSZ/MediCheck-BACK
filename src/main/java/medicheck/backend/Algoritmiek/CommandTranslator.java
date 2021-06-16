@@ -1,5 +1,6 @@
 package medicheck.backend.Algoritmiek;
 
+import medicheck.backend.Logic.Models.Prescription.Prescription;
 import medicheck.backend.Logic.Models.patient.Patient;
 
 import java.time.LocalDate;
@@ -47,6 +48,31 @@ public class CommandTranslator
 
             case "isclcrknown":
                 return patient.getHealthInfo().lastclcr != null;
+            case "laxantiaCheck":
+                for (Prescription pre:patient.getPrescriptions().GetPrescriptions()
+                     )
+                {
+                    if (pre.getMedicine().getDiscription().equals("Laxantia")){
+                        return true;
+                }
+
+                }
+            case "loperamideCheck":
+                for (Prescription pre:patient.getPrescriptions().GetPrescriptions()
+                )
+                {
+                    if (pre.getMedicine().getDiscription().equals("Loperamide")){
+                    return true;
+                    }
+                }
+            case "corticosteroidCheck":
+                for (Prescription pre:patient.getPrescriptions().GetPrescriptions()
+                )
+                {
+                    if (pre.getMedicine().getDiscription().equals("InhalatieCorticosteroid")){
+                        return true;
+                    }
+                }
         }
         return false;
     }
